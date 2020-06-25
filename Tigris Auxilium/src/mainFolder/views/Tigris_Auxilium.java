@@ -7,10 +7,11 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
+import java.awt.Toolkit;
 
 public class Tigris_Auxilium {
 
-	private JFrame frame;
+	private JFrame frmTigrisAuxilium;
 
 	/**
 	 * Launch the application.
@@ -20,7 +21,7 @@ public class Tigris_Auxilium {
 			public void run() {
 				try {
 					Tigris_Auxilium window = new Tigris_Auxilium();
-					window.frame.setVisible(true);
+					window.frmTigrisAuxilium.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -39,12 +40,14 @@ public class Tigris_Auxilium {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmTigrisAuxilium = new JFrame();
+		frmTigrisAuxilium.setIconImage(Toolkit.getDefaultToolkit().getImage(Tigris_Auxilium.class.getResource("/mainFolder/resources/NPN Logo.png")));
+		frmTigrisAuxilium.setTitle("Tigris Auxilium");
+		frmTigrisAuxilium.setBounds(100, 100, 450, 300);
+		frmTigrisAuxilium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panelMenu = new JPanel();
-		frame.getContentPane().add(panelMenu, BorderLayout.NORTH);
+		frmTigrisAuxilium.getContentPane().add(panelMenu, BorderLayout.NORTH);
 		panelMenu.setLayout(new GridLayout(0, 7, 0, 0));
 		
 		JButton btnNewButton = new JButton("New button");
@@ -69,7 +72,7 @@ public class Tigris_Auxilium {
 		panelMenu.add(btnNewButton_6);
 		
 		panelAuxy panelMain = new panelAuxy();
-		frame.getContentPane().add(panelMain, BorderLayout.CENTER);
+		frmTigrisAuxilium.getContentPane().add(panelMain, BorderLayout.CENTER);
 	}
 
 }
