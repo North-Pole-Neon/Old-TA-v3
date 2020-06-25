@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import mainFolder.common.PanelCalculator;
+
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -46,6 +49,12 @@ public class Tigris_Auxilium {
 		frmTigrisAuxilium.setBounds(100, 100, 800, 500);
 		frmTigrisAuxilium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		//Basic Current Panel Algorithm //////////////
+		
+		
+		
+		// ///////////////////////////////////////////
+		
 		JPanel panelMenu = new JPanel();
 		frmTigrisAuxilium.getContentPane().add(panelMenu, BorderLayout.NORTH);
 		panelMenu.setLayout(new GridLayout(0, 7, 0, 0));
@@ -71,7 +80,7 @@ public class Tigris_Auxilium {
 		JButton btnMenuHelp = new JButton("Help");
 		panelMenu.add(btnMenuHelp);
 		
-		panelAuxy panelMain = new panelAuxy();
+		PanelCalculator panelMain = new PanelCalculator();
 		frmTigrisAuxilium.getContentPane().add(panelMain, BorderLayout.CENTER);
 	}
 }
