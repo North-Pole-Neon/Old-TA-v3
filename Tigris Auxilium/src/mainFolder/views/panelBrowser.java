@@ -3,24 +3,23 @@ package mainFolder.views;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JTabbedPane;
 
-//Size of window 784, 438
-public class panelAuxy extends JPanel {
+public class panelBrowser extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public panelAuxy() {
+	public panelBrowser() {
 		setLayout(null);
 		
 		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(267, 86, 89, 23);
+		btnNewButton.setBounds(257, 91, 89, 23);
 		add(btnNewButton);
 		
-		JLabel lblNewLabel = new JLabel("Auxy panel");
-		lblNewLabel.setBounds(194, 162, 98, 60);
+		JLabel lblNewLabel = new JLabel("Browser");
+		lblNewLabel.setBounds(85, 208, 46, 14);
 		add(lblNewLabel);
 
 	}
+
 }

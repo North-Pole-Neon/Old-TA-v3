@@ -43,36 +43,35 @@ public class Tigris_Auxilium {
 		frmTigrisAuxilium = new JFrame();
 		frmTigrisAuxilium.setIconImage(Toolkit.getDefaultToolkit().getImage(Tigris_Auxilium.class.getResource("/mainFolder/resources/NPN Logo.png")));
 		frmTigrisAuxilium.setTitle("Tigris Auxilium");
-		frmTigrisAuxilium.setBounds(100, 100, 450, 300);
+		frmTigrisAuxilium.setBounds(100, 100, 800, 500);
 		frmTigrisAuxilium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panelMenu = new JPanel();
 		frmTigrisAuxilium.getContentPane().add(panelMenu, BorderLayout.NORTH);
 		panelMenu.setLayout(new GridLayout(0, 7, 0, 0));
 		
-		JButton btnNewButton = new JButton("New button");
-		panelMenu.add(btnNewButton);
+		JButton btnMenuBrowser = new JButton("Browser");
+		panelMenu.add(btnMenuBrowser);
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		panelMenu.add(btnNewButton_1);
+		JButton btnMenuApps = new JButton("Apps");
+		panelMenu.add(btnMenuApps);
 		
-		JButton btnNewButton_2 = new JButton("New button");
-		panelMenu.add(btnNewButton_2);
+		JButton btnMenuCommunication = new JButton("Communication");
+		panelMenu.add(btnMenuCommunication);
 		
-		JButton btnNewButton_3 = new JButton("New button");
-		panelMenu.add(btnNewButton_3);
+		JButton btnMenuHome = new JButton("Home");
+		panelMenu.add(btnMenuHome);
 		
-		JButton btnNewButton_4 = new JButton("New button");
-		panelMenu.add(btnNewButton_4);
+		JButton btnMenuTools = new JButton("Tools");
+		panelMenu.add(btnMenuTools);
 		
-		JButton btnNewButton_5 = new JButton("New button");
-		panelMenu.add(btnNewButton_5);
+		JButton btnMenuHomework = new JButton("Homework");
+		panelMenu.add(btnMenuHomework);
 		
-		JButton btnNewButton_6 = new JButton("New button");
-		panelMenu.add(btnNewButton_6);
+		JButton btnMenuHelp = new JButton("Help");
+		panelMenu.add(btnMenuHelp);
 		
 		panelAuxy panelMain = new panelAuxy();
 		frmTigrisAuxilium.getContentPane().add(panelMain, BorderLayout.CENTER);
 	}
-
 }
