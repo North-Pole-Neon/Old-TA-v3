@@ -1,3 +1,4 @@
+
 package savingVarables;
 
 import java.io.File;
@@ -12,11 +13,11 @@ public class CreationDiscover_Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		/*
-		PersonalTesting Test1 = new PersonalTesting("Johnson", 12, 720); //Creates record
+		///*
+		PersonalTesting Test1 = new PersonalTesting("Tyler", 10, 720); //Creates record
 		
 		try {
-			FileOutputStream fos = new FileOutputStream(new File("./book.txt")); //Easily make this your own extension by just changing name.
+			FileOutputStream fos = new FileOutputStream(new File("./srcTesting/savingVarables/UserBasicInfo.tigaux")); //Custom Extension
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			
 			oos.writeObject(Test1);
@@ -26,11 +27,11 @@ public class CreationDiscover_Test {
 		}catch (IOException ex) {
 			ex.printStackTrace();
 		}
-		*/
+		//*/
 		
-		///*
+		/*
 		try {
-			FileInputStream fis = new FileInputStream(new File("./book.txt"));
+			FileInputStream fis = new FileInputStream(new File("./srcTesting/savingVarables/UserBasicInfo.tigaux"));
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			
 			PersonalTesting Test2 = (PersonalTesting)ois.readObject();
@@ -45,7 +46,7 @@ public class CreationDiscover_Test {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//*/
+		*/
 		
 		
 	}
