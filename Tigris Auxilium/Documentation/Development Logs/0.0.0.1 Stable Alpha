@@ -13,29 +13,25 @@
 Tigris Auxilium
 Development Log #1
 Status: Stable
-6/25/2020 | 0.1.6.5 | "Auxy is shy (Stable)"
+6/25/2020 | 0.0.0.1 | "Hey, we're here"
 ======================================================
 ---------
 Overview:
 ---------
-Working on getting Auxy to read text input and give feedback
-
+Nothing special just a basic project layout created.
 -------------
 New Features:
 -------------
--Auxy has arived and works with basic commands
-
+-NA
 -----------
 Known Bugs:
 -----------
-- "-qaz" doesn't return any thing and crashses
-
+-NA
 -------------
 Fixed Issues:
 -------------
-- Doesnt crash when chrome isn't present
-
+-NA
 ------
 Plans:
 ------
--Passowrd Protection
+-NA
