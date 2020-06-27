@@ -8,6 +8,11 @@ import javax.swing.JTabbedPane;
 //Size of window 784, 438
 public class panelAuxy extends JPanel {
 
+	
+	
+	private void namess() {
+		
+	}
 	/**
 	 * Create the panel.
 	 */

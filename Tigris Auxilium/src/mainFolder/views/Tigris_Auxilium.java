@@ -55,6 +55,10 @@ public class Tigris_Auxilium {
 	 */
 	public Tigris_Auxilium() {
 		initialize();
+		UserCheck();
+		/*UBIC_GenRead userCheck2  = new UBIC_GenRead();
+		userCheck2.RUserBasic();
+		System.out.println("Hello " + userCheck2.userNAME);*/
 	}
 
 	public void UserCheck() { //Trys to load Save File
@@ -65,6 +69,8 @@ public class Tigris_Auxilium {
 			System.out.println(userCheck.userISD);
 			//Try to find file
 		}catch(Exception e1) {
+			/*UBIC_GenRead userCheck2  = new UBIC_GenRead();
+			userCheck2.CUserBasic(name, grade, isd, done);*/
 			e1.printStackTrace();
 			//go through setup
 		}
