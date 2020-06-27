@@ -6,8 +6,9 @@ public class UserBasicInfoClass implements Serializable {
 	private String userName;
 	private int userGrade;
 	private int userIsd;
+	private boolean setupCompleted;
 	
-	public UserBasicInfoClass(String userName, int userGrade, int userIsd) {
+	public UserBasicInfoClass(String userName, int userGrade, int userIsd, boolean setupCompleted) {
 		this.userName = userName;
 		this.userGrade = userGrade;
 		this.userIsd  = userIsd;
@@ -36,6 +37,16 @@ public class UserBasicInfoClass implements Serializable {
 	public void setUserIsd(int userIsd) {
 		this.userIsd = userIsd;
 	}
+
+	public boolean isSetupCompleted() {
+		return setupCompleted;
+	}
+
+	public void setSetupCompleted(boolean setupCompleted) {
+		this.setupCompleted = setupCompleted;
+	}
+	
+	
 
 	
 }

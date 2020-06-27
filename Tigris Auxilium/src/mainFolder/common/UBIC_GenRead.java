@@ -10,11 +10,11 @@ import java.io.ObjectOutputStream;
 public class UBIC_GenRead {
 
 	
-	public void Funny() {
+	public void CUserBasic() { //Creates Save File
 		
-		// /*
 		
-		UserBasicInfoClass Gen1 = new UserBasicInfoClass("Tyler", 10, 720); //Creates record
+		
+		UserBasicInfoClass Gen1 = new UserBasicInfoClass("Sam", 10, 720, true); //Creates record
 	
 		try 
 		{
@@ -31,11 +31,16 @@ public class UBIC_GenRead {
 			ex.printStackTrace();
 		}
 		
-		// */
 		
 		
 		
-		// /*
+		
+		 
+	}
+	
+	public void RUserBasic() { // Get user info
+		
+		
 		try 
 		{
 			FileInputStream fis = new FileInputStream(new File("./srcTesting/savingVarables/UserBasicInfo.tigaux"));
@@ -56,9 +61,20 @@ public class UBIC_GenRead {
 		{
 			e.printStackTrace();
 		}
-		//  */
+		  
+		
 	}
 	
 	
+	public void AssignVariable() {
+		
+		String userNAME;
+		int userGRADE;
+		int userISD;
+		boolean setupCOMP;
+		
+		
+		
+	}
 	
 }
