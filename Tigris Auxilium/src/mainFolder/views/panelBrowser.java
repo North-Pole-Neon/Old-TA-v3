@@ -11,13 +11,10 @@ public class panelBrowser extends JPanel {
 	 */
 	public panelBrowser() {
 		setLayout(null);
+		setBounds(100, 100, 859, 438);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(257, 91, 89, 23);
-		add(btnNewButton);
-		
-		JLabel lblNewLabel = new JLabel("Browser");
-		lblNewLabel.setBounds(85, 208, 46, 14);
+		JLabel lblNewLabel = new JLabel("Hi their, the Browser page is not ready yet. :(");
+		lblNewLabel.setBounds(54, 109, 482, 16);
 		add(lblNewLabel);
 
 	}

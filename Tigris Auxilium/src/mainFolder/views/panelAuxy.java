@@ -13,14 +13,11 @@ public class panelAuxy extends JPanel {
 	 */
 	public panelAuxy() {
 		setLayout(null);
+		setBounds(100, 100, 859, 438);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(267, 86, 89, 23);
-		add(btnNewButton);
-		
-		JLabel lblNewLabel = new JLabel("Auxy panel");
-		lblNewLabel.setBounds(194, 162, 98, 60);
-		add(lblNewLabel);
+		JLabel lblWarning = new JLabel("Hi their, the Home page is not ready yet. :(");
+		lblWarning.setBounds(194, 30, 289, 16);
+		add(lblWarning);
 
 	}
 }
