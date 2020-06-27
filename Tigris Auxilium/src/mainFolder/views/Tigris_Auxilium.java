@@ -12,6 +12,8 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import java.awt.Toolkit;
 
+import mainFolder.common.*;
+
 public class Tigris_Auxilium {
 
 	private JFrame frmTigrisAuxilium;
@@ -39,6 +41,21 @@ public class Tigris_Auxilium {
 		initialize();
 	}
 
+	public void UserCheck() { //Trys to load Save File
+		try {
+			UBIC_GenRead userCheck  = new UBIC_GenRead();
+			userCheck.RUserBasic();
+			
+			System.out.println(userCheck.userISD);
+			//Try to find file
+		}catch(Exception e1) {
+			e1.printStackTrace();
+			//go through setup
+		}
+	}
+	
+	
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */

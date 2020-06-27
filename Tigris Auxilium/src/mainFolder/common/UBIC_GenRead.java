@@ -14,15 +14,15 @@ public class UBIC_GenRead {
 	public int userISD;
 	public boolean setupCOMP;
 	
-	public void CUserBasic() { //Creates Save File
+	public void CUserBasic(String name, int grade, int isd, boolean done) { //Creates Save File
 		
 		
 		
-		UserBasicInfoClass Gen1 = new UserBasicInfoClass("Sam", 10, 720, true); //Creates record
+		UserBasicInfoClass Gen1 = new UserBasicInfoClass(name, grade, isd, done); //Creates record
 	
 		try 
 		{
-			FileOutputStream fos = new FileOutputStream(new File("./srcTesting/savingVarables/UserBasicInfo.tigaux")); //Custom Extension
+			FileOutputStream fos = new FileOutputStream(new File("./src/mainFolder/resources/UserBasicInfo.tigaux")); //Custom Extension
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 		
 			oos.writeObject(Gen1);
@@ -47,14 +47,20 @@ public class UBIC_GenRead {
 		
 		try 
 		{
-			FileInputStream fis = new FileInputStream(new File("./srcTesting/savingVarables/UserBasicInfo.tigaux"));
+			FileInputStream fis = new FileInputStream(new File("./src/mainFolder/resources/UserBasicInfo.tigaux"));
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			
 			UserBasicInfoClass Gen2 = (UserBasicInfoClass)ois.readObject();
 			ois.close();
 			fis.close();
 			
-			System.out.println(Gen2.getUserName()); //Use .get to reset the variables after launch
+			System.out.println("Personal info: " + Gen2.getUserName() +", "+ Gen2.getUserGrade() +", "+ Gen2.getUserIsd() +", "+ Gen2.isSetupCompleted());
+			// Thats a lot of little ^
+			
+			userNAME = Gen2.getUserName();
+			userGRADE = Gen2.getUserGrade();
+			userISD = Gen2.getUserIsd();
+			
 			
 		}
 		catch(IOException ex) 

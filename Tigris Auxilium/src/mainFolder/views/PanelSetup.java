@@ -65,20 +65,19 @@ public class PanelSetup extends JPanel {
 		textFieldIsd = new JTextField();
 		textFieldIsd.setColumns(10);
 		
-		String [] gradeListBox = {"9", "10", "11", "12"}; //arrar
+		String [] gradeListBox = {"9", "10", "11", "12"}; //Array of grade options
 		JComboBox<?> comboBoxGrade = new JComboBox<Object>(gradeListBox);
 		
 		JButton btnFinished = new JButton("Finished!");
 		btnFinished.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UBIC_GenRead tests = new UBIC_GenRead();
-				tests.userNAME = textFieldName.getText();
-				int gradeSelect;
-				gradeSelect = Integer.parseInt((String) comboBoxGrade.getSelectedItem());
-				tests.userGRADE = gradeSelect;
-				//userNAME = textFieldName.getText();
-				//UBIC_GenRead.class.getco   .this.userNAME = textFieldName.getText();
-				//username = UBIC_GenRead.this.userNAME;
+				UBIC_GenRead tests = new UBIC_GenRead(); //Instance UBIC Class
+				tests.userNAME = textFieldName.getText(); 
+				tests.userGRADE = Integer.parseInt((String) comboBoxGrade.getSelectedItem()); //Converts comboBox to int and sets var
+				tests.userISD = Integer.parseInt(textFieldIsd.getText());
+				tests.setupCOMP = true;
+				tests.CUserBasic(tests.userNAME, tests.userGRADE, tests.userISD, tests.setupCOMP);
+				tests.RUserBasic();
 				 
 			}
 		});
