@@ -80,7 +80,7 @@ public class Tigris_Auxilium {
 		JButton btnMenuHelp = new JButton("Help");
 		panelMenu.add(btnMenuHelp);
 		
-		PanelCalculator panelMain = new PanelCalculator();
+		PanelSetup panelMain = new PanelSetup();
 		frmTigrisAuxilium.getContentPane().add(panelMain, BorderLayout.CENTER);
 	}
 }

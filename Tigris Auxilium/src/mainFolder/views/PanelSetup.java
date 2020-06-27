@@ -9,10 +9,14 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.JList;
 import javax.swing.JComboBox;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import mainFolder.common.*;
 
 public class PanelSetup extends JPanel {
-	private JTextField textField;
-	private JTextField textField_2;
+	private JTextField textFieldName;
+	private JTextField textFieldIsd;
 
 	/**
 	 * Create the panel.
@@ -48,51 +52,72 @@ public class PanelSetup extends JPanel {
 					.addContainerGap(21, Short.MAX_VALUE))
 		);
 		
-		JLabel lblNewLabel = new JLabel("First Name");
+		JLabel lblName = new JLabel("First Name");
 		
-		JLabel lblNewLabel_1 = new JLabel("Grade");
+		JLabel lblGrade = new JLabel("Grade");
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
+		JLabel lblIsd = new JLabel("ISD");
+		lblIsd.setToolTipText("\"School District #\" ex. SHS = 720");
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		textFieldName = new JTextField();
+		textFieldName.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
+		textFieldIsd = new JTextField();
+		textFieldIsd.setColumns(10);
 		
-		JComboBox comboBox = new JComboBox();
+		String [] gradeListBox = {"9", "10", "11", "12"}; //arrar
+		JComboBox<?> comboBoxGrade = new JComboBox<Object>(gradeListBox);
+		
+		JButton btnFinished = new JButton("Finished!");
+		btnFinished.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UBIC_GenRead tests = new UBIC_GenRead();
+				tests.userNAME = textFieldName.getText();
+				int gradeSelect;
+				gradeSelect = Integer.parseInt((String) comboBoxGrade.getSelectedItem());
+				tests.userGRADE = gradeSelect;
+				//userNAME = textFieldName.getText();
+				//UBIC_GenRead.class.getco   .this.userNAME = textFieldName.getText();
+				//username = UBIC_GenRead.this.userNAME;
+				 
+			}
+		});
+		//comboBox.getSelectedItem();
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel)
-						.addComponent(lblNewLabel_2)
-						.addComponent(lblNewLabel_1))
-					.addPreferredGap(ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+						.addComponent(lblName)
+						.addComponent(lblIsd)
+						.addComponent(lblGrade))
+					.addPreferredGap(ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(99, Short.MAX_VALUE))
+						.addComponent(btnFinished)
+						.addComponent(textFieldName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textFieldIsd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(comboBoxGrade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(97, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(66)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblName)
+						.addComponent(textFieldName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(58)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_1)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblGrade)
+						.addComponent(comboBoxGrade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(41)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_2)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(164, Short.MAX_VALUE))
+						.addComponent(lblIsd)
+						.addComponent(textFieldIsd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(51)
+					.addComponent(btnFinished)
+					.addContainerGap(73, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 		setLayout(groupLayout);

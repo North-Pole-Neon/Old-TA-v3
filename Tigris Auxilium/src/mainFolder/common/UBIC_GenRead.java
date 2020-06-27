@@ -9,6 +9,10 @@ import java.io.ObjectOutputStream;
 
 public class UBIC_GenRead {
 
+	public String userNAME;
+	public int userGRADE;
+	public int userISD;
+	public boolean setupCOMP;
 	
 	public void CUserBasic() { //Creates Save File
 		
@@ -66,15 +70,6 @@ public class UBIC_GenRead {
 	}
 	
 	
-	public void AssignVariable() {
-		
-		String userNAME;
-		int userGRADE;
-		int userISD;
-		boolean setupCOMP;
-		
-		
-		
-	}
+	
 	
 }
