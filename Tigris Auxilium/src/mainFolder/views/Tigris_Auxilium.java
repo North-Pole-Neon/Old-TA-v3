@@ -13,6 +13,8 @@ import javax.swing.JButton;
 import java.awt.Toolkit;
 
 import mainFolder.common.*;
+import javax.swing.JLayeredPane;
+import java.awt.CardLayout;
 
 public class Tigris_Auxilium {
 
@@ -66,9 +68,10 @@ public class Tigris_Auxilium {
 		frmTigrisAuxilium.setBounds(100, 100, 800, 500);
 		frmTigrisAuxilium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		
 		//Basic Current Panel Algorithm //////////////
 		
-		
+		//Object CurrentPan =  new PanelSetup();
 		
 		// ///////////////////////////////////////////
 		
@@ -96,8 +99,5 @@ public class Tigris_Auxilium {
 		
 		JButton btnMenuHelp = new JButton("Help");
 		panelMenu.add(btnMenuHelp);
-		
-		PanelSetup panelMain = new PanelSetup();
-		frmTigrisAuxilium.getContentPane().add(panelMain, BorderLayout.CENTER);
 	}
 }
