@@ -1,6 +1,6 @@
 ## Welcome to Tigris Auxilium
 
-Tigris Auxilium is soon to be your new personal assist.
+Tigris Auxilium is soon to be your new personal assist. Tigris Auxilium (TA) is a work in progress project that is supposed to help students with daily tasks that might not be easly assessable.
 
 You can get the latest version [here](https://github.com/North-Pole-Neon/Tigris-Auxilium/releases/tag/vs0.0.1.0) look at instalation instructions below for help.
 
