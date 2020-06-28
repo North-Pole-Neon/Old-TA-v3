@@ -1,8 +1,10 @@
-## Welcome to GitHub Pages
+## Welcome to Tigris Auxilium
 
-You can use the [editor on GitHub](https://github.com/North-Pole-Neon/Tigris-Auxilium/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Tigris Auxilium is soon to be your new personal assist.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+You can get the latest version [here](https://github.com/North-Pole-Neon/Tigris-Auxilium/releases/tag/vs0.0.1.0) look at instalation instructions below for help.
+
+
 
 ### Markdown
 
