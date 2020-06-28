@@ -89,11 +89,6 @@ public class Tigris_Auxilium {
 		frmTigrisAuxilium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
-		//Basic Current Panel Algorithm //////////////
-		
-		//Object CurrentPan =  new PanelSetup();
-		
-		// ///////////////////////////////////////////
 		
 		JPanel panelMenu = new JPanel();
 		frmTigrisAuxilium.getContentPane().add(panelMenu, BorderLayout.NORTH);
