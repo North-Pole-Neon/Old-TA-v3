@@ -10,6 +10,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 
 import java.awt.BorderLayout;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import javax.swing.JToggleButton;
@@ -26,16 +27,17 @@ import java.awt.event.FocusEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import mainFolder.common.*;
+import javax.swing.JTextField;
 
 //import mainFolder.resources.*;
 // TODO Figure out import error
 public class panelBrowser extends JPanel {
-	private JComboBox comboBoxTab1;
-	private JComboBox comboBoxTab2;
-	private JComboBox comboBoxTab3;
-	private JComboBox comboBoxTab4;
-	private JComboBox comboBoxTab5;
-	private JComboBox comboBoxTab6;
+	private JTextField comboBoxTab1;
+	private JTextField comboBoxTab2;
+	private JTextField comboBoxTab3;
+	private JTextField comboBoxTab4;
+	private JTextField comboBoxTab5;
+	private JTextField comboBoxTab6;
 	private JCheckBox chckbx1;
 	private JCheckBox chckbx2;
 	private JCheckBox chckbx3;
@@ -44,6 +46,7 @@ public class panelBrowser extends JPanel {
 	private JCheckBox chckbx6;
 	private JButton btnSave;
 	private JButton btncheck;
+	private JButton btnDefault;
 
 	/**
 	 * Create the panel.
@@ -103,14 +106,7 @@ public class panelBrowser extends JPanel {
 		chckbx6 = new JCheckBox("6. ");
 		
 		String [] ListBox1 = {"", "https://mail.google.com/", "https://calendar.google.com/", "https://shakopee.instructure.com/", "https://shakopeemn.infinitecampus.org/"};
-		comboBoxTab1 = new JComboBox(ListBox1);
-		comboBoxTab1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				//hasClickedOut();
-				System.out.println("It"); 
-			}
-		});
+		comboBoxTab1 = new JTextField();
 		comboBoxTab1.setEditable(true);
 		
 		//if (comboBoxTab1.mouseReleased)
@@ -122,34 +118,21 @@ public class panelBrowser extends JPanel {
 		//comboBoxTab1.getSelectedItem();
 		//JoptionPane.showinput
 		
-		comboBoxTab2 = new JComboBox(ListBox1);
-		comboBoxTab2.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusLost(FocusEvent e) {
-				System.out.println("losefoucus");
-				//comboBoxTab2.lostFocus(evt, what)
-			}
-		});
-		comboBoxTab2.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				//if (keyRe)
-			}
-		});
+		comboBoxTab2 = new JTextField();
 		
 		comboBoxTab2.setEditable(true);
 		
-		comboBoxTab3 = new JComboBox(ListBox1);
+		comboBoxTab3 = new JTextField();
 		comboBoxTab3.setEditable(true);
 		//comboBoxTab3.
 		
-		comboBoxTab4 = new JComboBox(ListBox1);
+		comboBoxTab4 = new JTextField();
 		comboBoxTab4.setEditable(true);
 		
-		comboBoxTab5 = new JComboBox(ListBox1);
+		comboBoxTab5 = new JTextField();
 		comboBoxTab5.setEditable(true);
 		
-		comboBoxTab6 = new JComboBox(ListBox1);
+		comboBoxTab6 = new JTextField();
 		comboBoxTab6.setEditable(true);
 		
 		JButton btnRunTabs = new JButton("Open tabs now");
@@ -164,6 +147,8 @@ public class panelBrowser extends JPanel {
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Save button ----------------------------------------------------------------------------------------------
+				BrowserTab_GenRead  saveTabs = new BrowserTab_GenRead();
+				saveTabs.browserTabWrite(comboBoxTab1.getText(), chckbx1.isSelected(), comboBoxTab2.getText(), chckbx2.isSelected(), comboBoxTab3.getText(), chckbx3.isSelected(), comboBoxTab4.getText(), chckbx4.isSelected(), comboBoxTab5.getText(), chckbx5.isSelected(), comboBoxTab6.getText(), chckbx6.isSelected());
 			}
 		});
 		
@@ -171,8 +156,15 @@ public class panelBrowser extends JPanel {
 		btncheck.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Check if worked ---------------------------------------------------
+				File tempFile = new File("./src/mainFolder/resources/BrowserTabSave.tigaux");
+				boolean exists = tempFile.exists();
+				if (exists == true) {
+					System.out.println("It saved");
+				}
 			}
 		});
+		
+		btnDefault = new JButton("Default"); // TODO Add default text possiblely
 		GroupLayout gl_panelTTab = new GroupLayout(panelTTab);
 		gl_panelTTab.setHorizontalGroup(
 			gl_panelTTab.createParallelGroup(Alignment.TRAILING)
@@ -193,12 +185,16 @@ public class panelBrowser extends JPanel {
 								.addComponent(comboBoxTab6, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
 								.addGroup(gl_panelTTab.createSequentialGroup()
 									.addComponent(comboBoxTab5, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
 									.addComponent(btncheck))
 								.addComponent(comboBoxTab4, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
-								.addComponent(comboBoxTab3, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
 								.addComponent(comboBoxTab2, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
-								.addComponent(comboBoxTab1, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(comboBoxTab1, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_panelTTab.createSequentialGroup()
+									.addComponent(comboBoxTab3, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+									.addComponent(btnDefault)
+									.addGap(22)))))
 					.addContainerGap())
 				.addGroup(gl_panelTTab.createSequentialGroup()
 					.addContainerGap(745, Short.MAX_VALUE)
@@ -221,7 +217,8 @@ public class panelBrowser extends JPanel {
 					.addGap(18)
 					.addGroup(gl_panelTTab.createParallelGroup(Alignment.BASELINE)
 						.addComponent(chckbx3)
-						.addComponent(comboBoxTab3, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+						.addComponent(comboBoxTab3, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnDefault))
 					.addGap(18)
 					.addGroup(gl_panelTTab.createParallelGroup(Alignment.BASELINE)
 						.addComponent(chckbx4)
@@ -237,7 +234,7 @@ public class panelBrowser extends JPanel {
 						.addComponent(comboBoxTab6, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addComponent(btnSave)
-					.addContainerGap(26, Short.MAX_VALUE))
+					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		panelTTab.setLayout(gl_panelTTab);
 		
@@ -246,12 +243,12 @@ public class panelBrowser extends JPanel {
 
 	}
 	public void goToLinks() { //TODO Check if this works when out of  tab
-		String boxlinkstring1= comboBoxTab1.getSelectedItem().toString();
-		String boxlinkstring2= comboBoxTab2.getSelectedItem().toString();
-		String boxlinkstring3= comboBoxTab3.getSelectedItem().toString();
-		String boxlinkstring4= comboBoxTab4.getSelectedItem().toString();
-		String boxlinkstring5= comboBoxTab5.getSelectedItem().toString();
-		String boxlinkstring6= comboBoxTab6.getSelectedItem().toString();
+		String boxlinkstring1= comboBoxTab1.getText();
+		String boxlinkstring2= comboBoxTab2.getText();
+		String boxlinkstring3= comboBoxTab3.getText();
+		String boxlinkstring4= comboBoxTab4.getText();
+		String boxlinkstring5= comboBoxTab5.getText();
+		String boxlinkstring6= comboBoxTab6.getText();
 		Boolean urlcheck1 = chckbx1.isSelected();
 		Boolean urlcheck2 = chckbx2.isSelected();
 		Boolean urlcheck3 = chckbx3.isSelected();
@@ -323,4 +320,46 @@ public class panelBrowser extends JPanel {
 		//String name2 =JOptionPane.showInputDialog("Enter");
 		//System.out.println(/*name +*/ " and " + name2);
 	//}*/
+	
+	
+	//Check for save file
+	public void tabSaveExists() {
+		File tempFile = new File("./src/mainFolder/resources/BrowserTabSave.tigaux");
+		boolean exists = tempFile.exists();
+		
+		if (exists == true) { //Load save file  and change text boxes and variables 
+			BrowserTab_GenRead loadtabs = new BrowserTab_GenRead();
+			loadtabs.readTabSave();
+			comboBoxTab1.setText(loadtabs.tab1LINK);
+			comboBoxTab2.setText(loadtabs.tab2LINK);
+			comboBoxTab3.setText(loadtabs.tab3LINK);
+			comboBoxTab4.setText(loadtabs.tab4LINK);
+			comboBoxTab5.setText(loadtabs.tab5LINK);
+			comboBoxTab6.setText(loadtabs.tab6LINK);
+			
+			chckbx1.setSelected(loadtabs.tab1LINKCbx);
+			chckbx2.setSelected(loadtabs.tab2LINKCbx);
+			chckbx3.setSelected(loadtabs.tab3LINKCbx);
+			chckbx4.setSelected(loadtabs.tab4LINKCbx);
+			chckbx5.setSelected(loadtabs.tab5LINKCbx);
+			chckbx6.setSelected(loadtabs.tab6LINKCbx);
+			
+			String boxlinkstring1= comboBoxTab1.getText();
+			String boxlinkstring2= comboBoxTab2.getText();
+			String boxlinkstring3= comboBoxTab3.getText();
+			String boxlinkstring4= comboBoxTab4.getText();
+			String boxlinkstring5= comboBoxTab5.getText();
+			String boxlinkstring6= comboBoxTab6.getText();
+			Boolean urlcheck1 = chckbx1.isSelected();
+			Boolean urlcheck2 = chckbx2.isSelected();
+			Boolean urlcheck3 = chckbx3.isSelected();
+			Boolean urlcheck4 = chckbx4.isSelected();
+			Boolean urlcheck5 = chckbx5.isSelected();
+			Boolean urlcheck6 = chckbx6.isSelected();
+			
+		}else if (exists == false) {//prep for save
+			
+		}
+	}
+	
 }

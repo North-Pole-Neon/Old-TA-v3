@@ -181,6 +181,7 @@ public class Tigris_Auxilium {
 		
 		panelBrowser panelBrowserCon = new panelBrowser();
 		panelPPBrowser.add(panelBrowserCon, BorderLayout.CENTER);
+		panelBrowserCon.tabSaveExists(); //This is new
 		
 		panelPPApps = new JPanel();
 		layeredPane.add(panelPPApps, "name_218716231119131");
