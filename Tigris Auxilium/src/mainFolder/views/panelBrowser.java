@@ -19,6 +19,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import javax.swing.LayoutStyle.ComponentPlacement;
+
+import mainFolder.common.*;
 
 //import mainFolder.resources.*;
 // TODO Figure out import error
@@ -35,6 +42,8 @@ public class panelBrowser extends JPanel {
 	private JCheckBox chckbx4;
 	private JCheckBox chckbx5;
 	private JCheckBox chckbx6;
+	private JButton btnSave;
+	private JButton btncheck;
 
 	/**
 	 * Create the panel.
@@ -98,7 +107,7 @@ public class panelBrowser extends JPanel {
 		comboBoxTab1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				hasClickedOut();
+				//hasClickedOut();
 				System.out.println("It"); 
 			}
 		});
@@ -114,15 +123,25 @@ public class panelBrowser extends JPanel {
 		//JoptionPane.showinput
 		
 		comboBoxTab2 = new JComboBox(ListBox1);
-		comboBoxTab2.addMouseListener(new MouseAdapter() {
+		comboBoxTab2.addFocusListener(new FocusAdapter() {
 			@Override
-			public void mouseReleased(MouseEvent e) { 
+			public void focusLost(FocusEvent e) {
+				System.out.println("losefoucus");
+				//comboBoxTab2.lostFocus(evt, what)
 			}
 		});
+		comboBoxTab2.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				//if (keyRe)
+			}
+		});
+		
 		comboBoxTab2.setEditable(true);
 		
 		comboBoxTab3 = new JComboBox(ListBox1);
 		comboBoxTab3.setEditable(true);
+		//comboBoxTab3.
 		
 		comboBoxTab4 = new JComboBox(ListBox1);
 		comboBoxTab4.setEditable(true);
@@ -137,11 +156,26 @@ public class panelBrowser extends JPanel {
 		btnRunTabs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {//TODO Find Alliterative that will prompt message
 				goToLinks();
+				System.out.println("Read");
+			}
+		});
+		
+		btnSave = new JButton("Save");
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Save button ----------------------------------------------------------------------------------------------
+			}
+		});
+		
+		btncheck = new JButton("Check");
+		btncheck.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Check if worked ---------------------------------------------------
 			}
 		});
 		GroupLayout gl_panelTTab = new GroupLayout(panelTTab);
 		gl_panelTTab.setHorizontalGroup(
-			gl_panelTTab.createParallelGroup(Alignment.LEADING)
+			gl_panelTTab.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panelTTab.createSequentialGroup()
 					.addGap(38)
 					.addGroup(gl_panelTTab.createParallelGroup(Alignment.LEADING)
@@ -157,12 +191,19 @@ public class panelBrowser extends JPanel {
 							.addGap(93)
 							.addGroup(gl_panelTTab.createParallelGroup(Alignment.LEADING)
 								.addComponent(comboBoxTab6, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
-								.addComponent(comboBoxTab5, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_panelTTab.createSequentialGroup()
+									.addComponent(comboBoxTab5, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+									.addComponent(btncheck))
 								.addComponent(comboBoxTab4, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
 								.addComponent(comboBoxTab3, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
 								.addComponent(comboBoxTab2, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
 								.addComponent(comboBoxTab1, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE))))
-					.addContainerGap(177, Short.MAX_VALUE))
+					.addContainerGap())
+				.addGroup(gl_panelTTab.createSequentialGroup()
+					.addContainerGap(745, Short.MAX_VALUE)
+					.addComponent(btnSave)
+					.addGap(18))
 		);
 		gl_panelTTab.setVerticalGroup(
 			gl_panelTTab.createParallelGroup(Alignment.LEADING)
@@ -188,12 +229,15 @@ public class panelBrowser extends JPanel {
 					.addGap(18)
 					.addGroup(gl_panelTTab.createParallelGroup(Alignment.BASELINE)
 						.addComponent(chckbx5)
-						.addComponent(comboBoxTab5, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+						.addComponent(comboBoxTab5, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btncheck))
 					.addGap(18)
 					.addGroup(gl_panelTTab.createParallelGroup(Alignment.BASELINE)
 						.addComponent(chckbx6)
 						.addComponent(comboBoxTab6, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(76, Short.MAX_VALUE))
+					.addGap(18)
+					.addComponent(btnSave)
+					.addContainerGap(26, Short.MAX_VALUE))
 		);
 		panelTTab.setLayout(gl_panelTTab);
 		
@@ -201,7 +245,7 @@ public class panelBrowser extends JPanel {
 		tabbedPane.addTab("Settings", null, panelTSettings, null);
 
 	}
-	public void goToLinks() {
+	public void goToLinks() { //TODO Check if this works when out of  tab
 		String boxlinkstring1= comboBoxTab1.getSelectedItem().toString();
 		String boxlinkstring2= comboBoxTab2.getSelectedItem().toString();
 		String boxlinkstring3= comboBoxTab3.getSelectedItem().toString();
@@ -273,10 +317,10 @@ public class panelBrowser extends JPanel {
 	}
 	
 	
-	private void hasClickedOut() { // TODO Figure out why it might not be  displaying
-		ImageIcon iconmessage = new ImageIcon("./src/mainFolder/resources/NPN Logo.png");
+	//private void hasClickedOut() { // TODO Figure out why it might not be  displaying
+		//ImageIcon iconmessage = new ImageIcon("./src/mainFolder/resources/NPN Logo.png");
 		//String name = (String) JOptionPane.showInputDialog(null, "Please enter nickname", "Auxy", JOptionPane.QUESTION_MESSAGE, iconmessage, null, null);
-		String name2 =JOptionPane.showInputDialog("Enter");
-		System.out.println(/*name +*/ " and " + name2);
-	}
+		//String name2 =JOptionPane.showInputDialog("Enter");
+		//System.out.println(/*name +*/ " and " + name2);
+	//}*/
 }
