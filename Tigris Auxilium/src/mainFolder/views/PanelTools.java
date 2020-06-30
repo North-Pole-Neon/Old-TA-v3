@@ -6,6 +6,11 @@ import javax.swing.JLabel;
 public class PanelTools extends JPanel {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2433832224159377567L;
+
+	/**
 	 * Create the panel.
 	 */
 	public PanelTools() {

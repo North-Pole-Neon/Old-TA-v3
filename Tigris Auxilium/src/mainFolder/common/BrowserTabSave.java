@@ -3,6 +3,10 @@ package mainFolder.common;
 import java.io.Serializable;
 
 public class BrowserTabSave implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1878000447115977499L;
 	public String tab1Link;
 	public String tab2Link;
 	public String tab3Link;

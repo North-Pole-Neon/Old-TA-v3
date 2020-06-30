@@ -18,6 +18,11 @@ import java.awt.event.ActionEvent;
 
 // size is 300x400
 public class PanelCalculator extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5164058914575168704L;
+
 	private JTextField textAnswerBox;
 
 	/**
@@ -29,14 +34,14 @@ public class PanelCalculator extends JPanel {
 	private int firstNum;
 	private String secondNumStr = "";
 	private int secondNum;
-	private boolean hasFirstNum = false;
+	private boolean hasFirstNum = false; //TODO Look into this waste
 	private String currentOp = "Blank";
 	private int finalAns;
 	private String finalAnsStr = "";
 	private String currentNum = "";
 	
 	//Signals
-	private boolean hasopted = false;
+	private boolean hasopted = false; //TODO Look into this waste
 	
 	
 	public PanelCalculator() {

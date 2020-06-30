@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 
 public class Tigris_Auxilium {
-
+//FIXME TRY TO FOLLOW CONSTRUCTOR LIKE UBIC & CALL FUNCTIONS BETWEEN EACH OTHER
 	private JFrame frmTigrisAuxilium;
 	private JPanel panelPPComms;
 	private JPanel panelPPAuxy;
@@ -56,6 +56,13 @@ public class Tigris_Auxilium {
 		initialize();
 		UserCheck();
 		
+		while(PanelSetup.goodToGo == true) { //TEMP
+			System.out.println("Connection " + plzSave);
+			
+		}
+		
+		
+		
 	}
 
 	public void UserCheck() { // LATER Work on auto close system and opening panels outside of others
@@ -72,6 +79,11 @@ public class Tigris_Auxilium {
 				//panelMenu.setVisible(false); //Disable menu
 				
 				System.out.println("File created"); //PRINT "File created"
+				System.out.println(PanelSetup.goodToGo); //TEMP
+				while(PanelSetup.goodToGo == true) {// TEMP
+					System.out.println("Connection " + plzSave);
+					
+				}
 			}
 			
 		}catch(Exception e1) {

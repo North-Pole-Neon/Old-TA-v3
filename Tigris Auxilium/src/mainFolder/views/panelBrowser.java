@@ -19,6 +19,10 @@ import javax.swing.JTextField;
 
 
 public class panelBrowser extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -500545164741919679L;
 	private JTextField comboBoxTab1;
 	private JTextField comboBoxTab2;
 	private JTextField comboBoxTab3;

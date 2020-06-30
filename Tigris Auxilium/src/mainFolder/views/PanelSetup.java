@@ -7,7 +7,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
-import javax.swing.JList;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -16,12 +15,19 @@ import java.awt.event.ActionEvent;
 import mainFolder.common.*;
 
 public class PanelSetup extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6593219351116763748L;
 	private JTextField textFieldName;
 	private JTextField textFieldIsd;
 	
 	public boolean userFileExists;
 	
 	public boolean hasFinishedSetup;
+	private JComboBox<?> comboBoxGrade;
+	
+	public static boolean goodToGo;
 
 	/**
 	 * Create the panel.
@@ -71,11 +77,12 @@ public class PanelSetup extends JPanel {
 		textFieldIsd.setColumns(10);
 		
 		String [] gradeListBox = {"9", "10", "11", "12"}; //Array of grade options
-		JComboBox<?> comboBoxGrade = new JComboBox<Object>(gradeListBox);
+		comboBoxGrade = new JComboBox<Object>(gradeListBox);
 		
 		JButton btnFinished = new JButton("Finished!");
 		btnFinished.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				UBIC_GenRead tests = new UBIC_GenRead(); //Instance UBIC Class
 				tests.userNAME = textFieldName.getText();  //Sets saved variable to memory
 				tests.userGRADE = Integer.parseInt((String) comboBoxGrade.getSelectedItem());
@@ -86,8 +93,17 @@ public class PanelSetup extends JPanel {
 				hasFinishedSetup = true;
 				System.out.println("Did you finish? " + hasFinishedSetup);
 
-				Tigris_Auxilium ta = new Tigris_Auxilium();
-				ta.plzSave = true;
+				//Tigris_Auxilium ta = new Tigris_Auxilium();
+				Tigris_Auxilium.plzSave = true;
+				
+				goodToGo = true;
+				//testcheck();
+				//testcheck();
+				int x=1;
+				if (x == 1) {
+					Tigris_Auxilium.plzSave = true;
+					x++;
+				}
 				 
 			}
 		});
@@ -143,5 +159,20 @@ public class PanelSetup extends JPanel {
 			tests.RUserBasic();
 			System.out.println("User Save File exists"); //PRINT "User Save File exists"
 		}
+	}
+	
+	public void testcheck() {
+		UBIC_GenRead tests = new UBIC_GenRead(); //Instance UBIC Class
+		tests.userNAME = textFieldName.getText();  //Sets saved variable to memory
+		tests.userGRADE = Integer.parseInt((String) comboBoxGrade.getSelectedItem());
+		tests.userISD = Integer.parseInt(textFieldIsd.getText());
+		tests.setupCOMP = true;
+		tests.CUserBasic(tests.userNAME, tests.userGRADE, tests.userISD, tests.setupCOMP);
+		tests.RUserBasic();
+		hasFinishedSetup = true;
+		System.out.println("Did you finish? " + hasFinishedSetup);
+
+		//Tigris_Auxilium ta = new Tigris_Auxilium();
+		Tigris_Auxilium.plzSave = true;
 	}
 }

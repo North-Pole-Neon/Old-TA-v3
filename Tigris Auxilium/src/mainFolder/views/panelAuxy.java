@@ -3,10 +3,13 @@ package mainFolder.views;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import mainFolder.common.UBIC_GenRead;
-import mainFolder.common.UserBasicInfoClass;
 
 //Size of window 784, 438
 public class panelAuxy extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1904923341438159983L;
 	private String ownerName;
 	
 	

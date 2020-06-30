@@ -3,6 +3,10 @@ package mainFolder.common;
 import java.io.Serializable;
 
 public class UserBasicInfoClass implements Serializable { //TODO Combine UBIC with this class
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6486202751004883687L;
 	private String userName;
 	private int userGrade;
 	private int userIsd;
