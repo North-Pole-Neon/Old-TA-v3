@@ -11,12 +11,17 @@ import javax.swing.JList;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 import mainFolder.common.*;
 
 public class PanelSetup extends JPanel {
 	private JTextField textFieldName;
 	private JTextField textFieldIsd;
+	
+	public boolean userFileExists;
+	
+	public boolean hasFinishedSetup;
 
 	/**
 	 * Create the panel.
@@ -72,12 +77,17 @@ public class PanelSetup extends JPanel {
 		btnFinished.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UBIC_GenRead tests = new UBIC_GenRead(); //Instance UBIC Class
-				tests.userNAME = textFieldName.getText(); 
-				tests.userGRADE = Integer.parseInt((String) comboBoxGrade.getSelectedItem()); //Converts comboBox to int and sets var
+				tests.userNAME = textFieldName.getText();  //Sets saved variable to memory
+				tests.userGRADE = Integer.parseInt((String) comboBoxGrade.getSelectedItem());
 				tests.userISD = Integer.parseInt(textFieldIsd.getText());
 				tests.setupCOMP = true;
 				tests.CUserBasic(tests.userNAME, tests.userGRADE, tests.userISD, tests.setupCOMP);
 				tests.RUserBasic();
+				hasFinishedSetup = true;
+				System.out.println("Did you finish? " + hasFinishedSetup);
+
+				Tigris_Auxilium ta = new Tigris_Auxilium();
+				ta.plzSave = true;
 				 
 			}
 		});
@@ -121,5 +131,17 @@ public class PanelSetup extends JPanel {
 		panel.setLayout(gl_panel);
 		setLayout(groupLayout);
 
+	}
+	
+	//Check if file exists
+	public void userInfoExists() { // Checks if file exists then reads into memory
+		File tempFile = new File("./src/mainFolder/resources/UserBasicInfo.tigaux");
+		userFileExists = tempFile.exists();
+		
+		if (userFileExists == true) {
+			UBIC_GenRead tests = new UBIC_GenRead();
+			tests.RUserBasic();
+			System.out.println("User Save File exists"); //PRINT "User Save File exists"
+		}
 	}
 }

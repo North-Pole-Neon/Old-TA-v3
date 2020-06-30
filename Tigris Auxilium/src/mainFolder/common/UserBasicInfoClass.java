@@ -2,7 +2,7 @@ package mainFolder.common;
 
 import java.io.Serializable;
 
-public class UserBasicInfoClass implements Serializable {
+public class UserBasicInfoClass implements Serializable { //TODO Combine UBIC with this class
 	private String userName;
 	private int userGrade;
 	private int userIsd;
@@ -45,6 +45,7 @@ public class UserBasicInfoClass implements Serializable {
 	public void setSetupCompleted(boolean setupCompleted) {
 		this.setupCompleted = setupCompleted;
 	}
+	
 	
 	
 

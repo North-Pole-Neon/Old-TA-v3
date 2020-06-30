@@ -5,8 +5,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import mainFolder.common.PanelCalculator;
-
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -17,9 +15,6 @@ import javax.swing.JLayeredPane;
 import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
 import java.awt.FlowLayout;
 
 public class Tigris_Auxilium {
@@ -33,6 +28,10 @@ public class Tigris_Auxilium {
 	private JPanel panelPPTools;
 	private JPanel panelPPHelp;
 	private JPanel panelPPHomework;
+	private JPanel panelHPSetup;
+	public JPanel panelMenu;
+	
+	public static boolean plzSave;
 
 	/**
 	 * Launch the application.
@@ -56,27 +55,32 @@ public class Tigris_Auxilium {
 	public Tigris_Auxilium() {
 		initialize();
 		UserCheck();
-		/*UBIC_GenRead userCheck2  = new UBIC_GenRead();
-		userCheck2.RUserBasic();
-		System.out.println("Hello " + userCheck2.userNAME);*/
+		
 	}
 
-	public void UserCheck() { //Trys to load Save File
+	public void UserCheck() { // LATER Work on auto close system and opening panels outside of others
 		try {
 			UBIC_GenRead userCheck  = new UBIC_GenRead();
-			userCheck.RUserBasic();
+			userCheck.RUserBasic(); //Looks for file
+			PanelSetup setupIn = new PanelSetup();
+			setupIn.userInfoExists(); // Checks if file exists then reads into memory
+			if(setupIn.userFileExists == false) { // Opens setup panel
+				layeredPane.removeAll(); 
+				layeredPane.add(panelHPSetup);
+				layeredPane.repaint();
+				layeredPane.validate();
+				//panelMenu.setVisible(false); //Disable menu
+				
+				System.out.println("File created"); //PRINT "File created"
+			}
 			
-			System.out.println(userCheck.userISD);
-			//Try to find file
 		}catch(Exception e1) {
-			/*UBIC_GenRead userCheck2  = new UBIC_GenRead();
-			userCheck2.CUserBasic(name, grade, isd, done);*/
+			
 			e1.printStackTrace();
-			//go through setup
 		}
 	}
 	
-	
+
 	
 	/**
 	 * Initialize the contents of the frame.
@@ -84,13 +88,13 @@ public class Tigris_Auxilium {
 	private void initialize() {
 		frmTigrisAuxilium = new JFrame();
 		frmTigrisAuxilium.setIconImage(Toolkit.getDefaultToolkit().getImage(Tigris_Auxilium.class.getResource("/mainFolder/resources/NPN Logo.png")));
-		frmTigrisAuxilium.setTitle("Tigris Auxilium");
+		frmTigrisAuxilium.setTitle("Tigris Auxilium");  //LATER Make title TA with name
 		frmTigrisAuxilium.setBounds(100, 100, 875, 500);
 		frmTigrisAuxilium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
 		
-		JPanel panelMenu = new JPanel();
+		panelMenu = new JPanel();
 		frmTigrisAuxilium.getContentPane().add(panelMenu, BorderLayout.NORTH);
 		panelMenu.setLayout(new GridLayout(0, 7, 0, 0));
 		
@@ -181,7 +185,7 @@ public class Tigris_Auxilium {
 		
 		panelBrowser panelBrowserCon = new panelBrowser();
 		panelPPBrowser.add(panelBrowserCon, BorderLayout.CENTER);
-		panelBrowserCon.tabSaveExists(); //This is new
+		panelBrowserCon.tabSaveExists(); //Loads save file
 		
 		panelPPApps = new JPanel();
 		layeredPane.add(panelPPApps, "name_218716231119131");
@@ -225,5 +229,14 @@ public class Tigris_Auxilium {
 		
 		PanelHelp panelHelpCon = new PanelHelp();
 		panelPPHelp.add(panelHelpCon, BorderLayout.CENTER);
+		
+		panelHPSetup = new JPanel(); //Setup panel
+		layeredPane.add(panelHPSetup, "name_271936022556661");
+		panelHPSetup.setLayout(new BorderLayout(0, 0));
+		
+		PanelSetup panelSetupCon = new PanelSetup();
+		panelHPSetup.add(panelSetupCon, BorderLayout.CENTER);
 	}
+	
+	
 }

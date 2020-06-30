@@ -55,7 +55,7 @@ public class UBIC_GenRead {
 			fis.close();
 			
 			System.out.println("Personal info: " + Gen2.getUserName() +", "+ Gen2.getUserGrade() +", "+ Gen2.getUserIsd() +", "+ Gen2.isSetupCompleted());
-			// Thats a lot of little ^
+			// Thats a lot
 			
 			userNAME = Gen2.getUserName();
 			userGRADE = Gen2.getUserGrade();
