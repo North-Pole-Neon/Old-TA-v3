@@ -59,7 +59,12 @@ public class BrowserTab_GenRead {
 			ois.close();
 			fis.close();
 			
-			System.out.println("Tabs  are: " + save2.tab1Link + "" +save2.tab1LinkCbx);
+			System.out.println("Tabs  are: " + save2.tab1Link + " " +save2.tab1LinkCbx); //PRINT "Tabs are
+			System.out.println("Tabs  are: " + save2.tab2Link + " " +save2.tab2LinkCbx);
+			System.out.println("Tabs  are: " + save2.tab3Link + " " +save2.tab3LinkCbx);
+			System.out.println("Tabs  are: " + save2.tab4Link + " " +save2.tab4LinkCbx);
+			System.out.println("Tabs  are: " + save2.tab5Link + " " +save2.tab5LinkCbx);
+			System.out.println("Tabs  are: " + save2.tab6Link + " " +save2.tab6LinkCbx);
 			// Thats a lot of little ^
 			
 			tab1LINK = save2.getTab1Link();

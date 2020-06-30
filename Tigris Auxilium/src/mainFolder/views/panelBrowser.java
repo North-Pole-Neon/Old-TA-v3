@@ -100,12 +100,10 @@ public class panelBrowser extends JPanel {
 		comboBoxTab1.setEditable(true);
 		
 		comboBoxTab2 = new JTextField();
-		
 		comboBoxTab2.setEditable(true);
 		
 		comboBoxTab3 = new JTextField();
 		comboBoxTab3.setEditable(true);
-		//comboBoxTab3.
 		
 		comboBoxTab4 = new JTextField();
 		comboBoxTab4.setEditable(true);
@@ -120,7 +118,7 @@ public class panelBrowser extends JPanel {
 		btnRunTabs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {//LATER Find way to prompt message to user for name
 				goToLinks();
-				System.out.println("Read");
+				System.out.println("Read"); //PRINT "Read"
 			}
 		});
 		
@@ -246,7 +244,7 @@ public class panelBrowser extends JPanel {
 		if (urlcheck1 == true) {
 			String url_open1 =boxlinkstring1;
 			try {
-				java.awt.Desktop.getDesktop().browse(java.net.URI.create(url_open1));
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(boxlinkstring1));
 			} catch (IOException e) {
 				
 				e.printStackTrace();
@@ -255,7 +253,7 @@ public class panelBrowser extends JPanel {
 		if (urlcheck2 == true) {
 			String url_open2 =boxlinkstring2;
 			try {
-				java.awt.Desktop.getDesktop().browse(java.net.URI.create(url_open2));
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(boxlinkstring2));
 			} catch (IOException e) {
 				
 				e.printStackTrace();
@@ -264,7 +262,7 @@ public class panelBrowser extends JPanel {
 		if (urlcheck3 == true) {
 			String url_open3 =boxlinkstring3;
 			try {
-				java.awt.Desktop.getDesktop().browse(java.net.URI.create(url_open3));
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(boxlinkstring3));
 			} catch (IOException e) {
 
 				e.printStackTrace();
@@ -273,7 +271,7 @@ public class panelBrowser extends JPanel {
 		if (urlcheck4 == true) {
 			String url_open4 =boxlinkstring4;
 			try {
-				java.awt.Desktop.getDesktop().browse(java.net.URI.create(url_open4));
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(boxlinkstring4));
 			} catch (IOException e) {
 				
 				e.printStackTrace();
@@ -282,7 +280,7 @@ public class panelBrowser extends JPanel {
 		if (urlcheck5 == true) {
 			String url_open5 =boxlinkstring5;
 			try {
-				java.awt.Desktop.getDesktop().browse(java.net.URI.create(url_open5));
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(boxlinkstring5));
 			} catch (IOException e) {
 				
 				e.printStackTrace();
@@ -291,7 +289,7 @@ public class panelBrowser extends JPanel {
 		if (urlcheck6 == true) {
 			String url_open6 =boxlinkstring6;
 			try {
-				java.awt.Desktop.getDesktop().browse(java.net.URI.create(url_open6));
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(boxlinkstring6));
 			} catch (IOException e) {
 				
 				e.printStackTrace();
@@ -306,7 +304,7 @@ public class panelBrowser extends JPanel {
 		File tempFile = new File("./src/mainFolder/resources/BrowserTabSave.tigaux");
 		boolean exists = tempFile.exists();
 		
-		if (exists == true) { //Load save file  and change text boxes and variables 
+		if (exists == true) {  //Load save file  and change text boxes and variables 
 			BrowserTab_GenRead loadtabs = new BrowserTab_GenRead();
 			loadtabs.readTabSave();
 			comboBoxTab1.setText(loadtabs.tab1LINK);
@@ -329,7 +327,7 @@ public class panelBrowser extends JPanel {
 			String boxlinkstring4= comboBoxTab4.getText();
 			String boxlinkstring5= comboBoxTab5.getText();
 			String boxlinkstring6= comboBoxTab6.getText();
-			Boolean urlcheck1 = chckbx1.isSelected();
+			Boolean urlcheck1 = chckbx1.isSelected(); //TODO Doesn't save check boxes
 			Boolean urlcheck2 = chckbx2.isSelected();
 			Boolean urlcheck3 = chckbx3.isSelected();
 			Boolean urlcheck4 = chckbx4.isSelected();
