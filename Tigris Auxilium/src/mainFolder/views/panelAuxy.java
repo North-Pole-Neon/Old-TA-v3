@@ -3,6 +3,7 @@ package mainFolder.views;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import mainFolder.common.UBIC_GenRead;
+import mainFolder.common.UserBasicInfoClass;
 
 //Size of window 784, 438
 public class panelAuxy extends JPanel {

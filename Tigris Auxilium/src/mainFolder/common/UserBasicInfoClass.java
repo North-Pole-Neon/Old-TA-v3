@@ -46,8 +46,6 @@ public class UserBasicInfoClass implements Serializable { //TODO Combine UBIC wi
 		this.setupCompleted = setupCompleted;
 	}
 	
-	
-	
 
 	
 }
