@@ -1,0 +1,22 @@
+{
+
+"Number": 2,
+"String": "Hello World!",
+"Boolean": true,
+
+"Object": {
+	"Object Number": 23,
+	"Object String": "I am inside"
+},
+
+"Array": [
+"String in Array",
+300,
+false,
+{
+"Array Object String": "Objects in arrays don't need names"
+}
+
+]
+
+}
