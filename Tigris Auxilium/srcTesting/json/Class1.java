@@ -12,7 +12,7 @@ public class Class1 {
 
 		//First Employee
         JSONObject employeeDetails = new JSONObject();
-        employeeDetails.put("firstName", "Lokesh");
+        employeeDetails.put("firstName", "John");
         employeeDetails.put("lastName", "Gupta");
         employeeDetails.put("website", "howtodoinjava.com");
          
@@ -21,7 +21,7 @@ public class Class1 {
          
         //Second Employee
         JSONObject employeeDetails2 = new JSONObject();
-        employeeDetails2.put("firstName", "Brian");
+        employeeDetails2.put("firstName", "Tyler");
         employeeDetails2.put("lastName", "Schultz");
         employeeDetails2.put("website", "example.com");
          
@@ -34,7 +34,7 @@ public class Class1 {
         employeeList.add(employeeObject2);
          
         //Write JSON file
-        try (FileWriter file = new FileWriter("employees.json")) {
+        try (FileWriter file = new FileWriter("srcTesting/json/employees.json")) {
  
             file.write(employeeList.toJSONString());
             file.flush();
