@@ -30,6 +30,7 @@ public class JsonTest { //Add write to file
 		System.out.println(c2.getName());
 		
 		
+		
 		//Arrays
 		ArrayList<Customer> customerAL= new ArrayList<Customer>();
 		customerAL.add(c1);
