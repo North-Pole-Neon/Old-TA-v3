@@ -1,9 +1,9 @@
-package mainFolder.common.UserSavingScripts;
+package json;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
- 
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -11,7 +11,7 @@ import org.json.simple.parser.ParseException;
 
 public class ReadJsonUser {
 	@SuppressWarnings("unchecked")
-	public static void main(String[] args) {
+	public void ReadToJson() { //Static might be optional
 		
 
 		//JSON parser object to parse read file
@@ -22,11 +22,11 @@ public class ReadJsonUser {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
  
-            JSONArray employeeList = (JSONArray) obj;
-            System.out.println(employeeList);
+            JSONArray userList = (JSONArray) obj;
+            System.out.println(userList);
              
-            //Iterate over employee array
-            employeeList.forEach( emp -> parseEmployeeObject( (JSONObject) emp ) );
+            //Iterate over user array
+            userList.forEach( emp -> parseUserObject( (JSONObject) emp ) );
  
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -38,31 +38,30 @@ public class ReadJsonUser {
 
 	}
 	
-	private static void parseEmployeeObject(JSONObject employee) 
+	private static void parseUserObject(JSONObject user) 
     {
-        //Get employee object within list
-        JSONObject employeeObject = (JSONObject) employee.get("employee");
+        //Get user object within list
+        JSONObject userObject = (JSONObject) user.get("user");
          
-        //Get employee first name
-        String firstName = (String) employeeObject.get("firstName");    
+        //Get user first name
+        String firstName = (String) userObject.get("firstName");    
         System.out.println(firstName);
          
-        //Get employee last name
-        String lastName = (String) employeeObject.get("lastName");  
+        //Get user last name
+        String lastName = (String) userObject.get("lastName");  
         System.out.println(lastName);
          
-        //Get employee grade name
-        String grade = (String) employeeObject.get("grade");    
+        //Get user grade name
+        String grade = (String) userObject.get("grade");    
         System.out.println(grade);
         
-      //Get employee isd name
-        String isd = (String) employeeObject.get("isd");    
+      //Get user isd name
+        String isd = (String) userObject.get("isd");    
         System.out.println(isd);
         
-      //Get employee PcName name
-        String PcName = (String) employeeObject.get("PcName");    
+      //Get user PcName name
+        String PcName = (String) userObject.get("PCName");
         System.out.println(PcName);
     }
-		
+	
 }
-

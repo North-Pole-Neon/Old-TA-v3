@@ -29,7 +29,7 @@ public class Tigris_Auxilium {
 	private JPanel panelPPHelp;
 	private JPanel panelPPHomework;
 	private JPanel panelHPSetup;
-	public JPanel panelMenu;
+	public static JPanel panelMenu;
 	
 	//public static boolean plzSave; LATER Old Saved Code
 
@@ -47,6 +47,7 @@ public class Tigris_Auxilium {
 				}
 			}
 		});
+		
 	}
 
 	/*
@@ -54,12 +55,19 @@ public class Tigris_Auxilium {
 	 */
 	public Tigris_Auxilium() {
 		initialize();
+		userDataCheck();
 		
-		//Basic Logic for loading page
+		/*layeredPane.removeAll();
+		layeredPane.add(panelPPAuxy); //Make this work on launch
+		layeredPane.repaint();
+		layeredPane.validate();*/
+		
+		
+		/*//Basic Logic for loading page
 		layeredPane.removeAll();
 		layeredPane.add(panelHPSetup);
 		layeredPane.repaint();
-		layeredPane.validate();
+		layeredPane.validate();//*/
 		
 		//UserCheck(); OLDCODE Save
 		
@@ -72,6 +80,42 @@ public class Tigris_Auxilium {
 		
 	}
 
+	public void userDataCheck() {
+		RWJsonUser.ReadToJson();
+		RWJsonUser.getComputerName();
+		System.out.println("New: " + RWJsonUser.PCNAME + " Orginal:" + RWJsonUser.PCName); //PRINT PC Names
+		//String pcName = RWJsonUser.getComputerName();
+		if (RWJsonUser.PCName.equals(RWJsonUser.PCNAME) && RWJsonUser.setupCom.equals("true")) {
+			layeredPane.removeAll();
+			layeredPane.add(panelPPAuxy); //Make this work on launch
+			layeredPane.repaint();
+			layeredPane.validate();
+		} else {
+			RWJsonUser.clearUserData();
+			
+			//Basic Logic for loading page
+			layeredPane.removeAll();
+			layeredPane.add(panelHPSetup);
+			layeredPane.repaint();
+			layeredPane.validate();
+			
+			panelMenu.setVisible(false);
+			
+			/*if(RWJsonUser.PCName.equals(RWJsonUser.PCNAME) && RWJsonUser.setupCom.equals("true")) {
+				layeredPane.removeAll();
+				layeredPane.add(panelPPAuxy); //Make this work on launch
+				layeredPane.repaint();
+				layeredPane.validate();
+			}*/
+			
+		}
+		
+		
+		
+		
+	}
+	
+	
 	/* OLDCODE Save
 	 	public void UserCheck() { // LATER Work on auto close system and opening panels outside of others
 		try {
@@ -102,7 +146,7 @@ public class Tigris_Auxilium {
 	
 
 	
-	/**
+	/*
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
@@ -110,7 +154,7 @@ public class Tigris_Auxilium {
 		frmTigrisAuxilium.setIconImage(Toolkit.getDefaultToolkit().getImage(Tigris_Auxilium.class.getResource("/mainFolder/resources/NPN Logo.png")));
 		frmTigrisAuxilium.setTitle("Tigris Auxilium");  //LATER Make title TA with name
 		frmTigrisAuxilium.setBounds(100, 100, 875, 500);
-		frmTigrisAuxilium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmTigrisAuxilium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //LATER Look into close options
 		
 		
 		
