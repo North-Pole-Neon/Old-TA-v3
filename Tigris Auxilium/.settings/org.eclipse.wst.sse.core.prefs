@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
 task-tags/enabled=true
-task-tags/taskPriorities=1,2,1,0,0
-task-tags/taskTags=TODO,FIXME,XXX,LATER,PRINT
+task-tags/taskPriorities=1,2,1,0,0,0
+task-tags/taskTags=TODO,FIXME,XXX,LATER,PRINT,OLDCODE
 task-tags/use-project-settings=true

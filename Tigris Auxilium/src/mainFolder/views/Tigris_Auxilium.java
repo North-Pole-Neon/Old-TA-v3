@@ -31,7 +31,7 @@ public class Tigris_Auxilium {
 	private JPanel panelHPSetup;
 	public JPanel panelMenu;
 	
-	public static boolean plzSave;
+	//public static boolean plzSave; LATER Old Saved Code
 
 	/**
 	 * Launch the application.
@@ -49,23 +49,31 @@ public class Tigris_Auxilium {
 		});
 	}
 
-	/**
-	 * Create the application.
+	/*
+	  Create the application.
 	 */
 	public Tigris_Auxilium() {
 		initialize();
-		UserCheck();
 		
-		while(PanelSetup.goodToGo == true) { //TEMP
+		//Basic Logic for loading page
+		layeredPane.removeAll();
+		layeredPane.add(panelHPSetup);
+		layeredPane.repaint();
+		layeredPane.validate();
+		
+		//UserCheck(); OLDCODE Save
+		
+		/*while(PanelSetup.goodToGo == true) { //TEMP
 			System.out.println("Connection " + plzSave);
 			
-		}
+		}*/
 		
 		
 		
 	}
 
-	public void UserCheck() { // LATER Work on auto close system and opening panels outside of others
+	/* OLDCODE Save
+	 	public void UserCheck() { // LATER Work on auto close system and opening panels outside of others
 		try {
 			UBIC_GenRead userCheck  = new UBIC_GenRead();
 			userCheck.RUserBasic(); //Looks for file
@@ -90,7 +98,7 @@ public class Tigris_Auxilium {
 			
 			e1.printStackTrace();
 		}
-	}
+	} */
 	
 
 	

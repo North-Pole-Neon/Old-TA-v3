@@ -125,8 +125,8 @@ public class panelBrowser extends JPanel {
 		btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BrowserTab_GenRead  saveTabs = new BrowserTab_GenRead();
-				saveTabs.browserTabWrite(comboBoxTab1.getText(), chckbx1.isSelected(), comboBoxTab2.getText(), chckbx2.isSelected(), comboBoxTab3.getText(), chckbx3.isSelected(), comboBoxTab4.getText(), chckbx4.isSelected(), comboBoxTab5.getText(), chckbx5.isSelected(), comboBoxTab6.getText(), chckbx6.isSelected());
+				//BrowserTab_GenRead  saveTabs = new BrowserTab_GenRead(); OLDCODE Save
+				//saveTabs.browserTabWrite(comboBoxTab1.getText(), chckbx1.isSelected(), comboBoxTab2.getText(), chckbx2.isSelected(), comboBoxTab3.getText(), chckbx3.isSelected(), comboBoxTab4.getText(), chckbx4.isSelected(), comboBoxTab5.getText(), chckbx5.isSelected(), comboBoxTab6.getText(), chckbx6.isSelected());
 			}
 		});
 		
@@ -304,7 +304,7 @@ public class panelBrowser extends JPanel {
 		File tempFile = new File("./src/mainFolder/resources/BrowserTabSave.tigaux");
 		boolean exists = tempFile.exists();
 		
-		if (exists == true) {  //Load save file  and change text boxes and variables 
+		/*if (exists == true) {  //Load save file  and change text boxes and variables OLDCODE Save
 			BrowserTab_GenRead loadtabs = new BrowserTab_GenRead();
 			loadtabs.readTabSave();
 			comboBoxTab1.setText(loadtabs.tab1LINK);
@@ -337,6 +337,8 @@ public class panelBrowser extends JPanel {
 		}else if (exists == false) {
 			
 		}
+		*/
 	}
+	
 	
 }

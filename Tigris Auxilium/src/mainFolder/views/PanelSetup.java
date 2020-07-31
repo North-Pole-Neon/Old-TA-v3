@@ -15,21 +15,19 @@ import java.awt.event.ActionEvent;
 import mainFolder.common.*;
 
 public class PanelSetup extends JPanel {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 6593219351116763748L;
 	private JTextField textFieldName;
 	private JTextField textFieldIsd;
 	
-	public boolean userFileExists;
+	//public boolean userFileExists; OLDCODE Save
 	
 	public boolean hasFinishedSetup;
 	private JComboBox<?> comboBoxGrade;
 	
-	public static boolean goodToGo;
+	//public static boolean goodToGo; OLDCODE Save
 
-	/**
+	/*
 	 * Create the panel.
 	 */
 	public PanelSetup() {
@@ -83,6 +81,7 @@ public class PanelSetup extends JPanel {
 		btnFinished.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				/* OLDCODE Save
 				UBIC_GenRead tests = new UBIC_GenRead(); //Instance UBIC Class
 				tests.userNAME = textFieldName.getText();  //Sets saved variable to memory
 				tests.userGRADE = Integer.parseInt((String) comboBoxGrade.getSelectedItem());
@@ -103,11 +102,11 @@ public class PanelSetup extends JPanel {
 				if (x == 1) {
 					Tigris_Auxilium.plzSave = true;
 					x++;
-				}
+				} */
 				 
 			}
 		});
-		//comboBox.getSelectedItem();
+		//comboBox.getSelectedItem(); OLDCODE Save
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -148,7 +147,7 @@ public class PanelSetup extends JPanel {
 		setLayout(groupLayout);
 
 	}
-	
+	/* OLDCODE Save
 	//Check if file exists
 	public void userInfoExists() { // Checks if file exists then reads into memory
 		File tempFile = new File("./src/mainFolder/resources/UserBasicInfo.tigaux");
@@ -174,5 +173,5 @@ public class PanelSetup extends JPanel {
 
 		//Tigris_Auxilium ta = new Tigris_Auxilium();
 		Tigris_Auxilium.plzSave = true;
-	}
+	}*/
 }
