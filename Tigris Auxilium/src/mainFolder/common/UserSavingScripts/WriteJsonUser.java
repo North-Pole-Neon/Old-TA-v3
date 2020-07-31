@@ -9,30 +9,34 @@ import org.json.simple.JSONObject;
 public class WriteJsonUser {
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 
 		//First Employee
         JSONObject employeeDetails = new JSONObject();
-        employeeDetails.put("firstName", "John");
-        employeeDetails.put("lastName", "Doe");
-        employeeDetails.put("website", "howtodoinjava.com");
+        employeeDetails.put("firstName", "Phill");
+        employeeDetails.put("lastName", "Moen");
+        employeeDetails.put("grade", "10");
+        employeeDetails.put("isd", "720");
+        employeeDetails.put("PCName", "TYLERDESK");
          
         JSONObject employeeObject = new JSONObject(); 
         employeeObject.put("employee", employeeDetails);
          
         //Second Employee
-        JSONObject employeeDetails2 = new JSONObject();
+        /*JSONObject employeeDetails2 = new JSONObject();
         employeeDetails2.put("firstName", "Tyler");
-        employeeDetails2.put("lastName", "Moen");
-        employeeDetails2.put("website", "example.com");
+        employeeDetails2.put("lastName", "Johnson");
+        employeeDetails2.put("grade", "11");
+        employeeDetails2.put("isd", "420");
+        employeeDetails2.put("PCName", "PhillDESK");
          
         JSONObject employeeObject2 = new JSONObject(); 
-        employeeObject2.put("employee", employeeDetails2);
+        employeeObject2.put("employee", employeeDetails2);*/
          
         //Add employees to list
         JSONArray employeeList = new JSONArray();
         employeeList.add(employeeObject);
-        employeeList.add(employeeObject2);
+        //employeeList.add(employeeObject2);
          
         //Write JSON file
         try (FileWriter file = new FileWriter("assets/JSON Files/User.json")) {

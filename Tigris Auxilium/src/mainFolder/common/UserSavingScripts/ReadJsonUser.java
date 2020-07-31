@@ -12,7 +12,7 @@ import org.json.simple.parser.ParseException;
 public class ReadJsonUser {
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 
 		//JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
@@ -51,9 +51,17 @@ public class ReadJsonUser {
         String lastName = (String) employeeObject.get("lastName");  
         System.out.println(lastName);
          
-        //Get employee website name
-        String website = (String) employeeObject.get("website");    
-        System.out.println(website);
+        //Get employee grade name
+        String grade = (String) employeeObject.get("grade");    
+        System.out.println(grade);
+        
+      //Get employee isd name
+        String isd = (String) employeeObject.get("isd");    
+        System.out.println(isd);
+        
+      //Get employee PcName name
+        String PcName = (String) employeeObject.get("PcName");    
+        System.out.println(PcName);
     }
 		
 }
