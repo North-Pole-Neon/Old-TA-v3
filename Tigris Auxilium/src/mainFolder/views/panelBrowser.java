@@ -7,7 +7,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.BorderLayout;
-import java.io.File;
+//import java.io.File;
 import java.io.IOException;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
@@ -19,7 +19,7 @@ import javax.swing.JTextField;
 
 
 public class panelBrowser extends JPanel {
-	/**
+	/*
 	 * 
 	 */
 	private static final long serialVersionUID = -500545164741919679L;
@@ -36,26 +36,30 @@ public class panelBrowser extends JPanel {
 	private JCheckBox chckbx5;
 	private JCheckBox chckbx6;
 	private JButton btnSave;
-	private JButton btncheck;
+	private JButton btnLoad;
 	private JButton btnDefault;
+	
+	
+	String boxlinkstring1; 
+	String boxlinkstring2; 
+	String boxlinkstring3; 
+	String boxlinkstring4; 
+	String boxlinkstring5;
+	String boxlinkstring6;
+	String urlcheck1;
+	String urlcheck2;
+	String urlcheck3;
+	String urlcheck4;
+	String urlcheck5;
+	String urlcheck6;
 
-	/**
+	/*
 	 * Create the panel.
 	 */
 	public panelBrowser() {
 		setBounds(100, 100, 859, 438);
 		setLayout(new BorderLayout(0, 0));
 		
-		//URL myURL = new URL("http://example.com/");
-		// This is the one vvv ---------------------------
-		/*String url_open ="http://google.com";
-		try {
-			java.awt.Desktop.getDesktop().browse(java.net.URI.create(url_open));
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}*/
-
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		add(tabbedPane);
@@ -63,7 +67,7 @@ public class panelBrowser extends JPanel {
 		JPanel panelTBrowser = new JPanel();
 		tabbedPane.addTab("Browser", null, panelTBrowser, null);
 		
-		JLabel lblNewLabel = new JLabel("Hi their, the Browser page is not ready yet. :(");
+		JLabel lblNewLabel = new JLabel("Hi their "+ RWJsonUser.firstName +", the Browser page is not ready yet. :(");
 		GroupLayout gl_panelTBrowser = new GroupLayout(panelTBrowser);
 		gl_panelTBrowser.setHorizontalGroup(
 			gl_panelTBrowser.createParallelGroup(Alignment.LEADING)
@@ -118,27 +122,52 @@ public class panelBrowser extends JPanel {
 		btnRunTabs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {//LATER Find way to prompt message to user for name
 				goToLinks();
-				System.out.println("Read"); //PRINT "Read"
+				System.out.println("Opening Web pages"); //PRINT "Opening Web pages"
 			}
 		});
 		
 		btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//BrowserTab_GenRead  saveTabs = new BrowserTab_GenRead(); OLDCODE Save
-				//saveTabs.browserTabWrite(comboBoxTab1.getText(), chckbx1.isSelected(), comboBoxTab2.getText(), chckbx2.isSelected(), comboBoxTab3.getText(), chckbx3.isSelected(), comboBoxTab4.getText(), chckbx4.isSelected(), comboBoxTab5.getText(), chckbx5.isSelected(), comboBoxTab6.getText(), chckbx6.isSelected());
+				
+				RWJsonBTabs.link1 = comboBoxTab1.getText();
+				RWJsonBTabs.link1Cb = String.valueOf(chckbx1.isSelected());
+				RWJsonBTabs.link2 = comboBoxTab2.getText();
+				RWJsonBTabs.link2Cb = String.valueOf(chckbx2.isSelected());
+				RWJsonBTabs.link3 = comboBoxTab3.getText();
+				RWJsonBTabs.link3Cb = String.valueOf(chckbx3.isSelected());
+				RWJsonBTabs.link4 = comboBoxTab4.getText();
+				RWJsonBTabs.link4Cb = String.valueOf(chckbx4.isSelected());
+				RWJsonBTabs.link5 = comboBoxTab5.getText();
+				RWJsonBTabs.link5Cb = String.valueOf(chckbx5.isSelected());
+				RWJsonBTabs.link6 = comboBoxTab6.getText();
+				RWJsonBTabs.link6Cb = String.valueOf(chckbx6.isSelected());
+				
+				RWJsonBTabs.WriteToJson();
+			System.out.println(RWJsonBTabs.link1);
+			System.out.println(RWJsonBTabs.link1Cb);
 			}
 		});
 		
-		btncheck = new JButton("Check");
-		btncheck.setVisible(false); //Work with it later
-		btncheck.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				File tempFile = new File("./src/mainFolder/resources/BrowserTabSave.tigaux");
-				boolean exists = tempFile.exists();
-				if (exists == true) {
-					System.out.println("It saved");
-				}
+		btnLoad = new JButton("Load");
+		btnLoad.setVisible(true); //Work with it later
+		btnLoad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) { // Look here --------------------------------------------------------------------
+				
+				RWJsonBTabs.ReadToJson();
+				comboBoxTab1.setText(RWJsonBTabs.link1);
+				chckbx1.setSelected(Boolean.parseBoolean(RWJsonBTabs.link1Cb));
+				comboBoxTab2.setText(RWJsonBTabs.link2);
+				chckbx2.setSelected(Boolean.parseBoolean(RWJsonBTabs.link2Cb));
+				comboBoxTab3.setText(RWJsonBTabs.link3);
+				chckbx3.setSelected(Boolean.parseBoolean(RWJsonBTabs.link3Cb));
+				comboBoxTab4.setText(RWJsonBTabs.link4);
+				chckbx4.setSelected(Boolean.parseBoolean(RWJsonBTabs.link4Cb));
+				comboBoxTab5.setText(RWJsonBTabs.link5);
+				chckbx5.setSelected(Boolean.parseBoolean(RWJsonBTabs.link5Cb));
+				comboBoxTab6.setText(RWJsonBTabs.link6);
+				chckbx6.setSelected(Boolean.parseBoolean(RWJsonBTabs.link6Cb));
+				
 			}
 		});
 		
@@ -171,7 +200,7 @@ public class panelBrowser extends JPanel {
 										.addComponent(comboBoxTab5, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE))
 									.addGap(59)
 									.addGroup(gl_panelTTab.createParallelGroup(Alignment.LEADING)
-										.addComponent(btncheck)
+										.addComponent(btnLoad)
 										.addComponent(btnDefault))
 									.addPreferredGap(ComponentPlacement.RELATED, 22, Short.MAX_VALUE)))))
 					.addContainerGap())
@@ -216,7 +245,7 @@ public class panelBrowser extends JPanel {
 							.addGap(18))
 						.addGroup(Alignment.TRAILING, gl_panelTTab.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(btncheck)
+							.addComponent(btnLoad)
 							.addGap(49)))
 					.addComponent(btnSave)
 					.addGap(20))
@@ -226,70 +255,74 @@ public class panelBrowser extends JPanel {
 		JPanel panelTSettings = new JPanel();
 		tabbedPane.addTab("Settings", null, panelTSettings, null);
 
-	}
-	public void goToLinks() {
-		String boxlinkstring1= comboBoxTab1.getText();
-		String boxlinkstring2= comboBoxTab2.getText();
-		String boxlinkstring3= comboBoxTab3.getText();
-		String boxlinkstring4= comboBoxTab4.getText();
-		String boxlinkstring5= comboBoxTab5.getText();
-		String boxlinkstring6= comboBoxTab6.getText();
-		Boolean urlcheck1 = chckbx1.isSelected();
-		Boolean urlcheck2 = chckbx2.isSelected();
-		Boolean urlcheck3 = chckbx3.isSelected();
-		Boolean urlcheck4 = chckbx4.isSelected();
-		Boolean urlcheck5 = chckbx5.isSelected();
-		Boolean urlcheck6 = chckbx6.isSelected();
 		
-		if (urlcheck1 == true) {
-			String url_open1 =boxlinkstring1;
+		 boxlinkstring1= comboBoxTab1.getText();
+		 boxlinkstring2= comboBoxTab2.getText();
+		 boxlinkstring3= comboBoxTab3.getText();
+		 boxlinkstring4= comboBoxTab4.getText();
+		 boxlinkstring5= comboBoxTab5.getText();
+		 boxlinkstring6= comboBoxTab6.getText();
+		 urlcheck1 = String.valueOf(chckbx1.isSelected());
+		 urlcheck2 = String.valueOf(chckbx2.isSelected());
+		 urlcheck3 = String.valueOf(chckbx3.isSelected());
+		 urlcheck4 = String.valueOf(chckbx4.isSelected());
+		 urlcheck5 = String.valueOf(chckbx5.isSelected());
+		 urlcheck6 = String.valueOf(chckbx6.isSelected());
+	}
+	
+	
+	
+	public void goToLinks() { //LATER Maybe change this around with new & org
+		// Want to load in background
+		/*
+		 * What needs to happen:
+		 * Checks status
+		 * Load
+		 */
+		
+		if (chckbx1.isSelected() == true) { //LATER make "urlcheck1.equals("true")" work
 			try {
-				java.awt.Desktop.getDesktop().browse(java.net.URI.create(boxlinkstring1));
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(comboBoxTab1.getText())); //LATER Make "boxlinkstring1" Work
 			} catch (IOException e) {
 				
 				e.printStackTrace();
 			}
 		}
-		if (urlcheck2 == true) {
-			String url_open2 =boxlinkstring2;
+		if (chckbx2.isSelected() == true) {
 			try {
-				java.awt.Desktop.getDesktop().browse(java.net.URI.create(boxlinkstring2));
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(comboBoxTab2.getText()));
 			} catch (IOException e) {
 				
 				e.printStackTrace();
 			}
 		}
-		if (urlcheck3 == true) {
-			String url_open3 =boxlinkstring3;
+		if (chckbx3.isSelected() == true) {
 			try {
-				java.awt.Desktop.getDesktop().browse(java.net.URI.create(boxlinkstring3));
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(comboBoxTab3.getText()));
 			} catch (IOException e) {
 
 				e.printStackTrace();
 			}
 		}
-		if (urlcheck4 == true) {
-			String url_open4 =boxlinkstring4;
+		if (chckbx4.isSelected() == true) {
 			try {
-				java.awt.Desktop.getDesktop().browse(java.net.URI.create(boxlinkstring4));
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(comboBoxTab4.getText()));
 			} catch (IOException e) {
 				
 				e.printStackTrace();
 			}
 		}
-		if (urlcheck5 == true) {
-			String url_open5 =boxlinkstring5;
+		if (chckbx5.isSelected() == true) {
 			try {
-				java.awt.Desktop.getDesktop().browse(java.net.URI.create(boxlinkstring5));
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(comboBoxTab5.getText()));
 			} catch (IOException e) {
 				
 				e.printStackTrace();
 			}
 		}
-		if (urlcheck6 == true) {
-			String url_open6 =boxlinkstring6;
+		if (chckbx6.isSelected() == true) {
 			try {
-				java.awt.Desktop.getDesktop().browse(java.net.URI.create(boxlinkstring6));
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(comboBoxTab6.getText()));
 			} catch (IOException e) {
 				
 				e.printStackTrace();
@@ -298,13 +331,26 @@ public class panelBrowser extends JPanel {
 				
 	}
 	
+	public void checkBoxLoad() { // Need to make opposite for save
+		if (chckbx1.isSelected() == true) {
+			urlcheck1 = "true";
+		} else {
+			urlcheck1 = "false";
+		}
+		
+		
+	}
 	
-	//Check for save file
+	
+	
+	
+	/* //Check for save file OLDCODE
 	public void tabSaveExists() {
 		File tempFile = new File("./src/mainFolder/resources/BrowserTabSave.tigaux");
 		boolean exists = tempFile.exists();
 		
-		/*if (exists == true) {  //Load save file  and change text boxes and variables OLDCODE Save
+		
+		if (exists == true) {  //Load save file  and change text boxes and variables OLDCODE Save
 			BrowserTab_GenRead loadtabs = new BrowserTab_GenRead();
 			loadtabs.readTabSave();
 			comboBoxTab1.setText(loadtabs.tab1LINK);
@@ -337,8 +383,8 @@ public class panelBrowser extends JPanel {
 		}else if (exists == false) {
 			
 		}
-		*/
-	}
+		
+	}*/
 	
 	
 }

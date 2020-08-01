@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 
 public class Tigris_Auxilium {
-//FIXME TRY TO FOLLOW CONSTRUCTOR LIKE UBIC & CALL FUNCTIONS BETWEEN EACH OTHER
+
 	private JFrame frmTigrisAuxilium;
 	private JPanel panelPPComms;
 	private JPanel panelPPAuxy;
@@ -69,14 +69,6 @@ public class Tigris_Auxilium {
 		layeredPane.repaint();
 		layeredPane.validate();//*/
 		
-		//UserCheck(); OLDCODE Save
-		
-		/*while(PanelSetup.goodToGo == true) { //TEMP
-			System.out.println("Connection " + plzSave);
-			
-		}*/
-		
-		
 		
 	}
 
@@ -115,36 +107,6 @@ public class Tigris_Auxilium {
 		
 	}
 	
-	
-	/* OLDCODE Save
-	 	public void UserCheck() { // LATER Work on auto close system and opening panels outside of others
-		try {
-			UBIC_GenRead userCheck  = new UBIC_GenRead();
-			userCheck.RUserBasic(); //Looks for file
-			PanelSetup setupIn = new PanelSetup();
-			setupIn.userInfoExists(); // Checks if file exists then reads into memory
-			if(setupIn.userFileExists == false) { // Opens setup panel
-				layeredPane.removeAll(); 
-				layeredPane.add(panelHPSetup);
-				layeredPane.repaint();
-				layeredPane.validate();
-				//panelMenu.setVisible(false); //Disable menu
-				
-				System.out.println("File created"); //PRINT "File created"
-				System.out.println(PanelSetup.goodToGo); //TEMP
-				while(PanelSetup.goodToGo == true) {// TEMP
-					System.out.println("Connection " + plzSave);
-					
-				}
-			}
-			
-		}catch(Exception e1) {
-			
-			e1.printStackTrace();
-		}
-	} */
-	
-
 	
 	/*
 	 * Initialize the contents of the frame.
@@ -249,7 +211,7 @@ public class Tigris_Auxilium {
 		
 		panelBrowser panelBrowserCon = new panelBrowser();
 		panelPPBrowser.add(panelBrowserCon, BorderLayout.CENTER);
-		panelBrowserCon.tabSaveExists(); //Loads save file
+		//panelBrowserCon.tabSaveExists(); //Loads save file //TODO Load code here
 		
 		panelPPApps = new JPanel();
 		layeredPane.add(panelPPApps, "name_218716231119131");

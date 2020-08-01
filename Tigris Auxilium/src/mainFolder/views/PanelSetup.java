@@ -13,7 +13,6 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-//import java.io.File; //OLDCODE Old import
 import java.awt.event.ActionEvent;
 import mainFolder.common.*;
 
@@ -22,14 +21,9 @@ public class PanelSetup extends JPanel {
 	private static final long serialVersionUID = 6593219351116763748L;
 	private JTextField textFieldFName;
 	private JTextField textFieldIsd;
-	
-	//public boolean userFileExists; OLDCODE Save
-	
-	//public boolean hasFinishedSetup; OLDCODE Save
 	private JComboBox<?> comboBoxGrade;
 	private JTextField textFieldLName;
 	
-	//public static boolean goodToGo; OLDCODE Save
 
 	/*
 	 * Create the panel.
@@ -104,28 +98,6 @@ public class PanelSetup extends JPanel {
 				//ReadJsonUser readJsonUser = new ReadJsonUser();
 				//readJsonUser.ReadToJson();
 				
-				/* OLDCODE Save
-				UBIC_GenRead tests = new UBIC_GenRead(); //Instance UBIC Class
-				tests.userNAME = textFieldName.getText();  //Sets saved variable to memory
-				tests.userGRADE = Integer.parseInt((String) comboBoxGrade.getSelectedItem());
-				tests.userISD = Integer.parseInt(textFieldIsd.getText());
-				tests.setupCOMP = true;
-				tests.CUserBasic(tests.userNAME, tests.userGRADE, tests.userISD, tests.setupCOMP);
-				tests.RUserBasic();
-				hasFinishedSetup = true;
-				System.out.println("Did you finish? " + hasFinishedSetup);
-
-				//Tigris_Auxilium ta = new Tigris_Auxilium();
-				Tigris_Auxilium.plzSave = true;
-				
-				goodToGo = true;
-				//testcheck();
-				//testcheck();
-				int x=1;
-				if (x == 1) {
-					Tigris_Auxilium.plzSave = true;
-					x++;
-				} */
 				 
 			}
 		});

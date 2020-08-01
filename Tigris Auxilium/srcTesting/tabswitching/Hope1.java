@@ -1,6 +1,6 @@
 package tabswitching;
 
-import java.awt.BorderLayout;
+//import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -15,11 +15,15 @@ import java.awt.event.ActionEvent;
 
 public class Hope1 extends JFrame {
 
+	/*
+	 * 
+	 */
+	private static final long serialVersionUID = -3829283986689248562L;
 	private JPanel contentPane;
 	private JPanel panel;
 	private JPanel panel2;
 
-	/**
+	/*
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -35,7 +39,7 @@ public class Hope1 extends JFrame {
 		});
 	}
 
-	/**
+	/*
 	 * Create the frame.
 	 */
 	public Hope1() {

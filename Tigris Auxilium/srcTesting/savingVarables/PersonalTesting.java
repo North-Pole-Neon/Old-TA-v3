@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class PersonalTesting implements Serializable {
 
+	/*
+	 * 
+	 */
+	private static final long serialVersionUID = -7953472382105692590L;
 	private String name;
 	private int grade;
 	private int isd;

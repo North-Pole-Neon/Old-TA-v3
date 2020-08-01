@@ -62,7 +62,7 @@ public class WriteJsonUser {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("JSON Created"); //PRINT JSON Created
+        System.out.println("JSON Created");
     }
 	
 	@SuppressWarnings("unchecked")

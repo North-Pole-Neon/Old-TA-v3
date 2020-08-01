@@ -1,6 +1,6 @@
 package multipleFrames;
 
-import java.awt.BorderLayout;
+//import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -11,6 +11,10 @@ import javax.swing.JButton;
 
 public class SecondFrame extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7278497221200285957L;
 	private JPanel contentPane;
 	public String didSetup;
 
