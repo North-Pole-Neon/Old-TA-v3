@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 public class InputTest {
 	
-	public static void main(String[] args) {
+	public static void main3(String[] args) {
 		String first_name1 = JOptionPane.showInputDialog("First Name");
 		String secondname = JOptionPane.showInputDialog("Second");
 		

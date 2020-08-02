@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class hostName {
 
-	public static void main(String[] args) {
+	public static void main8(String[] args) {
 		System.out.println("hi");
 		getComputerName();
 		System.out.println(getComputerName());

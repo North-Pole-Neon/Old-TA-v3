@@ -8,7 +8,7 @@ import org.json.simple.JSONObject;
 
 public class Class1 {
 	 @SuppressWarnings("unchecked")
-	public static void main(String[] args) {
+	public static void main9(String[] args) {
 
 		//First Employee
         JSONObject employeeDetails = new JSONObject();

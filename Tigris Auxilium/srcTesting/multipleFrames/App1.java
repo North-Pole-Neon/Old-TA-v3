@@ -13,7 +13,7 @@ public class App1 {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main7(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

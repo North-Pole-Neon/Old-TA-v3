@@ -21,7 +21,7 @@ public class SecondFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main6(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

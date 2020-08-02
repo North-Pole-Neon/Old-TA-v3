@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
 
 public class CreationDiscover_Test {
 
-	public static void main(String[] args) {
+	public static void main5(String[] args) {
 		
 
 		///*

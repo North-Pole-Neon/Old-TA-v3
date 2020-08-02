@@ -11,7 +11,7 @@ import org.json.simple.parser.ParseException;
 
 public class Class2 {
 	@SuppressWarnings("unchecked")
-	public static void main(String[] args) {
+	public static void main10(String[] args) {
 		
 		//JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
