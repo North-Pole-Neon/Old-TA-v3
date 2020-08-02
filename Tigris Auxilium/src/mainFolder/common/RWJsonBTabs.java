@@ -1,9 +1,13 @@
 package mainFolder.common;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -71,6 +75,7 @@ public class RWJsonBTabs {
 		 
 		            file.write(userList.toJSONString());
 		            file.flush();
+		            file.close(); //Might be problem
 		 
 		        } catch (IOException e) {
 		            e.printStackTrace();
@@ -79,7 +84,85 @@ public class RWJsonBTabs {
 		    }
 			
 			@SuppressWarnings("unchecked")
-			public static void ReadToJson() { //Static might be optional -------------------------------------------------------------------
+			public void ReadToJson() { //Static might be optional -------------------------------------------------------------------
+				
+
+				//JSON parser object to parse read file
+		        JSONParser jsonParser = new JSONParser();
+		         // /assets/JSON Files/Links.json
+		        try (FileReader reader = new FileReader("Links.json"))	
+		        {
+		            
+		        	//Read JSON file
+		            Object obj = jsonParser.parse(reader);
+		 
+		            JSONArray userList = (JSONArray) obj;
+		            System.out.println(userList);
+		             
+		            //Iterate over user array
+		            userList.forEach( emp -> parseUserObject( (JSONObject) emp ) );
+		 
+		        } catch (FileNotFoundException e) {
+		            e.printStackTrace();
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        } catch (ParseException e) {
+		            e.printStackTrace();
+		        }
+
+			}
+			
+			private static void parseUserObject(JSONObject user) 
+		    {
+		        //Get user object within list
+		        JSONObject userObject = (JSONObject) user.get("linkSet1");
+		        
+		        //Get 1st link data
+		        link1 = (String) userObject.get("jlink1");
+		        link1Cb = (String) userObject.get("jlink1Cb");    
+		        System.out.println(link1);
+		        System.out.println(link1Cb);
+		        
+		      //Get 2nd link data
+		        link2 = (String) userObject.get("jlink2");
+		        link2Cb = (String) userObject.get("jlink2Cb");    
+		        System.out.println(link2);
+		        System.out.println(link2Cb);
+		        
+		      //Get 3rd link data
+		        link3 = (String) userObject.get("jlink3");
+		        link3Cb = (String) userObject.get("jlink3Cb");    
+		        System.out.println(link3);
+		        System.out.println(link3Cb);
+		        
+		      //Get 4th link data
+		        link4 = (String) userObject.get("jlink4");
+		        link4Cb = (String) userObject.get("jlink4Cb");    
+		        System.out.println(link4);
+		        System.out.println(link4Cb);
+		        
+		      //Get 5th link data
+		        link5 = (String) userObject.get("jlink5");
+		        link5Cb = (String) userObject.get("jlink5Cb");    
+		        System.out.println(link5);
+		        System.out.println(link5Cb);
+		        
+		      //Get first link data
+		        link6 = (String) userObject.get("jlink6");
+		        link6Cb = (String) userObject.get("jlink6Cb");    
+		        System.out.println(link6);
+		        System.out.println(link6Cb);
+		        
+		        
+		      
+		        
+		    }
+			
+			
+	}
+
+	/*
+	 *public static void ReadToJson() { //Static might be optional -------------------------------------------------------------------
 				
 
 				//JSON parser object to parse read file
@@ -105,56 +188,4 @@ public class RWJsonBTabs {
 		        }
 
 			}
-			
-			private static void parseUserObject(JSONObject user) 
-		    {
-		        //Get user object within list
-		        JSONObject userObject = (JSONObject) user.get("linkSet1");
-		        
-		        //Get first link data
-		        link1 = (String) userObject.get("jlink1");
-		        link1Cb = (String) userObject.get("jlink1Cb");    
-		        System.out.println(link1);
-		        System.out.println(link1Cb);
-		        
-		      //Get first link data
-		        link2 = (String) userObject.get("jlink2");
-		        link2Cb = (String) userObject.get("jlink2Cb");    
-		        System.out.println(link2);
-		        System.out.println(link2Cb);
-		        
-		      //Get first link data
-		        link3 = (String) userObject.get("jlink3");
-		        link3Cb = (String) userObject.get("jlink3Cb");    
-		        System.out.println(link3);
-		        System.out.println(link3Cb);
-		        
-		      //Get first link data
-		        link4 = (String) userObject.get("jlink4");
-		        link4Cb = (String) userObject.get("jlink4Cb");    
-		        System.out.println(link4);
-		        System.out.println(link4Cb);
-		        
-		      //Get first link data
-		        link5 = (String) userObject.get("jlink5");
-		        link5Cb = (String) userObject.get("jlink5Cb");    
-		        System.out.println(link5);
-		        System.out.println(link5Cb);
-		        
-		      //Get first link data
-		        link6 = (String) userObject.get("jlink6");
-		        link6Cb = (String) userObject.get("jlink6Cb");    
-		        System.out.println(link6);
-		        System.out.println(link6Cb);
-		        
-		        
-		      
-		        
-		    }
-			
-			
-	}
-
-	/*
-	 *
 	 */

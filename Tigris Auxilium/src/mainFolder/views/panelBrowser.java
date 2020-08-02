@@ -154,7 +154,9 @@ public class panelBrowser extends JPanel {
 		btnLoad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // Look here --------------------------------------------------------------------
 				
-				RWJsonBTabs.ReadToJson();
+				//RWJsonBTabs.ReadToJson();
+				RWJsonBTabs tests = new RWJsonBTabs();
+				tests.ReadToJson();
 				comboBoxTab1.setText(RWJsonBTabs.link1);
 				chckbx1.setSelected(Boolean.parseBoolean(RWJsonBTabs.link1Cb));
 				comboBoxTab2.setText(RWJsonBTabs.link2);
