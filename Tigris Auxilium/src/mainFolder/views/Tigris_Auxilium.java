@@ -55,7 +55,7 @@ public class Tigris_Auxilium {
 	 */
 	public Tigris_Auxilium() {
 		initialize();
-		userDataCheck();
+		//userDataCheck();
 		
 		/*layeredPane.removeAll();
 		layeredPane.add(panelPPAuxy); //Make this work on launch
