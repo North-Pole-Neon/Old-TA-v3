@@ -55,7 +55,7 @@ public class Tigris_Auxilium {
 	 */
 	public Tigris_Auxilium() {
 		initialize();
-		//userDataCheck();
+		userDataCheck();
 		
 		/*layeredPane.removeAll();
 		layeredPane.add(panelPPAuxy); //Make this work on launch
@@ -74,7 +74,7 @@ public class Tigris_Auxilium {
 
 	public void userDataCheck() {
 		RWJsonUser.ReadToJson();
-		RWJsonUser.getComputerName();
+		RWJsonUser.getComputerName(true);
 		System.out.println("New: " + RWJsonUser.PCNAME + " Orginal:" + RWJsonUser.PCName); //PRINT PC Names
 		//String pcName = RWJsonUser.getComputerName();
 		if (RWJsonUser.PCName.equals(RWJsonUser.PCNAME) && RWJsonUser.setupCom.equals("true")) {

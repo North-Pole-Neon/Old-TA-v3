@@ -74,11 +74,11 @@ public class RWJsonBTabs {
 		        //employeeList.add(employeeObject2);
 		         
 		        //Write JSON file FileWriter file = new FileWriter("assets/JSON Files/Links.json")
-		        try (FileOutputStream file = new FileOutputStream("/mainFolder/resources/Links.json")) {
-		        	OutputStreamWriter output = new OutputStreamWriter(file);
-		        	output.write(userList.toJSONString());
-		        	output.flush();
-		        	output.close(); //Might be problem
+		        try (FileWriter file = new FileWriter("C:\\Test\\Links.json")) {
+		        	//OutputStreamWriter output = new OutputStreamWriter(file);
+		        	file.write(userList.toJSONString());
+		        	file.flush();
+		        	file.close(); //Might be problem
 		 
 		        } catch (IOException e) {
 		            e.printStackTrace();
@@ -93,7 +93,7 @@ public class RWJsonBTabs {
 				//JSON parser object to parse read file
 		        JSONParser jsonParser = new JSONParser();
 		         // /assets/JSON Files/Links.json , StandardCharsets.UTF_8 /Tigris Auxilium/src/mainFolder/resources/Links.json
-		        try (InputStreamReader reader = new InputStreamReader(RWJsonBTabs.class.getResourceAsStream("/mainFolder/resources/Links.json"), StandardCharsets.UTF_8))	
+		        try (FileReader reader = new FileReader("C:\\Test\\Links.json"))	
 		        {
 		            
 		        	//Read JSON file
@@ -191,4 +191,33 @@ public class RWJsonBTabs {
 		        }
 
 			}
+			
+			public void ReadToJson() { //Static might be optional -------------------------------------------------------------------
+				
+
+				//JSON parser object to parse read file
+		        JSONParser jsonParser = new JSONParser();
+		         // /assets/JSON Files/Links.json , StandardCharsets.UTF_8 /Tigris Auxilium/src/mainFolder/resources/Links.json
+		        try (InputStreamReader reader = new InputStreamReader(RWJsonBTabs.class.getResourceAsStream("/mainFolder/resources/Links.json"), StandardCharsets.UTF_8))	
+		        {
+		            
+		        	//Read JSON file
+		            Object obj = jsonParser.parse(reader);
+		 
+		            JSONArray userList = (JSONArray) obj;
+		            System.out.println(userList);
+		             
+		            //Iterate over user array
+		            userList.forEach( emp -> parseUserObject( (JSONObject) emp ) );
+		 
+		        } catch (FileNotFoundException e) {
+		            e.printStackTrace();
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        } catch (ParseException e) {
+		            e.printStackTrace();
+		        }
+
+			}
+			
 	 */

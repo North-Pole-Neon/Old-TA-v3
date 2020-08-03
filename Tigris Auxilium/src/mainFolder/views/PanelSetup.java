@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import json.WriteJsonUser;
+import mainFolder.common.RWJsonUser;
 
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -85,7 +85,7 @@ public class PanelSetup extends JPanel {
 				RWJsonUser.lastName = textFieldLName.getText();
 				RWJsonUser.sGrade = (String) comboBoxGrade.getSelectedItem();
 				RWJsonUser.sIsd = textFieldIsd.getText();
-				RWJsonUser.PCName = WriteJsonUser.getComputerName();
+				RWJsonUser.getComputerName(false);
 				RWJsonUser.setupCom = "true";
 				RWJsonUser.WriteToJson();
 				Tigris_Auxilium.panelMenu.setVisible(true);

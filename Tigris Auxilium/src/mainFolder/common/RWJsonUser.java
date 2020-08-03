@@ -57,7 +57,7 @@ public class RWJsonUser {
 	        //employeeList.add(employeeObject2);
 	         
 	        //Write JSON file
-	        try (FileWriter file = new FileWriter("assets/JSON Files/User.json")) {
+	        try (FileWriter file = new FileWriter("C:\\Test\\User.json")) {
 	 
 	            file.write(userList.toJSONString());
 	            file.flush();
@@ -75,7 +75,7 @@ public class RWJsonUser {
 			//JSON parser object to parse read file
 	        JSONParser jsonParser = new JSONParser();
 	         
-	        try (FileReader reader = new FileReader("assets/JSON Files/User.json"))
+	        try (FileReader reader = new FileReader("C:\\Test\\User.json"))
 	        {
 	            //Read JSON file
 	            Object obj = jsonParser.parse(reader);
@@ -132,15 +132,24 @@ public class RWJsonUser {
 	    }
 		
 		
-		public static void getComputerName() //-------------------------------------------------------
+		public static void getComputerName(Boolean test) //-------------------------------------------------------
 		{
+			String PCnameStr;
+			
+			
 		    Map<String, String> env = System.getenv();
 		    if (env.containsKey("COMPUTERNAME"))
-		        PCNAME = env.get("COMPUTERNAME");
+		    	PCnameStr = env.get("COMPUTERNAME");
 		    else if (env.containsKey("HOSTNAME"))
-		    	PCNAME = env.get("HOSTNAME");
+		    	PCnameStr = env.get("HOSTNAME");
 		    else
-		    	PCNAME = "Unknown Computer";
+		    	PCnameStr = "Unknown Computer";
+		    
+		    if(test == true) {
+				PCNAME = PCnameStr;
+			}else {
+				PCName = PCnameStr;
+			}
 		}
 		
 		public static void clearUserData() {
