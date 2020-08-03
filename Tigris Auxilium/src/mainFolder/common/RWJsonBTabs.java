@@ -2,12 +2,15 @@ package mainFolder.common;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -70,12 +73,12 @@ public class RWJsonBTabs {
 		        userList.add(userObject);
 		        //employeeList.add(employeeObject2);
 		         
-		        //Write JSON file
-		        try (FileWriter file = new FileWriter("assets/JSON Files/Links.json")) {
-		 
-		            file.write(userList.toJSONString());
-		            file.flush();
-		            file.close(); //Might be problem
+		        //Write JSON file FileWriter file = new FileWriter("assets/JSON Files/Links.json")
+		        try (FileOutputStream file = new FileOutputStream("/mainFolder/resources/Links.json")) {
+		        	OutputStreamWriter output = new OutputStreamWriter(file);
+		        	output.write(userList.toJSONString());
+		        	output.flush();
+		        	output.close(); //Might be problem
 		 
 		        } catch (IOException e) {
 		            e.printStackTrace();
@@ -89,8 +92,8 @@ public class RWJsonBTabs {
 
 				//JSON parser object to parse read file
 		        JSONParser jsonParser = new JSONParser();
-		         // /assets/JSON Files/Links.json
-		        try (FileReader reader = new FileReader("Links.json"))	
+		         // /assets/JSON Files/Links.json , StandardCharsets.UTF_8 /Tigris Auxilium/src/mainFolder/resources/Links.json
+		        try (InputStreamReader reader = new InputStreamReader(RWJsonBTabs.class.getResourceAsStream("/mainFolder/resources/Links.json"), StandardCharsets.UTF_8))	
 		        {
 		            
 		        	//Read JSON file
