@@ -5,9 +5,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
 
 
 public class Shells {
@@ -36,7 +33,7 @@ public class Shells {
 	}
 	
 	public static void macShell() throws InterruptedException {
-		 String [] command = {"ping", "google.com"};
+		 String [] command = {"sh", "scripts\\fun.sh"};
 		 ProcessBuilder processBuilder = new ProcessBuilder(command);
 		 processBuilder.directory(new File(System.getProperty("user.home")));
 		 
