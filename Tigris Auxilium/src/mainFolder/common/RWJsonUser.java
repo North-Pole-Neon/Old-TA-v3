@@ -31,10 +31,14 @@ public class RWJsonUser {
 	public static Boolean folderUserExists;
 	public static String finalPath;
 	public static String UserFilePath;
+	
+	/*public static void userInfo() {
+		String testingss;
+	}*/
 		
 	@SuppressWarnings("unchecked")
 	public static void WriteToJson() {
-
+		
 		//First user
 	        JSONObject userDetails = new JSONObject();
 	        userDetails.put("firstName", firstName);

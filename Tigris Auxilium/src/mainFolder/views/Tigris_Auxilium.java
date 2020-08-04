@@ -90,7 +90,7 @@ public class Tigris_Auxilium {
 				layeredPane.repaint();
 				layeredPane.validate();
 			} else {
-				RWJsonUser.clearUserData();
+				//RWJsonUser.clearUserData();
 				
 				//Basic Logic for loading page
 				layeredPane.removeAll();
@@ -110,7 +110,7 @@ public class Tigris_Auxilium {
 		
 			
 		} else {
-			RWJsonUser.clearUserData();
+			//RWJsonUser.clearUserData();
 			
 			//Basic Logic for loading page
 			layeredPane.removeAll();

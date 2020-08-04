@@ -14,7 +14,6 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import mainFolder.common.*;
 
 public class PanelSetup extends JPanel {
 	

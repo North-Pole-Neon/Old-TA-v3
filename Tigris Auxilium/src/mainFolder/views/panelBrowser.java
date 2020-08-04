@@ -143,6 +143,8 @@ public class panelBrowser extends JPanel {
 				RWJsonBTabs.link6 = comboBoxTab6.getText();
 				RWJsonBTabs.link6Cb = String.valueOf(chckbx6.isSelected());
 				
+				RWJsonBTabs.pathMaker(RWJsonUser.getOSVersion());
+				RWJsonBTabs.LinksFileExists(RWJsonUser.getOSVersion());
 				RWJsonBTabs.WriteToJson();
 			System.out.println(RWJsonBTabs.link1);
 			System.out.println(RWJsonBTabs.link1Cb);
@@ -154,9 +156,10 @@ public class panelBrowser extends JPanel {
 		btnLoad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // Look here --------------------------------------------------------------------
 				
-				//RWJsonBTabs.ReadToJson();
-				RWJsonBTabs tests = new RWJsonBTabs();
-				tests.ReadToJson();
+				RWJsonBTabs.pathMaker(RWJsonUser.getOSVersion());
+				RWJsonBTabs.LinksFileExists(RWJsonUser.getOSVersion());
+				RWJsonBTabs.ReadToJson();
+				
 				comboBoxTab1.setText(RWJsonBTabs.link1);
 				chckbx1.setSelected(Boolean.parseBoolean(RWJsonBTabs.link1Cb));
 				comboBoxTab2.setText(RWJsonBTabs.link2);

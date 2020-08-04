@@ -20,30 +20,33 @@ Overview:
 ---------
 Revisiting the project while changing a couple of things around. 
 Mainly moving to JSON, placing builds in project folders, and cleaning the code a bit.
+Fixed Jar to where they can actually be opened by the user.
 -------------
 New Features:
 -------------
-*TA will now save using JSON files instead of the default java serialization method
-User Setup Panel will always shows at first launch
-*When TA detects a new host device it will wipe it's data and start fresh
-*List of Browser tabs will be properly remembered
+* TA will now save using JSON files instead of the default Java serialization method
+* TA will now save its files in an external folder
+* User Setup Panel will always show at first launch
+* When TA detects a new host device it will wipe its data and start fresh
+* List of Browser tabs will be properly remembered (Outdated)
 
 -----------
 Known Bugs:
 -----------
-*Setup Panel doesn't leave after hitting finished
-*No default text when first launch browser tab page
-*Program crashes if Setup page is left with blank information
-*Greeting text will return null instead of showing name
-*Web site links must have the full www.com address
+* Setup Panel doesn't leave after hitting finished
+* No default text when first launch browser tab page
+* Program crashes if Setup page is left with blank information
+* Greeting text will return null instead of showing the name
+* Web site links must have the full www.com address
+* Browser Tab Save&Load no longer work
 
 -------------
 Fixed Issues:
 -------------
-*UserSetup Panel now appears if either the data is deleted or the app has been transfered to a new host
-*Warning free
-*Browser will remember the links and whenever you have them checked.
-*Mis. bugs and errors
+* UserSetup Panel now appears if either the data is deleted or the app has been transferred to a new host
+* Warning free (Outdated)
+* Browser will remember the links and whenever you have them checked. (Outdated)
+* Mis. bugs and errors
 
 ------
 Plans:

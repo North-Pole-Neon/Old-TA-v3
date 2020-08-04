@@ -1,17 +1,10 @@
 package mainFolder.common;
 
-import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.nio.charset.StandardCharsets;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -35,7 +28,11 @@ public class RWJsonBTabs {
 		public static String link6Cb;
 		//public static String setupCom = "false";
 		public boolean bSetupCom = false;
-			
+		
+		public static String finalPath;
+		public static String LinksFilePath;
+		public static Boolean fileLinksExists;
+		
 		@SuppressWarnings("unchecked")
 		public static void WriteToJson() {
 
@@ -74,7 +71,7 @@ public class RWJsonBTabs {
 		        //employeeList.add(employeeObject2);
 		         
 		        //Write JSON file FileWriter file = new FileWriter("assets/JSON Files/Links.json")
-		        try (FileWriter file = new FileWriter("C:\\Test\\Links.json")) {
+		        try (FileWriter file = new FileWriter(LinksFilePath)) {
 		        	//OutputStreamWriter output = new OutputStreamWriter(file);
 		        	file.write(userList.toJSONString());
 		        	file.flush();
@@ -87,13 +84,13 @@ public class RWJsonBTabs {
 		    }
 			
 			@SuppressWarnings("unchecked")
-			public void ReadToJson() { //Static might be optional -------------------------------------------------------------------
+			public static void ReadToJson() { //Static might be optional -------------------------------------------------------------------
 				
 
 				//JSON parser object to parse read file
 		        JSONParser jsonParser = new JSONParser();
 		         // /assets/JSON Files/Links.json , StandardCharsets.UTF_8 /Tigris Auxilium/src/mainFolder/resources/Links.json
-		        try (FileReader reader = new FileReader("C:\\Test\\Links.json"))	
+		        try (FileReader reader = new FileReader(LinksFilePath))	
 		        {
 		            
 		        	//Read JSON file
@@ -160,6 +157,61 @@ public class RWJsonBTabs {
 		      
 		        
 		    }
+			
+			public static void pathMaker(String os) {
+				//LATER Make it work for any file
+				String full;
+				//String finalPath;
+				
+				
+				if (os.equals("Windows 10") || os.equals("Windows 8") || os.equals("Windows 7")) {
+					String path = "C:\\Test\\TA\\Data";
+					File file = new File(path);
+					if (!file.exists()) file.mkdirs(); //Might be an issue
+					finalPath = path;
+					LinksFilePath = finalPath + "\\Links.json";
+				} else {
+					//Path path = new Paths.get("test.txt");
+					String paths = System.getProperty("user.home");
+					System.out.println(paths);
+					//System.getenv(paths);
+					//System.out.println(paths);
+					
+					full = paths + "/TA/Data/";
+					System.out.println(full);
+					
+					File file = new File(full);
+					if (!file.exists()) file.mkdirs(); //Might be an issue
+					finalPath = full;
+					LinksFilePath = finalPath + "/Links.json";
+				}
+				System.out.println(finalPath); //PRINT finalPath
+				
+				//Check if file exists
+				boolean temp = new File("C:\\Test\\TA\\Data\\junk.txt").isFile();
+				System.out.println(temp);
+				
+				
+				
+			}
+			public static void LinksFileExists(String os) { //LATER Might not need if else
+				if (os.equals("Windows 10") || os.equals("Windows 8") || os.equals("Windows 7")) {
+					//Check if file exists LATER Make universal
+					//String winUser = fullPath + "\\User.json";
+					boolean temp = new File(LinksFilePath).isFile();
+					System.out.println("User file exists: " + temp); //PRINT User file exists
+					fileLinksExists = temp;
+				} else {
+					//Check if file exists LATER Make universal
+					boolean temp = new File(LinksFilePath).isFile();
+					System.out.println("User file exists: " + temp); //PRINT User file exists
+					fileLinksExists = temp;
+				}
+				
+				
+				
+				
+			}
 			
 			
 	}
