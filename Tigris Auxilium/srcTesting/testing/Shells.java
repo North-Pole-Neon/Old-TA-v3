@@ -33,7 +33,7 @@ public class Shells {
 	}
 	
 	public static void macShell() throws InterruptedException {
-		 String [] command = {"sh", "scripts\\fun.sh"};
+		 String [] command = {"sh", "/Users/226331/Desktop/fun.sh"};
 		 ProcessBuilder processBuilder = new ProcessBuilder(command);
 		 processBuilder.directory(new File(System.getProperty("user.home")));
 		 
