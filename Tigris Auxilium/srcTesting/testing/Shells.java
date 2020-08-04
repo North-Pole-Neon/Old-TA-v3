@@ -1,6 +1,7 @@
 package testing;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -11,8 +12,9 @@ import java.util.function.Consumer;
 
 public class Shells {
 
-	public static void main(String[] args) {
-		winShell();
+	public static void main(String[] args) throws IOException, InterruptedException {
+		//winShell();
+		macShell();
 	}
 	
 	public static void winShell() {
@@ -33,8 +35,27 @@ public class Shells {
 		}
 	}
 	
-	public static void macShell() {
+	public static void macShell() throws InterruptedException {
+		 String [] command = {"ping", "google.com"};
+		 ProcessBuilder processBuilder = new ProcessBuilder(command);
+		 processBuilder.directory(new File(System.getProperty("user.home")));
 		 
+		 try {
+			 Process process = processBuilder.start();
+			 BufferedReader reader = new BufferedReader  (new InputStreamReader(process.getInputStream()));
+			 
+			 String line;
+			 
+			 while ((line = reader.readLine()) != null) {
+				 System.out.println(line);
+				 
+			 }
+			 int exitCode = process.waitFor();
+			 
+			 System.out.println("\nExited with error code : " + exitCode);
+		 }catch (IOException e) {
+			 e.printStackTrace();
+		 }
 	}
 	
 	
