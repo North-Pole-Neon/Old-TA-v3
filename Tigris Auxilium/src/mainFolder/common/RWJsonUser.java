@@ -1,5 +1,6 @@
 package mainFolder.common;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -24,6 +25,12 @@ public class RWJsonUser {
 	public static String PCNAME;
 	public static String setupCom = "false";
 	public boolean bSetupCom = false;
+	
+	public static String osName;
+	public static Boolean fileUserExists;
+	public static Boolean folderUserExists;
+	public static String finalPath;
+	public static String UserFilePath;
 		
 	@SuppressWarnings("unchecked")
 	public static void WriteToJson() {
@@ -57,7 +64,7 @@ public class RWJsonUser {
 	        //employeeList.add(employeeObject2);
 	         
 	        //Write JSON file
-	        try (FileWriter file = new FileWriter("C:\\Test\\User.json")) {
+	        try (FileWriter file = new FileWriter(UserFilePath)) { //C:\\Test\\User.json
 	 
 	            file.write(userList.toJSONString());
 	            file.flush();
@@ -75,7 +82,7 @@ public class RWJsonUser {
 			//JSON parser object to parse read file
 	        JSONParser jsonParser = new JSONParser();
 	         
-	        try (FileReader reader = new FileReader("C:\\Test\\User.json"))
+	        try (FileReader reader = new FileReader(UserFilePath))
 	        {
 	            //Read JSON file
 	            Object obj = jsonParser.parse(reader);
@@ -131,7 +138,7 @@ public class RWJsonUser {
 	        
 	    }
 		
-		
+		//getOS, getCom, 
 		public static void getComputerName(Boolean test) //-------------------------------------------------------
 		{
 			String PCnameStr;
@@ -151,6 +158,73 @@ public class RWJsonUser {
 				PCName = PCnameStr;
 			}
 		}
+		
+		public static String getOSVersion() {
+			String os_name = null;
+	        os_name = System.getProperty("os.name");
+	        System.out.println("OS name is: " + os_name);
+	        osName = os_name;
+	        return os_name;
+		}
+		
+		
+		
+		public static void pathMaker(String os) {
+			//LATER Make it work for any file
+			String full;
+			//String finalPath;
+			
+			
+			if (os.equals("Windows 10") || os.equals("Windows 8") || os.equals("Windows 7")) {
+				String path = "C:\\Test\\TA\\Data";
+				File file = new File(path);
+				if (!file.exists()) file.mkdirs(); //Might be an issue
+				finalPath = path;
+				UserFilePath = finalPath + "\\User.json";
+			} else {
+				//Path path = new Paths.get("test.txt");
+				String paths = System.getProperty("user.home");
+				System.out.println(paths);
+				//System.getenv(paths);
+				//System.out.println(paths);
+				
+				full = paths + "/TA/Data/";
+				System.out.println(full);
+				
+				File file = new File(full);
+				if (!file.exists()) file.mkdirs(); //Might be an issue
+				finalPath = full;
+				UserFilePath = finalPath + "/User.json";
+			}
+			System.out.println(finalPath); //PRINT finalPath
+			
+			//Check if file exists
+			boolean temp = new File("C:\\Test\\TA\\Data\\junk.txt").isFile();
+			System.out.println(temp);
+			
+			
+			
+		}
+		public static void userFileExists(String os) {
+			if (os.equals("Windows 10") || os.equals("Windows 8") || os.equals("Windows 7")) {
+				//Check if file exists LATER Make universal
+				//String winUser = fullPath + "\\User.json";
+				boolean temp = new File(UserFilePath).isFile();
+				System.out.println("User file exists: " + temp); //PRINT User file exists
+				fileUserExists = temp;
+			} else {
+				//Check if file exists LATER Make universal
+				boolean temp = new File(UserFilePath).isFile();
+				System.out.println("User file exists: " + temp); //PRINT User file exists
+				fileUserExists = temp;
+			}
+			
+			
+			
+			
+		}
+		
+		
 		
 		public static void clearUserData() {
 			firstName = null;

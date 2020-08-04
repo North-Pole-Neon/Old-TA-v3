@@ -55,7 +55,11 @@ public class Tigris_Auxilium {
 	 */
 	public Tigris_Auxilium() {
 		initialize();
+		RWJsonUser.pathMaker(RWJsonUser.getOSVersion());
+		
 		userDataCheck();
+		//RWJsonUser.getOSVersion();
+		
 		
 		/*layeredPane.removeAll();
 		layeredPane.add(panelPPAuxy); //Make this work on launch
@@ -73,15 +77,38 @@ public class Tigris_Auxilium {
 	}
 
 	public void userDataCheck() {
-		RWJsonUser.ReadToJson();
-		RWJsonUser.getComputerName(true);
-		System.out.println("New: " + RWJsonUser.PCNAME + " Orginal:" + RWJsonUser.PCName); //PRINT PC Names
-		//String pcName = RWJsonUser.getComputerName();
-		if (RWJsonUser.PCName.equals(RWJsonUser.PCNAME) && RWJsonUser.setupCom.equals("true")) {
-			layeredPane.removeAll();
-			layeredPane.add(panelPPAuxy); //Make this work on launch
-			layeredPane.repaint();
-			layeredPane.validate();
+		RWJsonUser.userFileExists(RWJsonUser.getOSVersion());
+		if (RWJsonUser.fileUserExists == true) {
+			
+			RWJsonUser.ReadToJson();
+			RWJsonUser.getComputerName(true);
+			System.out.println("New: " + RWJsonUser.PCNAME + " Orginal:" + RWJsonUser.PCName); //PRINT PC Names
+			//String pcName = RWJsonUser.getComputerName();
+			if (RWJsonUser.PCName.equals(RWJsonUser.PCNAME) && RWJsonUser.setupCom.equals("true")) {
+				layeredPane.removeAll();
+				layeredPane.add(panelPPAuxy); //Make this work on launch
+				layeredPane.repaint();
+				layeredPane.validate();
+			} else {
+				RWJsonUser.clearUserData();
+				
+				//Basic Logic for loading page
+				layeredPane.removeAll();
+				layeredPane.add(panelHPSetup);
+				layeredPane.repaint();
+				layeredPane.validate();
+				
+				panelMenu.setVisible(false);
+				
+				/*if(RWJsonUser.PCName.equals(RWJsonUser.PCNAME) && RWJsonUser.setupCom.equals("true")) {
+					layeredPane.removeAll();
+					layeredPane.add(panelPPAuxy); //Make this work on launch
+					layeredPane.repaint();
+					layeredPane.validate();
+				}*/
+		}
+		
+			
 		} else {
 			RWJsonUser.clearUserData();
 			
@@ -92,14 +119,6 @@ public class Tigris_Auxilium {
 			layeredPane.validate();
 			
 			panelMenu.setVisible(false);
-			
-			/*if(RWJsonUser.PCName.equals(RWJsonUser.PCNAME) && RWJsonUser.setupCom.equals("true")) {
-				layeredPane.removeAll();
-				layeredPane.add(panelPPAuxy); //Make this work on launch
-				layeredPane.repaint();
-				layeredPane.validate();
-			}*/
-			
 		}
 		
 		
