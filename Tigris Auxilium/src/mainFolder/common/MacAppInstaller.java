@@ -25,27 +25,36 @@ public class MacAppInstaller {
 		String full;
 		String finalPath;
 		String UserFilePath;
-		//String finalPath;
+		
+		File f;
+		String fileName;
+		
+		f = new File(ogPath);
+		fileName = f.getName();
+		// TODO Make applescripts use getPath
 		
 		//-------Shorten for just folder tool
 		if (os.equals("Windows 10") || os.equals("Windows 8") || os.equals("Windows 7")) {
 			String path = "C:\\Test\\TA\\Data";
 			File file = new File(path);
-			if (!file.exists()) file.mkdirs(); //Might be an issue
 			finalPath = path;
-			UserFilePath = finalPath + "\\User.json"; //TODO Needs to be name of file
+			UserFilePath = finalPath + "\\User.json"; //TODO Needs to be name of file // <-- Important part
+			if (!file.exists()) file.mkdirs(); //Might be an issue
+			
 		} else {
-			//Path path = new Paths.get("test.txt");
-			String paths = System.getProperty("user.home");
+			
+			String paths = System.getProperty("user.home"); //Get path
 			System.out.println(paths); //PRINT Paths
 			
-			full = paths + "/TA/Data/";
-			System.out.println(full);
+			full = paths + "/TA/Data/"; //Create basic path
+			System.out.println(full); //Print path
 			
-			File file = new File(full);
-			if (!file.exists()) file.mkdirs(); //Might be an issue
+			File file = new File(full); //Creates path
+			
 			finalPath = full;
-			UserFilePath = finalPath + "/User.json";
+			UserFilePath = finalPath + "/User.json"; // <-- Important part
+			if (!file.exists()) file.mkdirs(); //Might be an issue
+			
 		}
 		System.out.println(finalPath); //PRINT finalPath
 		

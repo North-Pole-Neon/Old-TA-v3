@@ -7,6 +7,7 @@ import mainFolder.common.ShellRunner;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
 
@@ -36,6 +37,7 @@ public class PanelTools extends JPanel {
 		JButton btnHide = new JButton("Hide apps");
 		btnHide.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//IF then for mac or just all mac
 				ShellRunner.winShell();
 			}
 		});
@@ -45,6 +47,7 @@ public class PanelTools extends JPanel {
 		JButton btnSleep = new JButton("Sleep");
 		btnSleep.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MultilineAppleScriptTest();
 			}
 		});
 		btnSleep.setBounds(10, 77, 89, 23);
@@ -70,4 +73,37 @@ public class PanelTools extends JPanel {
 		
 
 	}
+	
+	public void MultilineAppleScriptTest()
+	  {
+	    Runtime runtime = Runtime.getRuntime();
+	    
+	    // an applescript command that is multiple lines long.
+	    // just create a java string, and remember the newline characters.
+	    String applescriptCommand =  "display dialog \"the text to display goes here\"";
+
+	    String[] args = { "osascript", "-e", applescriptCommand };
+
+	    try
+	    {
+	      Process process = runtime.exec(args);
+	    }
+	    catch (IOException e)
+	    {
+	      e.printStackTrace();
+	    }
+	  }
+	
 }
+
+
+/*
+ * Applescript tell
+ * 
+ * "tell app \"iTunes\"\n" + 
+	                                   "activate\n" +
+	                                   "set sound volume to 40\n" + 
+	                                   "set EQ enabled to true\n" +
+	                                   "play\n" +
+	                                 "end tell";
+*/
