@@ -1,10 +1,14 @@
 package mainFolder.views;
 
 import javax.swing.JPanel;
+
+import mainFolder.common.ShellRunner;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTabbedPane;
 
 public class PanelTools extends JPanel {
 
@@ -32,6 +36,7 @@ public class PanelTools extends JPanel {
 		JButton btnHide = new JButton("Hide apps");
 		btnHide.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ShellRunner.winShell();
 			}
 		});
 		btnHide.setBounds(10, 43, 89, 23);
@@ -52,6 +57,16 @@ public class PanelTools extends JPanel {
 		});
 		btnShutDown.setBounds(10, 111, 89, 23);
 		panel.add(btnShutDown);
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(250, 117, 351, 255);
+		add(tabbedPane);
+		
+		JPanel panel_1 = new JPanel();
+		tabbedPane.addTab("New tab", null, panel_1, null);
+		
+		JPanel panel_2 = new JPanel();
+		tabbedPane.addTab("New tab", null, panel_2, null);
 		
 
 	}

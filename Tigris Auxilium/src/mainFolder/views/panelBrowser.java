@@ -336,58 +336,13 @@ public class panelBrowser extends JPanel {
 				
 	}
 	
-	public void checkBoxLoad() { // Need to make opposite for save
+	/*public void checkBoxLoad() { // Need to make opposite for save OLDCODE Test before close
 		if (chckbx1.isSelected() == true) {
 			urlcheck1 = "true";
 		} else {
 			urlcheck1 = "false";
 		}
 		
-		
-	}
-	
-	
-	
-	
-	/* //Check for save file OLDCODE
-	public void tabSaveExists() {
-		File tempFile = new File("./src/mainFolder/resources/BrowserTabSave.tigaux");
-		boolean exists = tempFile.exists();
-		
-		
-		if (exists == true) {  //Load save file  and change text boxes and variables OLDCODE Save
-			BrowserTab_GenRead loadtabs = new BrowserTab_GenRead();
-			loadtabs.readTabSave();
-			comboBoxTab1.setText(loadtabs.tab1LINK);
-			comboBoxTab2.setText(loadtabs.tab2LINK);
-			comboBoxTab3.setText(loadtabs.tab3LINK);
-			comboBoxTab4.setText(loadtabs.tab4LINK);
-			comboBoxTab5.setText(loadtabs.tab5LINK);
-			comboBoxTab6.setText(loadtabs.tab6LINK);
-			
-			chckbx1.setSelected(loadtabs.tab1LINKCbx);
-			chckbx2.setSelected(loadtabs.tab2LINKCbx);
-			chckbx3.setSelected(loadtabs.tab3LINKCbx);
-			chckbx4.setSelected(loadtabs.tab4LINKCbx);
-			chckbx5.setSelected(loadtabs.tab5LINKCbx);
-			chckbx6.setSelected(loadtabs.tab6LINKCbx);
-			
-			String boxlinkstring1= comboBoxTab1.getText(); //TODO Check what to do with this
-			String boxlinkstring2= comboBoxTab2.getText();
-			String boxlinkstring3= comboBoxTab3.getText();
-			String boxlinkstring4= comboBoxTab4.getText();
-			String boxlinkstring5= comboBoxTab5.getText();
-			String boxlinkstring6= comboBoxTab6.getText();
-			Boolean urlcheck1 = chckbx1.isSelected(); //TODO Doesn't save check boxes
-			Boolean urlcheck2 = chckbx2.isSelected();
-			Boolean urlcheck3 = chckbx3.isSelected();
-			Boolean urlcheck4 = chckbx4.isSelected();
-			Boolean urlcheck5 = chckbx5.isSelected();
-			Boolean urlcheck6 = chckbx6.isSelected();
-			
-		}else if (exists == false) {
-			
-		}
 		
 	}*/
 	

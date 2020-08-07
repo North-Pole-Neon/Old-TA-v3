@@ -3,4 +3,4 @@ echo.
 echo.
 echo Hello
 echo.
-echo.
+echo ----

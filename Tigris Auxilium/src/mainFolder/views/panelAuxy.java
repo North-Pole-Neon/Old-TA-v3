@@ -8,24 +8,20 @@ import javax.swing.JLabel;
 
 //Size of window 784, 438
 public class panelAuxy extends JPanel {
-	/**
+	/*
 	 * 
 	 */
 	private static final long serialVersionUID = -1904923341438159983L;
 	//private String ownerName;
 	
 	
-	/**
+	/*
 	 * Create the panel.
 	 */
 	public panelAuxy() {
 		setLayout(null);
 		setBounds(100, 100, 859, 438);
 		
-		/*UBIC_GenRead userInfo = new UBIC_GenRead(); OLDCODE Save
-		userInfo.RUserBasic();
-		ownerName = userInfo.userNAME;
-		*/
 		
 		JLabel lblWarning = new JLabel("Hi their " + RWJsonUser.firstName + ", the Home page is not ready yet. :(");
 		lblWarning.setBounds(194, 30, 289, 16);

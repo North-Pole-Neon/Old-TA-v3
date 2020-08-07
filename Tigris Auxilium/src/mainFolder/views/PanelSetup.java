@@ -105,7 +105,6 @@ public class PanelSetup extends JPanel {
 		
 		textFieldLName = new JTextField();
 		textFieldLName.setColumns(10);
-		//comboBox.getSelectedItem(); OLDCODE Save
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)

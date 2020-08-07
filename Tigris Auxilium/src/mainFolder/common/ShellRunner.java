@@ -1,4 +1,4 @@
-package testing;
+package mainFolder.common;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -6,17 +6,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-
-public class Shells {
-
-	public static void main(String[] args) throws IOException, InterruptedException {
-		winShell();
-		//macShell();
-	}
+public class ShellRunner {
+	
+	public static Boolean isWin;
+	
+	private String wSleep = "rundll32.exe powrprof.dll,SetSuspendState 0,1,0";
+	private String wShutdown = "shutdown /s";
+	
+	private String mSleep = "pmset sleepnow";
+	//Can't shutdown mac without sudo
 	
 	public static void winShell() {
 		try {
-			Process p = Runtime.getRuntime().exec("cmd /c src\\mainFolder\\resources\\ShellScripts\\test.bat"); // Can execute commands with "cmd /c " + Command 
+			Process p = Runtime.getRuntime().exec("cmd /c min"); // Can execute commands with "cmd /c " + Command 
 			
 			InputStream is = p.getInputStream();
 			
@@ -33,7 +35,7 @@ public class Shells {
 	}
 	
 	public static void macShell() throws InterruptedException {
-		 String [] command = {"sh", "/Users/226331/Desktop/fun.sh"};
+		 String [] command = {"sh", "/Users/226331/Desktop/fun.sh"}; //Can turn to command
 		 ProcessBuilder processBuilder = new ProcessBuilder(command);
 		 processBuilder.directory(new File(System.getProperty("user.home")));
 		 
@@ -54,8 +56,4 @@ public class Shells {
 			 e.printStackTrace();
 		 }
 	}
-	
-	
-
-
 }
