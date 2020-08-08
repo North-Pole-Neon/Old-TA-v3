@@ -89,6 +89,8 @@ public class Tigris_Auxilium {
 				layeredPane.add(panelPPAuxy); //Make this work on launch
 				layeredPane.repaint();
 				layeredPane.validate();
+				
+				frmTigrisAuxilium.setTitle("Tigris Auxilium - Hi, " + RWJsonUser.firstName);
 			} else {
 				//RWJsonUser.clearUserData();
 				

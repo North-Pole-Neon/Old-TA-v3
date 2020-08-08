@@ -47,7 +47,6 @@ public class PanelTools extends JPanel {
 		JButton btnSleep = new JButton("Sleep");
 		btnSleep.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MultilineAppleScriptTest();
 			}
 		});
 		btnSleep.setBounds(10, 77, 89, 23);
@@ -74,13 +73,45 @@ public class PanelTools extends JPanel {
 
 	}
 	
-	public void MultilineAppleScriptTest()
+	public void AsHide() //Should Hide apps CHXME Hide apps mac
 	  {
 	    Runtime runtime = Runtime.getRuntime();
 	    
 	    // an applescript command that is multiple lines long.
 	    // just create a java string, and remember the newline characters.
-	    String applescriptCommand =  "display dialog \"the text to display goes here\"";
+	    String applescriptCommand =  "tell application \"TextExpander\" to launch\n" + 
+	    											"\n" + 
+	    											"tell application \"Finder\"\n" + 
+	    											"\n" + 
+	    											"set visible of process \"TextExpander\" to false\n" + 
+	    											"\n" + 
+	    											"end tell";
+
+	    String[] args = { "osascript", "-e", applescriptCommand };
+
+	    try
+	    {
+	      Process process = runtime.exec(args);
+	    }
+	    catch (IOException e)
+	    {
+	      e.printStackTrace();
+	    }
+	  }
+	
+	
+	public void MultilineAppleScriptTest() //template
+	  {
+	    Runtime runtime = Runtime.getRuntime();
+	    
+	    // an applescript command that is multiple lines long.
+	    // just create a java string, and remember the newline characters.
+	    String applescriptCommand =  "tell app \"iTunes\"\n" + 
+	                                   "activate\n" +
+	                                   "set sound volume to 40\n" + 
+	                                   "set EQ enabled to true\n" +
+	                                   "play\n" +
+	                                 "end tell";
 
 	    String[] args = { "osascript", "-e", applescriptCommand };
 

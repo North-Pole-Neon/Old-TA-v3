@@ -24,11 +24,12 @@ public class MacAppInstaller {
 		 */
 		String full;
 		String finalPath;
-		String UserFilePath;
+		String NewFilePath;
 		
 		File f;
 		String fileName;
 		
+		//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv--Makes Folder--vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 		f = new File(ogPath);
 		fileName = f.getName();
 		// TODO Make applescripts use getPath
@@ -38,8 +39,8 @@ public class MacAppInstaller {
 			String path = "C:\\Test\\TA\\Data";
 			File file = new File(path);
 			finalPath = path;
-			UserFilePath = finalPath + "\\User.json"; //TODO Needs to be name of file // <-- Important part
-			if (!file.exists()) file.mkdirs(); //Might be an issue
+			NewFilePath = finalPath + "\\" + fileName; //CHXME file name might have extension
+			if (!file.exists()) file.mkdirs(); 
 			
 		} else {
 			
@@ -52,22 +53,23 @@ public class MacAppInstaller {
 			File file = new File(full); //Creates path
 			
 			finalPath = full;
-			UserFilePath = finalPath + "/User.json"; // <-- Important part
-			if (!file.exists()) file.mkdirs(); //Might be an issue
+			NewFilePath = finalPath + "/" + finalPath; // CHXME file name
+			if (!file.exists()) file.mkdirs();
 			
 		}
 		System.out.println(finalPath); //PRINT finalPath
 		
-		//Check if file exists
-		boolean temp = new File("C:\\Test\\TA\\Data\\junk.txt").isFile();
-		System.out.println(temp);
-		//-------
+		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 		
-		//Copies
-		Path source = Paths.get("c:/temp/testoriginal.txt");
-	    Path destination = Paths.get("c:/temp/testcopied.txt");
+		
+		//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv --Copies file-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+		Path source = Paths.get(ogPath); //TODO String to path
+	    Path destination = Paths.get(NewFilePath);
 	 
 	    Files.copy(source, destination,  StandardCopyOption.COPY_ATTRIBUTES);
 	    
+		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 	}
 }
+//226715
