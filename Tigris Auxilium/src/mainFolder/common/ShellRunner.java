@@ -34,8 +34,8 @@ public class ShellRunner {
 		}
 	}
 	
-	public static void macShell() throws InterruptedException {
-		 String [] command = {"sh", "/Users/226331/Desktop/fun.sh"}; //Can turn to command
+	public void macShell(String com) throws InterruptedException {
+		 String [] command = {"sh", com}; //Can turn to command "/Users/226331/Desktop/fun.sh"
 		 ProcessBuilder processBuilder = new ProcessBuilder(command);
 		 processBuilder.directory(new File(System.getProperty("user.home")));
 		 

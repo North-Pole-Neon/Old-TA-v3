@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 public class PathFinding {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 //c:\\Test\\folders\\myfile.txt
 		Path path = Paths.get("c:\\Test\\folders\\myfile.txt");
 		Path projects = Paths.get("c:\\Test", "folders");

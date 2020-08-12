@@ -209,17 +209,14 @@ public class RWJsonUser {
 			
 			
 		}
-		public static void userFileExists(String os) {
+		public static void userFileExists(String os) { //LATER Make universal for any file check
 			if (os.equals("Windows 10") || os.equals("Windows 8") || os.equals("Windows 7")) {
-				//Check if file exists LATER Make universal
-				//String winUser = fullPath + "\\User.json";
 				boolean temp = new File(UserFilePath).isFile();
 				System.out.println("User file exists: " + temp); //PRINT User file exists
 				fileUserExists = temp;
 			} else {
-				//Check if file exists LATER Make universal
 				boolean temp = new File(UserFilePath).isFile();
-				System.out.println("User file exists: " + temp); //PRINT User file exists
+				System.out.println("User file exists: " + temp);
 				fileUserExists = temp;
 			}
 			

@@ -12,6 +12,10 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
+
+import mainFolder.common.MacAppInstaller;
+import mainFolder.common.RWJsonUser;
+
 import javax.swing.JCheckBox;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -20,6 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class PanelApps extends JPanel {
@@ -60,6 +65,13 @@ public class PanelApps extends JPanel {
 		JButton btniAppCreate = new JButton("Create");
 		btniAppCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					MacAppInstaller.appInstall(textFieldiapp.getText());
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});
@@ -102,6 +114,13 @@ public class PanelApps extends JPanel {
 		JButton btniDmgCreate = new JButton("Create");
 		btniDmgCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					MacAppInstaller.dmgInstall(textFieldiDmg.getText());
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		GroupLayout gl_paneliDmg = new GroupLayout(paneliDmg);
@@ -142,6 +161,11 @@ public class PanelApps extends JPanel {
 		JButton btniPkgCreate = new JButton("Create");
 		btniPkgCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					MacAppInstaller.pkgInstall(textFieldiPkg.getText());
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		GroupLayout gl_paneliPkg = new GroupLayout(paneliPkg);

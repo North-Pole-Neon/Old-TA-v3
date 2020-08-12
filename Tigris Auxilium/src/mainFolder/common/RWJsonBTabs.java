@@ -194,17 +194,14 @@ public class RWJsonBTabs {
 				
 				
 			}
-			public static void LinksFileExists(String os) { //LATER Might not need if else
+			public static void LinksFileExists(String os) { //LATER Follow Universal idea on RWJsonUser
 				if (os.equals("Windows 10") || os.equals("Windows 8") || os.equals("Windows 7")) {
-					//Check if file exists LATER Make universal
-					//String winUser = fullPath + "\\User.json";
 					boolean temp = new File(LinksFilePath).isFile();
 					System.out.println("User file exists: " + temp); //PRINT User file exists
 					fileLinksExists = temp;
 				} else {
-					//Check if file exists LATER Make universal
 					boolean temp = new File(LinksFilePath).isFile();
-					System.out.println("User file exists: " + temp); //PRINT User file exists
+					System.out.println("User file exists: " + temp);
 					fileLinksExists = temp;
 				}
 				

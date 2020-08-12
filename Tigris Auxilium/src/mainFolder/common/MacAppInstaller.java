@@ -16,7 +16,7 @@ public class MacAppInstaller {
 	public static String ogPKGPath;
 	public static String nPKGPath;
 	
-	public static void appInstall(String os, String ogPath) throws IOException {
+	public static void appInstall(String ogPath) throws IOException {
 		/*
 		 * Gen folder
 		 * Copy data
@@ -29,47 +29,132 @@ public class MacAppInstaller {
 		File f;
 		String fileName;
 		
-		//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv--Makes Folder--vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+		//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv--Makes Folder--vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv 1st LATER Make universal
 		f = new File(ogPath);
-		fileName = f.getName();
+		fileName = f.getName(); // ---------------Gets file name---
 		// TODO Make applescripts use getPath
 		
-		//-------Shorten for just folder tool
-		if (os.equals("Windows 10") || os.equals("Windows 8") || os.equals("Windows 7")) {
-			String path = "C:\\Test\\TA\\Data";
-			File file = new File(path);
-			finalPath = path;
-			NewFilePath = finalPath + "\\" + fileName; //CHXME file name might have extension
-			if (!file.exists()) file.mkdirs(); 
-			
-		} else {
-			
+		
 			String paths = System.getProperty("user.home"); //Get path
 			System.out.println(paths); //PRINT Paths
 			
-			full = paths + "/TA/Data/"; //Create basic path
+			full = paths + "/Desktop/FixedApps/" + fileName; //Create basic path
+			String fullContent = full + "/Contents/";
 			System.out.println(full); //Print path
 			
 			File file = new File(full); //Creates path
 			
-			finalPath = full;
-			NewFilePath = finalPath + "/" + finalPath; // CHXME file name
+			finalPath = fullContent;
+			NewFilePath = finalPath; // CHXME file name
 			if (!file.exists()) file.mkdirs();
 			
-		}
+		
 		System.out.println(finalPath); //PRINT finalPath
 		
 		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 		
 		
+		
 		//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv --Copies file-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-		Path source = Paths.get(ogPath); //TODO String to path
+		
+		
+		
+		String contentPath = ogPath + "/Contents/";//Copies file contents
+		Path source = Paths.get(contentPath); //TODO String to path
 	    Path destination = Paths.get(NewFilePath);
 	 
 	    Files.copy(source, destination,  StandardCopyOption.COPY_ATTRIBUTES);
 	    
 		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+	  //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv --Rename file-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+	    //Get path as text for source2
+	    //String nfpStr = NewFilePath - "/Contents/"
+	    Path source2 = Paths.get(full);
+	    Path target = Paths.get(full + ".app/"); //Might need to remove initial extension
+
+	    try{
+
+	      Files.move(source2, target);
+
+	    } catch (IOException e) {
+	      e.printStackTrace();
+	    }
+	    
+	}
+	
+	
+	public static void dmgInstall(String dmgPath) throws InterruptedException, IOException {
+		ShellRunner sr = new ShellRunner();
+		sr.macShell("hdiutil attach" + dmgPath);
+		appInstall(dmgPath);//TODO Find new path
+	}
+	
+	public static void pkgInstall(String pkgPath) throws InterruptedException {
+		
+		
+		// Make 1st folder path --vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+		String full;
+		File f;
+		String fileName;
+		
+		f = new File(pkgPath);
+		fileName = f.getName(); // ---------------Gets file name---
+		// TODO Make applescripts use getPath
+		
+		
+			String paths = System.getProperty("user.home"); //Get path
+			System.out.println(paths); //PRINT Paths
+			
+			full = paths + "/Desktop/FixedApps/" + fileName; //Create basic path
+			
+			System.out.println(full); //Print path
+			
+			//File file = new File(full); //Creates path
+			//if (!file.exists()) file.mkdirs();//Maybe don't create file but get path
+			
+			//----------------------------------------------------------------
+		
+			// Expand script--vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+			ShellRunner sr = new ShellRunner();
+			sr.macShell("pkgutil --expand " + pkgPath + " " + full);
+			//--------------------------------------------------------
+			
+			// Find pkg/payload--vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+			
+			//TODO search for file
+			String newFull = full + "/" +fileName + "/Payload"; //Complete guess
+			String extFull = paths + "/Desktop/FixedApps/" +  "New " + fileName;
+			//------------------------------------------------------
+			
+			// Create end folder--vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+			File file2 = new File(extFull);
+			if (!file2.exists()) file2.mkdirs();
+			//-----------------------------------------------------------
+			
+			//Payload extract-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+			sr.macShell("Tar -xvf " + newFull + " -C " + extFull);
+			//-------------------------------------------------------
+			//TODO Maybe do an app install check
 	}
 }
-//226715
+
+/*
+ *     Create folder 
+
+    Pkgutil –expand + filePath + folder path 
+
+    Delete folder 
+
+    Re-enter the  command 
+
+    Find pkg file inside extracted folder 
+
+    Find Payload 
+
+    New folder 
+
+    Tar –xvf + Payload + -C + folderPath 
+
+    Seek .app 
+ */

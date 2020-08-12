@@ -7,7 +7,7 @@ public class PCName {
 
 	static String PCNAME = "";
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 
 		getComputerName();
 		System.out.println(PCNAME);
