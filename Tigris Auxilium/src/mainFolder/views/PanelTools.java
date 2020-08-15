@@ -38,7 +38,8 @@ public class PanelTools extends JPanel {
 		btnHide.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//IF then for mac or just all mac
-				ShellRunner.winShell();
+				//ShellRunner.winShell();
+				AsHide();
 			}
 		});
 		btnHide.setBounds(10, 43, 89, 23);
