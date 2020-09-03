@@ -11,7 +11,7 @@ public class SqliteConnection {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			// FIXME Copy file to new host. Make create file script in data folder
-			Connection conn = DriverManager.getConnection("jdbc:sqlite:/home/tyler/Documents/ProjectPlanner"); // /home/tyler/Documents/ProjectPlanner
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\user\\Desktop\\ProjectPlanner.sqlite"); // /home/tyler/Documents/ProjectPlanner
 			JOptionPane.showMessageDialog(null, "Connection Successful");
 			return conn;
 		}catch(Exception e) {

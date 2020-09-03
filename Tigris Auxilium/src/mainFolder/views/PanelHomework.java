@@ -32,9 +32,6 @@ public class PanelHomework extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = -4160000612194093406L;
-	private JTextField first;
-	private JTextField second;
-	private JTextField third;
 
 	/*
 	 * Create the panel.
@@ -71,30 +68,24 @@ public class PanelHomework extends JPanel {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
-		first = new JTextField();
-		first.setBounds(50, 226, 114, 19);
-		pProject.add(first);
-		first.setColumns(10);
-		
-		second = new JTextField();
-		second.setBounds(193, 226, 114, 19);
-		pProject.add(second);
-		second.setColumns(10);
-		
-		third = new JTextField();
-		third.setBounds(337, 226, 114, 19);
-		pProject.add(third);
-		third.setColumns(10);
-		
-		JButton btnRun = new JButton("Run");
-		btnRun.addActionListener(new ActionListener() {
+		JButton btnSave = new JButton("Run");
+		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//DefaultTableModel model = (DefaultTableModel)table.getModel();
 				//model.addRow(new Object [] {Integer.parseInt(first.getText()), Integer.parseInt(second.getText()), third.getText()}); //Save with sqlite
+				try { //2:14 *10
+					String query = "select * from ProjectInfo"; //Alt: "select ID, Name, Username from ProjectInfo"
+					PreparedStatement pst = connection.prepareStatement(query);
+					ResultSet rs = pst.executeQuery();
+					table.setModel(DbUtils.resultSetToTableModel(rs));
+					
+				}catch (Exception e1){
+					e1.printStackTrace();
+				}
 			}
 		});
-		btnRun.setBounds(193, 257, 117, 25);
-		pProject.add(btnRun);
+		btnSave.setBounds(193, 257, 117, 25);
+		pProject.add(btnSave);
 		
 		JButton btnLoadTable = new JButton("Load data");
 		btnLoadTable.addActionListener(new ActionListener() {
@@ -110,7 +101,7 @@ public class PanelHomework extends JPanel {
 				}
 			}
 		});
-		btnLoadTable.setBounds(625, 32, 117, 25);
+		btnLoadTable.setBounds(364, 257, 117, 25);
 		pProject.add(btnLoadTable);
 		
 		JPanel panel_1 = new JPanel();
