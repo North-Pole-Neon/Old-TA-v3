@@ -13,7 +13,14 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class PanelSetup extends JPanel {
 	
@@ -35,12 +42,20 @@ public class PanelSetup extends JPanel {
 		txtrHelloImAuxy.setText("Hello, I'm Auxy. I'm here to help you for when you ask. To start, I'm going to need you to fill this out quickly so I can help adjust to better fit your needs.");
 		
 		JPanel panel = new JPanel();
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(PanelSetup.class.getResource("/mainFolder/resources/NPN Logo.png")));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(19)
-					.addComponent(txtrHelloImAuxy, GroupLayout.PREFERRED_SIZE, 238, GroupLayout.PREFERRED_SIZE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(19)
+							.addComponent(txtrHelloImAuxy, GroupLayout.PREFERRED_SIZE, 238, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(48)
+							.addComponent(lblNewLabel)))
 					.addGap(36)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 430, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -51,7 +66,9 @@ public class PanelSetup extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(33)
-							.addComponent(txtrHelloImAuxy, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE))
+							.addComponent(txtrHelloImAuxy, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE)
+							.addGap(52)
+							.addComponent(lblNewLabel))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(19)
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 397, GroupLayout.PREFERRED_SIZE)))
@@ -91,6 +108,8 @@ public class PanelSetup extends JPanel {
 				
 				RWJsonUser.ReadToJson();
 				
+				
+				buildSaveSys();
 				
 				
 				
@@ -150,5 +169,49 @@ public class PanelSetup extends JPanel {
 		panel.setLayout(gl_panel);
 		setLayout(groupLayout);
 
+	}
+	
+	public void buildSaveSys() {
+		
+		copyFiles("ProjectPlanner.sqlite");
+	}
+	
+	public void copyFiles(String fileName) {
+		
+		Path source = null;
+		try {
+			source = Paths.get(PanelSetup.class.getResource("/mainFolder/resources/" + fileName).toURI());
+		} catch (URISyntaxException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	    
+		
+		Object OS = RWJsonUser.osName;
+		String fullPath;
+		if (OS.equals("Windows 10") || OS.equals("Windows 8") || OS.equals("Windows 7")) {
+			fullPath = "C:\\Test\\TA\\Data\\ProjectPlanner.sqlite";
+			
+		} else {
+			
+			String paths = System.getProperty("user.home");
+			//System.out.println(paths);
+			
+			fullPath = paths + "/TA/Data/ProjectPlanner.sqlite";
+			//System.out.println(full);
+		}
+		
+		
+		Path destination = Paths.get(fullPath); //"C:\\Test\\TA\\Data\\" + fileName
+		
+	    
+	    
+	    try {
+			Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

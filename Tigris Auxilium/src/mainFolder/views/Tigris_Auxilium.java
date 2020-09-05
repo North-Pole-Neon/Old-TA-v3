@@ -54,6 +54,7 @@ public class Tigris_Auxilium {
 	  Create the application.
 	 */
 	public Tigris_Auxilium() {
+		RWJsonUser.getOSVersion();
 		initialize();
 		RWJsonUser.pathMaker(RWJsonUser.getOSVersion());
 		
