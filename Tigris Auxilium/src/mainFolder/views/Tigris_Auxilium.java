@@ -135,7 +135,7 @@ public class Tigris_Auxilium {
 	private void initialize() {
 		frmTigrisAuxilium = new JFrame();
 		frmTigrisAuxilium.setIconImage(Toolkit.getDefaultToolkit().getImage(Tigris_Auxilium.class.getResource("/mainFolder/resources/NPN Logo.png")));
-		frmTigrisAuxilium.setTitle("Tigris Auxilium");  //LATER Make title TA with name
+		frmTigrisAuxilium.setTitle("Tigris Auxilium");
 		frmTigrisAuxilium.setBounds(100, 100, 875, 500);
 		frmTigrisAuxilium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //LATER Look into close options
 		

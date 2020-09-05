@@ -11,25 +11,37 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JScrollBar;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
 
+import mainFolder.common.SerializeHWT;
 import mainFolder.common.SqliteConnection;
 import net.proteanit.sql.DbUtils;
+import testing.SerialTest;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
 
 public class PanelHomework extends JPanel {
 
 	/*
-	 * 
+	 * TODO Make Nested tables with buttons for homework
 	 */
 	private static final long serialVersionUID = -4160000612194093406L;
 
@@ -37,17 +49,13 @@ public class PanelHomework extends JPanel {
 	 * Create the panel.
 	 */
 	
-	Connection connection = null;
-	private JTextField textFieldUN;
-	private JPasswordField passwordField;
-	private JTable table;
+	private static JTable tablePP;
+	
+	 DefaultTableModel tableModelPP = new DefaultTableModel();
 	
 	public PanelHomework() {
 		setBounds(100, 100, 859, 438);
 		setLayout(null);
-		
-		connection = SqliteConnection.dbConnector();
-		
 		
 		JLabel lblNewLabel = new JLabel("Hi their, the Homework page is not ready yet. :(");
 		lblNewLabel.setBounds(203, 12, 428, 16);
@@ -61,101 +69,137 @@ public class PanelHomework extends JPanel {
 		tabbedPane.addTab("Project Planner", null, pProject, null);
 		pProject.setLayout(null);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(50, 12, 477, 202);
-		pProject.add(scrollPane);
+		JScrollPane scrollPanePP = new JScrollPane();
+		scrollPanePP.setBounds(10, 11, 810, 211);
+		pProject.add(scrollPanePP);
 		
-		table = new JTable();
-		scrollPane.setViewportView(table);
+		tablePP = new JTable(tableModelPP);
+		scrollPanePP.setViewportView(tablePP);
 		
-		JButton btnSave = new JButton("Run");
+		tableModelPP.addColumn("#");
+		tableModelPP.addColumn("Name");
+		tableModelPP.addColumn("Description");
+		tableModelPP.addColumn("Priority");
+		tableModelPP.addColumn("Due Date");
+		tableModelPP.addColumn("Status");
+		tableModelPP.addColumn("Cat");
+		
+		TableColumn TColumnPri = tablePP.getColumnModel().getColumn(3);
+	    JComboBox<String> comboBoxTCPri = new JComboBox<>();
+	    comboBoxTCPri.addItem("Low");
+	    comboBoxTCPri.addItem("Med");
+	    comboBoxTCPri.addItem("High");
+	    TColumnPri.setCellEditor(new DefaultCellEditor(comboBoxTCPri));
+	    
+	    TableColumn TColumnStat = tablePP.getColumnModel().getColumn(5);
+	    JComboBox<String> comboBoxTCStat = new JComboBox<>();
+	    comboBoxTCStat.addItem("Not Started");
+	    comboBoxTCStat.addItem("In Progress");
+	    comboBoxTCStat.addItem("Review");
+	    comboBoxTCStat.addItem("Completed");
+	    TColumnStat.setCellEditor(new DefaultCellEditor(comboBoxTCStat));
+	    
+	    TableColumn TColumnCat = tablePP.getColumnModel().getColumn(6);
+	    JComboBox<String> comboBoxTCCat = new JComboBox<>();
+	    comboBoxTCCat.addItem("1");
+	    comboBoxTCCat.addItem("2");
+	    comboBoxTCCat.addItem("3");
+	    comboBoxTCCat.addItem("4");
+	    TColumnCat.setCellEditor(new DefaultCellEditor(comboBoxTCCat));
+	    
+	    //tablePP.setModel(tableModelPP);
+		
+		JButton btnAddRow = new JButton("Add Row");
+		btnAddRow.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tableModelPP.insertRow(tableModelPP.getRowCount(), new Object[] { "" });
+			}
+		});
+		btnAddRow.setBounds(50, 249, 89, 23);
+		pProject.add(btnAddRow);
+		
+		JButton btnDeleteRow = new JButton("Delete Row");
+		btnDeleteRow.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				 // check for selected row first
+	            if(tablePP.getSelectedRow() != -1) {
+	               // remove selected row from the model
+	            	tableModelPP.removeRow(tablePP.getSelectedRow());
+	               JOptionPane.showMessageDialog(null, "Selected row deleted successfully");
+	            }
+				
+			}
+		});
+		btnDeleteRow.setBounds(50, 283, 89, 23);
+		pProject.add(btnDeleteRow);
+		
+		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//DefaultTableModel model = (DefaultTableModel)table.getModel();
-				//model.addRow(new Object [] {Integer.parseInt(first.getText()), Integer.parseInt(second.getText()), third.getText()}); //Save with sqlite
-				try { //2:14 *10
-					String query = "select * from ProjectInfo"; //Alt: "select ID, Name, Username from ProjectInfo"
-					PreparedStatement pst = connection.prepareStatement(query);
-					ResultSet rs = pst.executeQuery();
-					table.setModel(DbUtils.resultSetToTableModel(rs));
-					
-				}catch (Exception e1){
-					e1.printStackTrace();
-				}
+				strPP();
 			}
 		});
-		btnSave.setBounds(193, 257, 117, 25);
+		btnSave.setBounds(149, 249, 89, 23);
 		pProject.add(btnSave);
 		
-		JButton btnLoadTable = new JButton("Load data");
-		btnLoadTable.addActionListener(new ActionListener() {
+		JButton btnLoad = new JButton("Load");
+		btnLoad.addActionListener(new ActionListener() { //TODO Make Joptionpane to ask load old or select file
 			public void actionPerformed(ActionEvent e) {
-				try {
-					String query = "select * from ProjectInfo"; //Alt: "select ID, Name, Username from ProjectInfo"
-					PreparedStatement pst = connection.prepareStatement(query);
-					ResultSet rs = pst.executeQuery();
-					table.setModel(DbUtils.resultSetToTableModel(rs));
-					
-				}catch (Exception e1){
-					e1.printStackTrace();
-				}
+				destrPP();
 			}
 		});
-		btnLoadTable.setBounds(364, 257, 117, 25);
-		pProject.add(btnLoadTable);
+		btnLoad.setBounds(149, 283, 89, 23);
+		pProject.add(btnLoad);
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("New tab", null, panel_1, null);
 		
-		JPanel ppLogin = new JPanel();
-		tabbedPane.addTab("test Login", null, ppLogin, null);
-		ppLogin.setLayout(null);
 		
-		textFieldUN = new JTextField();
-		textFieldUN.setBounds(388, 70, 114, 19);
-		ppLogin.add(textFieldUN);
-		textFieldUN.setColumns(10);
+	}
+	
+	 void strPP() {
 		
-		JButton btnLogin = new JButton("Login");
-		btnLogin.setIcon(new ImageIcon(PanelHomework.class.getResource("/mainFolder/resources/Ok-icon.png")));
-		btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				/*try { //OLDCODE sql login
-					String query = "select * from ProjectInfo where Username=? and Password=? ";
-					PreparedStatement pst = connection.prepareStatement(query);
-					pst.setString(1, textFieldUN.getText());
-					pst.setString(2, passwordField.getText());
-					
-					ResultSet rs = pst.executeQuery();
-					int count = 0;
-					
-					while(rs.next()) { //LATER Use while loop for constant checks in future
-						count = count + 1; //count++
-					}
-					if(count == 1) {
-						JOptionPane.showMessageDialog(null, "Username and Password is correct");
-					} else if(count >1) {
-						JOptionPane.showMessageDialog(null, "Duplicate Username and Password");
-					} else {
-						JOptionPane.showMessageDialog(null, "Username and Password is incorrect /n Try again");
-					}
-					rs.close();
-					pst.close();
-				}catch(Exception e1) {
-					JOptionPane.showMessageDialog(null, e1);
-					
-				}*/
-				
-			}
-		});
-		btnLogin.setBounds(261, 250, 117, 25);
-		ppLogin.add(btnLogin);
+			SerializeHWT e = new SerializeHWT();
+		      
+		      e.tablesave = tableModelPP;//tableModelPP tablePP.getModel()
+		      
+		      try {
+		         FileOutputStream fileOut =
+		         new FileOutputStream("C:\\Test\\TA\\Data\\tablePP.tiax");
+		         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+		         out.writeObject(e);
+		         out.close();
+		         fileOut.close();
+		         System.out.printf("Serialized data is saved in C:\\Test\\TA\\Data\\tablePP.tiax");
+		      } catch (IOException i) {
+		         i.printStackTrace();
+		      }
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(406, 115, 123, 25);
-		ppLogin.add(passwordField);
 		
+	}
+	
+	 void destrPP() {
+		
+		SerializeHWT e = null;
+	      try {
+	         FileInputStream fileIn = new FileInputStream("C:\\Test\\TA\\Data\\tablePP.tiax");
+	         ObjectInputStream in = new ObjectInputStream(fileIn);
+	         e = (SerializeHWT) in.readObject();
+	         in.close();
+	         fileIn.close();
+	      } catch (IOException i) {
+	         i.printStackTrace();
+	         return;
+	      } catch (ClassNotFoundException c) {
+	         System.out.println("Employee class not found");
+	         c.printStackTrace();
+	         return;
+	      }
+	      
+	      System.out.println("Deserialized Project Table...");
+	      tableModelPP = e.tablesave;
+	      //tablePP.setModel(e.tablesave);
 		
 	}
 }

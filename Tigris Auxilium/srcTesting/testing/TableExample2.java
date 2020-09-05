@@ -18,14 +18,18 @@ import javax.swing.JComboBox;
 
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
 
 public class TableExample2 extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
+	private static JTable table;
 
 	/*
 	 * Launch the application.
@@ -46,6 +50,8 @@ public class TableExample2 extends JFrame {
 	/*
 	 * Create the frame.
 	 */
+	
+	DefaultTableModel tableModel = new DefaultTableModel();
 	public TableExample2() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 689, 524);
@@ -54,7 +60,7 @@ public class TableExample2 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 
-		DefaultTableModel tableModel = new DefaultTableModel();
+		
 		
 		JPanel panelEntry = new JPanel();
 		contentPane.add(panelEntry);
@@ -86,12 +92,15 @@ public class TableExample2 extends JFrame {
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
+				
+				ser();
+				
+				/*try {
 					exportTable(table, new File("C:\\Test\\TA\\Data\\tables.xls"));
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				}
+				}*/
 			}
 		});
 		btnSave.setBounds(22, 137, 89, 23);
@@ -100,7 +109,17 @@ public class TableExample2 extends JFrame {
 		JButton btnLoad = new JButton("Load");
 		btnLoad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				arrayTesting();
+				
+				deser(); //Just need to note column changes when loaded
+				//table =
+				
+				//arrayTesting();
+				
+				TableColumn testColumn = table.getColumnModel().getColumn(2); //TODO MAKE load table properties script
+			      JComboBox<String> comboBox = new JComboBox<>();
+			      comboBox.addItem("Asia");
+			      comboBox.addItem("Europe");
+			      testColumn.setCellEditor(new DefaultCellEditor(comboBox));
 				
 				
 			}
@@ -128,7 +147,7 @@ public class TableExample2 extends JFrame {
 	      JComboBox<String> comboBox = new JComboBox<>();
 	      comboBox.addItem("Asia");
 	      comboBox.addItem("Europe");
-	      testColumn.setCellEditor(new DefaultCellEditor(comboBox));
+	      testColumn.setCellEditor(new DefaultCellEditor(comboBox)); //table.getColumnModel().getColumn(2).setCellEditor(new DefaultCellEditor(comboBox));
 
 	      table.setRowHeight(table.getRowHeight() + 20);
 	      
@@ -144,8 +163,59 @@ public class TableExample2 extends JFrame {
 	    System.out.println(table.getModel().getValueAt(0, 0));
 	    System.out.println(getTableData(table));
 
-
 	}
+	
+	
+	public void ser() {
+		SerialTest e = new SerialTest();
+	      e.name = "Reyan Ali";
+	      e.address = "Phokka Kuan, Ambehta Peer";
+	      e.SSN = 11122333;
+	      e.number = 101;
+	      e.tablesave = tableModel;
+	      
+	      try {
+	         FileOutputStream fileOut =
+	         new FileOutputStream("C:\\Test\\TA\\Data\\table.ser");
+	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+	         out.writeObject(e);
+	         out.close();
+	         fileOut.close();
+	         System.out.printf("Serialized data is saved in C:\\Test\\TA\\Data\\table.ser");
+	      } catch (IOException i) {
+	         i.printStackTrace();
+	      }
+	}
+	
+	public static void deser() {
+		
+		SerialTest e = null;
+	      try {
+	         FileInputStream fileIn = new FileInputStream("C:\\Test\\TA\\Data\\table.ser");
+	         ObjectInputStream in = new ObjectInputStream(fileIn);
+	         e = (SerialTest) in.readObject();
+	         in.close();
+	         fileIn.close();
+	      } catch (IOException i) {
+	         i.printStackTrace();
+	         return;
+	      } catch (ClassNotFoundException c) {
+	         System.out.println("Employee class not found");
+	         c.printStackTrace();
+	         return;
+	      }
+	      
+	      System.out.println("Deserialized Employee...");
+	      System.out.println("Name: " + e.name);
+	      System.out.println("Address: " + e.address);
+	      System.out.println("SSN: " + e.SSN);
+	      System.out.println("Number: " + e.number);
+	      table.setModel(e.tablesave);
+	}
+	
+	
+	
+	
 	
 	
 	

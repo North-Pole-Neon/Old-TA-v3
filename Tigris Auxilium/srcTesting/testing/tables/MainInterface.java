@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MainInterface extends javax.swing.JFrame {
 	ArrayList<Food> foodlist;
@@ -33,16 +36,26 @@ public class MainInterface extends javax.swing.JFrame {
 	        jLabel1 = new javax.swing.JLabel();
 	        jPanel1 = new javax.swing.JPanel();
 	        jLabel2 = new javax.swing.JLabel();
+	        jLabel2.setBounds(12, 16, 54, 14);
 	        jTextFoodName = new javax.swing.JTextField();
+	        jTextFoodName.setBounds(84, 13, 398, 20);
 	        jLabel3 = new javax.swing.JLabel();
+	        jLabel3.setBounds(12, 39, 50, 14);
 	        jTextFoodPrice = new javax.swing.JTextField();
+	        jTextFoodPrice.setBounds(84, 39, 94, 20);
 	        jLabel4 = new javax.swing.JLabel();
+	        jLabel4.setBounds(12, 65, 67, 14);
 	        jCBFoodLocation = new javax.swing.JComboBox<>();
+	        jCBFoodLocation.setBounds(83, 65, 95, 20);
 	        jPanel2 = new javax.swing.JPanel();
 	        jButton1 = new javax.swing.JButton();
+	        jButton1.setBounds(12, 13, 95, 23);
 	        jButton2 = new javax.swing.JButton();
+	        jButton2.setBounds(125, 13, 105, 23);
 	        jButton3 = new javax.swing.JButton();
+	        jButton3.setBounds(248, 13, 109, 23);
 	        jButton4 = new javax.swing.JButton();
+	        jButton4.setBounds(375, 13, 107, 23);
 	        jScrollPane4 = new javax.swing.JScrollPane();
 	        jTable2 = new javax.swing.JTable();
 
@@ -66,48 +79,6 @@ public class MainInterface extends javax.swing.JFrame {
 	                jCBFoodLocationActionPerformed(evt);
 	            }
 	        });
-
-	        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-	        jPanel1.setLayout(jPanel1Layout);
-	        jPanel1Layout.setHorizontalGroup(
-	            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	            .addGroup(jPanel1Layout.createSequentialGroup()
-	                .addContainerGap()
-	                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	                    .addGroup(jPanel1Layout.createSequentialGroup()
-	                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	                            .addComponent(jLabel2)
-	                            .addComponent(jLabel3))
-	                        .addGap(18, 18, 18)
-	                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	                            .addComponent(jTextFoodName)
-	                            .addGroup(jPanel1Layout.createSequentialGroup()
-	                                .addComponent(jTextFoodPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                                .addGap(0, 0, Short.MAX_VALUE))))
-	                    .addGroup(jPanel1Layout.createSequentialGroup()
-	                        .addComponent(jLabel4)
-	                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-	                        .addComponent(jCBFoodLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                        .addGap(0, 0, Short.MAX_VALUE)))
-	                .addContainerGap())
-	        );
-	        jPanel1Layout.setVerticalGroup(
-	            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	            .addGroup(jPanel1Layout.createSequentialGroup()
-	                .addContainerGap()
-	                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-	                    .addComponent(jLabel2)
-	                    .addComponent(jTextFoodName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-	                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	                    .addComponent(jLabel3)
-	                    .addComponent(jTextFoodPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-	                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	                    .addComponent(jLabel4)
-	                    .addComponent(jCBFoodLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-	                .addContainerGap(14, Short.MAX_VALUE))
-	        );
 
 	        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -139,33 +110,6 @@ public class MainInterface extends javax.swing.JFrame {
 	            }
 	        });
 
-	        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-	        jPanel2.setLayout(jPanel2Layout);
-	        jPanel2Layout.setHorizontalGroup(
-	            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	            .addGroup(jPanel2Layout.createSequentialGroup()
-	                .addContainerGap()
-	                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                .addGap(18, 18, 18)
-	                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-	                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                .addGap(18, 18, 18)
-	                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                .addContainerGap())
-	        );
-	        jPanel2Layout.setVerticalGroup(
-	            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	            .addGroup(jPanel2Layout.createSequentialGroup()
-	                .addContainerGap()
-	                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-	                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-	                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-	                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-	                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-	                .addContainerGap())
-	        );
-
 	        jTable2.setModel(new javax.swing.table.DefaultTableModel(
 	            new Object [][] {
 	                {null, null, null, null},
@@ -185,28 +129,40 @@ public class MainInterface extends javax.swing.JFrame {
 	        jScrollPane4.setViewportView(jTable2);
 
 	        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-	        getContentPane().setLayout(layout);
 	        layout.setHorizontalGroup(
-	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	            .addGroup(layout.createSequentialGroup()
-	                .addContainerGap()
-	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-	                    .addComponent(jScrollPane4)
-	                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-	                .addContainerGap())
+	        	layout.createParallelGroup(Alignment.TRAILING)
+	        		.addGroup(layout.createSequentialGroup()
+	        			.addContainerGap()
+	        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+	        				.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+	        				.addComponent(jScrollPane4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	        				.addComponent(jPanel2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE))
+	        			.addContainerGap())
 	        );
 	        layout.setVerticalGroup(
-	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	            .addGroup(layout.createSequentialGroup()
-	                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-	                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-	                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-	                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                .addGap(13, 13, 13))
+	        	layout.createParallelGroup(Alignment.TRAILING)
+	        		.addGroup(layout.createSequentialGroup()
+	        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	        			.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
+	        			.addGap(31)
+	        			.addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+	        			.addGap(51)
+	        			.addComponent(jScrollPane4, GroupLayout.PREFERRED_SIZE, 175, GroupLayout.PREFERRED_SIZE)
+	        			.addGap(13))
 	        );
+	        jPanel2.setLayout(null);
+	        jPanel2.add(jButton1);
+	        jPanel2.add(jButton2);
+	        jPanel2.add(jButton3);
+	        jPanel2.add(jButton4);
+	        getContentPane().setLayout(layout);
+	        jPanel1.setLayout(null);
+	        jPanel1.add(jLabel2);
+	        jPanel1.add(jLabel3);
+	        jPanel1.add(jTextFoodName);
+	        jPanel1.add(jTextFoodPrice);
+	        jPanel1.add(jLabel4);
+	        jPanel1.add(jCBFoodLocation);
 
 	        pack();
 	    }// </editor-fold>//GEN-END:initComponents
