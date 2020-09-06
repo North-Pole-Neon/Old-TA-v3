@@ -12,6 +12,16 @@ You will need either a JDK or JRE to run the application. TA is written in Java 
 
 For right now, until I get to a certain point of development where I see the TA as ready, I will keep releases in a jar file. I will start to add more formats to the releases once I've gotten to the point.
 
+### Steps:
+
+1. Download and install a Java ```JRE/JDK``` (Recommended ```Amazon Corretto 11```)
+2. Download [```Jar```](https://github.com/North-Pole-Neon/Tigris-Auxilium/releases) file
+3. Go to ```terminal```
+4. Type ```Java -version``` and press enter. If you don't get an error than Java is installed properly
+5. To open application click on the jar file and it should boot properly
+6. If it doesnt boot or give error go back to terminal
+7. Type ```java -jar Filname.jar```. (Change ```Filename.jar``` to the name of your jar file, or just drag and drop)
+8. Enjoy
 
 
 ## Features
