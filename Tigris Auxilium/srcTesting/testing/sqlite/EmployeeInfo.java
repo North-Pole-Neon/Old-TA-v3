@@ -1,11 +1,13 @@
 package testing.sqlite;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import net.proteanit.sql.DbUtils;
 
@@ -37,6 +39,10 @@ import javax.swing.JCheckBoxMenuItem;
 
 public class EmployeeInfo extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4844863174009329621L;
 	private JPanel contentPane;
 	private JTable table;
 
@@ -61,10 +67,10 @@ public class EmployeeInfo extends JFrame {
 	private JTextField textFieldName;
 	private JTextField textFieldSurname;
 	private JTextField textFieldAge;
-	private JComboBox comboBoxName;
-	private JList list;
+	private JComboBox<String> comboBoxName;
+	private JList<String> list;
 	private JTextField textFieldSearch;
-	private JComboBox comboBoxSelect;
+	private JComboBox<Object> comboBoxSelect;
 	private JMenuBar menuBar;
 	
 	public void refreshTable() { //NEW
@@ -108,7 +114,7 @@ public class EmployeeInfo extends JFrame {
 			PreparedStatement pst =  connection.prepareStatement(query);
 			ResultSet rs = pst.executeQuery();
 			
-			DefaultListModel DLM = new DefaultListModel();
+			DefaultListModel<String> DLM = new DefaultListModel<String>();
 			
 			while(rs.next())
 			{
@@ -195,6 +201,8 @@ public class EmployeeInfo extends JFrame {
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
+				
+				changeTable(table, 0); //XXX
 				
 			}
 			
@@ -364,7 +372,7 @@ public class EmployeeInfo extends JFrame {
 		btnDelete.setBounds(304, 11, 89, 23);
 		contentPane.add(btnDelete);
 		
-		comboBoxName = new JComboBox();
+		comboBoxName = new JComboBox<String>();
 		comboBoxName.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -395,7 +403,7 @@ public class EmployeeInfo extends JFrame {
 		comboBoxName.setBounds(10, 30, 155, 23);
 		contentPane.add(comboBoxName);
 		
-		list = new JList();
+		list = new JList<String>();
 		list.setBounds(10, 319, 155, 156);
 		contentPane.add(list);
 		
@@ -434,8 +442,8 @@ public class EmployeeInfo extends JFrame {
 		contentPane.add(textFieldSearch);
 		textFieldSearch.setColumns(10);
 		
-		comboBoxSelect = new JComboBox();
-		comboBoxSelect.setModel(new DefaultComboBoxModel(new String[] {"EID", "Name", "Surname", "Age"}));
+		comboBoxSelect = new JComboBox<Object>();
+		comboBoxSelect.setModel(new DefaultComboBoxModel<Object>(new String[] {"EID", "Name", "Surname", "Age"}));
 		comboBoxSelect.setBounds(459, 30, 117, 23);
 		contentPane.add(comboBoxSelect);
 		
@@ -443,4 +451,46 @@ public class EmployeeInfo extends JFrame {
 		fillComboBox(); //NEW
 		loadList(); //NEW
 	}
+	
+	public void changeTable(JTable table, int column_index) {
+        table.getColumnModel().getColumn(column_index).setCellRenderer(new DefaultTableCellRenderer() {
+            /*
+			 * 
+			 */
+			private static final long serialVersionUID = 4659549927243423545L;
+
+			@Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                int st_val = Integer.parseInt(table.getValueAt(row, 0).toString());
+                int req_val = 3;
+                if (st_val < req_val) {
+                    c.setBackground(Color.MAGENTA);
+                } else {
+                    c.setBackground(Color.GREEN);
+                }
+                return c;
+            }
+        });
+    }
+	
 }
+
+/*
+ * public void changeTable(JTable table, int column_index) {
+        table.getColumnModel().getColumn(column_index).setCellRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                int st_val = Integer.parseInt(table.getValueAt(row, 0).toString());
+                int req_val = 3;
+                if (st_val < req_val) {
+                    c.setBackground(Color.MAGENTA);
+                } else {
+                    c.setBackground(Color.GREEN);
+                }
+                return c;
+            }
+        });
+    }
+    */

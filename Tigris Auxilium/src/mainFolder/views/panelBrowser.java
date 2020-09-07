@@ -2,7 +2,6 @@ package mainFolder.views;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -16,6 +15,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import mainFolder.common.*;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import java.awt.Font;
 
 
 public class panelBrowser extends JPanel {
@@ -52,6 +53,8 @@ public class panelBrowser extends JPanel {
 	String urlcheck4;
 	String urlcheck5;
 	String urlcheck6;
+	private JTextPane txtpnHiWePlan;
+	private JTextPane txtpnHiWePlan_1;
 
 	/*
 	 * Create the panel.
@@ -67,21 +70,24 @@ public class panelBrowser extends JPanel {
 		JPanel panelTBrowser = new JPanel();
 		tabbedPane.addTab("Browser", null, panelTBrowser, null);
 		
-		JLabel lblNewLabel = new JLabel("Hi their "+ RWJsonUser.firstName +", the Browser page is not ready yet. :(");
+		txtpnHiWePlan = new JTextPane();
+		txtpnHiWePlan.setText("Hi, we plan to working on this soon.\r\n\r\nFor now, enjoy our other features and we'll tell you when something new happens\r\n\r\nCheck out our github page at https://github.com/North-Pole-Neon/Tigris-Auxilium for new info and help");
+		txtpnHiWePlan.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		txtpnHiWePlan.setEditable(false);
 		GroupLayout gl_panelTBrowser = new GroupLayout(panelTBrowser);
 		gl_panelTBrowser.setHorizontalGroup(
 			gl_panelTBrowser.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelTBrowser.createSequentialGroup()
-					.addGap(60)
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 298, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(87, Short.MAX_VALUE))
+					.addGap(143)
+					.addComponent(txtpnHiWePlan, GroupLayout.PREFERRED_SIZE, 402, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(309, Short.MAX_VALUE))
 		);
 		gl_panelTBrowser.setVerticalGroup(
 			gl_panelTBrowser.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelTBrowser.createSequentialGroup()
-					.addGap(68)
-					.addComponent(lblNewLabel)
-					.addContainerGap(88, Short.MAX_VALUE))
+					.addGap(52)
+					.addComponent(txtpnHiWePlan, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(263, Short.MAX_VALUE))
 		);
 		panelTBrowser.setLayout(gl_panelTBrowser);
 		
@@ -259,6 +265,12 @@ public class panelBrowser extends JPanel {
 		
 		JPanel panelTSettings = new JPanel();
 		tabbedPane.addTab("Settings", null, panelTSettings, null);
+		
+		txtpnHiWePlan_1 = new JTextPane();
+		txtpnHiWePlan_1.setText("Hi, we plan to working on this soon.\r\n\r\nFor now, enjoy our other features and we'll tell you when something new happens\r\n\r\nCheck out our github page at https://github.com/North-Pole-Neon/Tigris-Auxilium for new info and help");
+		txtpnHiWePlan_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		txtpnHiWePlan_1.setEditable(false);
+		panelTSettings.add(txtpnHiWePlan_1);
 
 		
 		 boxlinkstring1= comboBoxTab1.getText();

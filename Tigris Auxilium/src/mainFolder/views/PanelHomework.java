@@ -19,13 +19,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.BoxLayout;
+
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridLayout;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTextPane;
+import java.awt.Font;
 
 public class PanelHomework extends JPanel {
 
@@ -86,8 +92,8 @@ public class PanelHomework extends JPanel {
 		pProject.add(panelCB_Search);
 		panelCB_Search.setLayout(new BoxLayout(panelCB_Search, BoxLayout.X_AXIS));
 		
-		JComboBox comboBoxSearchPP = new JComboBox();
-		comboBoxSearchPP.setModel(new DefaultComboBoxModel(new String[] {"Name", "Description", "Status", "Priority", "DueDate", "Cat"}));
+		JComboBox<Object> comboBoxSearchPP = new JComboBox<Object>();
+		comboBoxSearchPP.setModel(new DefaultComboBoxModel<Object>(new String[] {"Name", "Description", "Status", "Priority", "DueDate", "Cat"}));
 		comboBoxSearchPP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -317,6 +323,8 @@ public class PanelHomework extends JPanel {
 					e1.printStackTrace();
 				}
 				
+				changeTable(tablePP, 3);
+				
 			}
 		});
 		btnLoad.setBounds(563, 50, 74, 23);
@@ -362,9 +370,40 @@ public class PanelHomework extends JPanel {
 		});
 		scrollPane.setViewportView(tablePP);
 		
-		JPanel panel_1 = new JPanel();
-		tabbedPane.addTab("New tab", null, panel_1, null);
+		JPanel pPlanner = new JPanel();
+		tabbedPane.addTab("Planner", null, pPlanner, null);
+		
+		JTextPane txtpnHiWePlan_1 = new JTextPane();
+		txtpnHiWePlan_1.setText("Hi, we plan to working on this soon.\r\n\r\nFor now, enjoy our other features and we'll tell you when something new happens\r\n\r\nCheck out our github page at https://github.com/North-Pole-Neon/Tigris-Auxilium for new info and help");
+		txtpnHiWePlan_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		txtpnHiWePlan_1.setEditable(false);
+		pPlanner.add(txtpnHiWePlan_1);
 		
 		
 	}
+	
+	public void changeTable(JTable table, int column_index) {
+        table.getColumnModel().getColumn(column_index).setCellRenderer(new DefaultTableCellRenderer() {
+            /*
+			 * 
+			 */
+			private static final long serialVersionUID = -5382754614911175520L;
+
+			@Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                int st_val = Integer.parseInt(table.getValueAt(row, 3).toString());
+                //int req_val = 3;
+                if (st_val == 1) {
+                    c.setBackground(Color.MAGENTA);
+                } else {
+                    c.setBackground(Color.GREEN);
+                }
+                switch (st_val) { //TODO Switch to case switch
+                
+                }
+                return c;
+            }
+        });
+    }
 }

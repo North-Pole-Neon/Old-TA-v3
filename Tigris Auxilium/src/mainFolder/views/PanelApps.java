@@ -33,6 +33,7 @@ import javax.swing.JTable;
 import javax.swing.border.TitledBorder;
 import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import java.awt.event.MouseAdapter;
@@ -54,8 +55,8 @@ public class PanelApps extends JPanel { //NOTES: Make query to create table for 
 	private JTable tableC;
 	private JTextField textFieldCName;
 	private JTextField textFieldCPath;
-	private JComboBox comboBoxCList;
-	private JList listC;
+	private JComboBox<Object> comboBoxCList;
+	private JList<String> listC;
 
 	/*
 	 * Create the panel.
@@ -72,6 +73,12 @@ public class PanelApps extends JPanel { //NOTES: Make query to create table for 
 		JPanel panelTMain = new JPanel();
 		tabbedPane.addTab("Apps", null, panelTMain, null);
 		
+		JTextPane txtpnHiWePlan_1 = new JTextPane();
+		txtpnHiWePlan_1.setText("Hi, we plan to working on this soon.\r\n\r\nFor now, enjoy our other features and we'll tell you when something new happens\r\n\r\nCheck out our github page at https://github.com/North-Pole-Neon/Tigris-Auxilium for new info and help");
+		txtpnHiWePlan_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		txtpnHiWePlan_1.setEditable(false);
+		panelTMain.add(txtpnHiWePlan_1);
+		
 		JPanel panelTColl = new JPanel();
 		tabbedPane.addTab("Collections", null, panelTColl, null);
 		panelTColl.setLayout(null);
@@ -80,7 +87,7 @@ public class PanelApps extends JPanel { //NOTES: Make query to create table for 
 		scrollPane.setBounds(10, 128, 156, 271);
 		panelTColl.add(scrollPane);
 		
-		listC = new JList();
+		listC = new JList<String>();
 		listC.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) { //XXX Needs to load table and enter text
@@ -162,6 +169,16 @@ public class PanelApps extends JPanel { //NOTES: Make query to create table for 
 		btnCPath.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				JButton open = new JButton();
+				JFileChooser fc = new JFileChooser();
+				fc.setCurrentDirectory(new java.io.File("C://Users/user/Desktop")); // . is current
+				fc.setDialogTitle("Hello World");
+				fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+				if (fc.showOpenDialog(open) == JFileChooser.APPROVE_OPTION) {
+					
+				}
+				System.out.println(fc.getSelectedFile().getAbsolutePath());
+				textFieldCPath.setText(fc.getSelectedFile().getAbsolutePath());
 			}
 		});
 		btnCPath.setFont(new Font("Tahoma", Font.BOLD, 8));
@@ -218,8 +235,8 @@ public class PanelApps extends JPanel { //NOTES: Make query to create table for 
 		btnCTDelete.setBounds(283, 299, 89, 23);
 		panelTColl.add(btnCTDelete);
 		
-		comboBoxCList = new JComboBox();
-		comboBoxCList.setModel(new DefaultComboBoxModel(new String[] {"Open", "Update", "Create", "Delete"}));
+		comboBoxCList = new JComboBox<Object>();
+		comboBoxCList.setModel(new DefaultComboBoxModel<Object>(new String[] {"Open", "Update", "Create", "Delete"}));
 		comboBoxCList.setBounds(10, 95, 80, 22);
 		panelTColl.add(comboBoxCList);
 		
@@ -329,6 +346,7 @@ public class PanelApps extends JPanel { //NOTES: Make query to create table for 
 		
 		JPanel panelInstal = new JPanel();
 		tabbedPane.addTab("Install", null, panelInstal, null);
+		panelInstal.setVisible(false);//LATER Visibility pInstall
 		
 		JPanel paneliApp = new JPanel();
 		paneliApp.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));

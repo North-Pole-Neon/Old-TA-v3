@@ -10,9 +10,12 @@ public class ShellRunner {
 	
 	public static Boolean isWin;
 	
+	@SuppressWarnings("unused")
 	private String wSleep = "rundll32.exe powrprof.dll,SetSuspendState 0,1,0";
+	@SuppressWarnings("unused")
 	private String wShutdown = "shutdown /s";
 	
+	@SuppressWarnings("unused")
 	private String mSleep = "pmset sleepnow";
 	//Can't shutdown mac without sudo
 	

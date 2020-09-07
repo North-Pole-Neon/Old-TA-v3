@@ -1,12 +1,8 @@
 package mainFolder.views;
 
 import javax.swing.JPanel;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
-import javax.swing.LayoutStyle.ComponentPlacement;
-
 import mainFolder.common.RWJsonUser;
 
 import javax.swing.JTextField;
@@ -37,61 +33,42 @@ public class PanelSetup extends JPanel {
 	public PanelSetup() {
 		
 		JTextArea txtrHelloImAuxy = new JTextArea();
+		txtrHelloImAuxy.setBounds(19, 33, 238, 139);
 		txtrHelloImAuxy.setLineWrap(true);
 		txtrHelloImAuxy.setWrapStyleWord(true);
 		txtrHelloImAuxy.setText("Hello, I'm Auxy. I'm here to help you for when you ask. To start, I'm going to need you to fill this out quickly so I can help adjust to better fit your needs.");
 		
 		JPanel panel = new JPanel();
+		panel.setBounds(293, 19, 430, 397);
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(19, 190, 147, 148);
 		lblNewLabel.setIcon(new ImageIcon(PanelSetup.class.getResource("/mainFolder/resources/NPN Logo.png")));
-		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(19)
-							.addComponent(txtrHelloImAuxy, GroupLayout.PREFERRED_SIZE, 238, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(48)
-							.addComponent(lblNewLabel)))
-					.addGap(36)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 430, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(33)
-							.addComponent(txtrHelloImAuxy, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE)
-							.addGap(52)
-							.addComponent(lblNewLabel))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(19)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 397, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(15, Short.MAX_VALUE))
-		);
 		
 		JLabel lblFName = new JLabel("First Name");
+		lblFName.setBounds(18, 69, 51, 14);
 		
 		JLabel lblGrade = new JLabel("Grade");
+		lblGrade.setBounds(18, 153, 29, 14);
 		
 		JLabel lblIsd = new JLabel("ISD");
+		lblIsd.setBounds(18, 214, 17, 14);
 		lblIsd.setToolTipText("\"School District #\" ex. SHS = 720");
 		
 		textFieldFName = new JTextField();
+		textFieldFName.setBounds(172, 66, 86, 20);
 		textFieldFName.setColumns(10);
 		
 		textFieldIsd = new JTextField();
+		textFieldIsd.setBounds(172, 211, 86, 20);
 		textFieldIsd.setColumns(10);
 		
 		String [] gradeListBox = {"9", "10", "11", "12"}; //Array of grade options
 		comboBoxGrade = new JComboBox<Object>(gradeListBox);
+		comboBoxGrade.setBounds(172, 150, 36, 20);
 		
 		JButton btnFinished = new JButton("Finished!");
+		btnFinished.setBounds(172, 282, 75, 23);
 		btnFinished.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -121,59 +98,36 @@ public class PanelSetup extends JPanel {
 		});
 		
 		JLabel lblLName = new JLabel("Last Name");
+		lblLName.setBounds(18, 107, 51, 14);
 		
 		textFieldLName = new JTextField();
+		textFieldLName.setBounds(172, 104, 86, 20);
 		textFieldLName.setColumns(10);
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(18)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblFName)
-						.addComponent(lblIsd)
-						.addComponent(lblGrade)
-						.addComponent(lblLName, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(textFieldLName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnFinished)
-						.addComponent(textFieldFName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textFieldIsd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(comboBoxGrade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(128, Short.MAX_VALUE))
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(66)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblFName)
-						.addComponent(textFieldFName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblLName)
-						.addComponent(textFieldLName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(26)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblGrade)
-						.addComponent(comboBoxGrade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(41)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblIsd)
-						.addComponent(textFieldIsd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(51)
-					.addComponent(btnFinished)
-					.addContainerGap(98, Short.MAX_VALUE))
-		);
-		panel.setLayout(gl_panel);
-		setLayout(groupLayout);
+		
+		JLabel lblNewLabel_1 = new JLabel("Please exit and relaunch after setup");
+		lblNewLabel_1.setBounds(172, 333, 174, 14);
+		panel.setLayout(null);
+		panel.add(lblFName);
+		panel.add(lblIsd);
+		panel.add(lblGrade);
+		panel.add(lblLName);
+		panel.add(textFieldLName);
+		panel.add(textFieldFName);
+		panel.add(textFieldIsd);
+		panel.add(comboBoxGrade);
+		panel.add(lblNewLabel_1);
+		panel.add(btnFinished);
+		setLayout(null);
+		add(txtrHelloImAuxy);
+		add(lblNewLabel);
+		add(panel);
 
 	}
 	
 	public void buildSaveSys() {
 		
 		copyFiles("ProjectPlanner.sqlite");
+		copyFiles("Collections.sqlite");
 	}
 	
 	public void copyFiles(String fileName) {
@@ -190,14 +144,14 @@ public class PanelSetup extends JPanel {
 		Object OS = RWJsonUser.osName;
 		String fullPath;
 		if (OS.equals("Windows 10") || OS.equals("Windows 8") || OS.equals("Windows 7")) {
-			fullPath = "C:\\Test\\TA\\Data\\ProjectPlanner.sqlite";
+			fullPath = "C:\\Test\\TA\\Data\\"+fileName;
 			
 		} else {
 			
 			String paths = System.getProperty("user.home");
 			//System.out.println(paths);
 			
-			fullPath = paths + "/TA/Data/ProjectPlanner.sqlite";
+			fullPath = paths + "/TA/Data/"+fileName;
 			//System.out.println(full);
 		}
 		

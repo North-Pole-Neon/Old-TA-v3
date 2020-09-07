@@ -32,9 +32,6 @@ public class RWJsonUser {
 	public static String finalPath;
 	public static String UserFilePath;
 	
-	/*public static void userInfo() {
-		String testingss;
-	}*/
 		
 	@SuppressWarnings("unchecked")
 	public static void WriteToJson() {
@@ -51,24 +48,14 @@ public class RWJsonUser {
 	        JSONObject userObject = new JSONObject(); 
 	        userObject.put("user", userDetails);
 	         
-	        //Second user
-	        /*JSONObject employeeDetails2 = new JSONObject();
-	        employeeDetails2.put("firstName", "Tyler");
-	        employeeDetails2.put("lastName", "Johnson");
-	        employeeDetails2.put("grade", "11");
-	        employeeDetails2.put("isd", "420");
-	        employeeDetails2.put("PCName", "PhillDESK");
-	         
-	        JSONObject employeeObject2 = new JSONObject(); 
-	        employeeObject2.put("employee", employeeDetails2);*/
+	        
 	         
 	        //Add user to list
 	        JSONArray userList = new JSONArray();
 	        userList.add(userObject);
-	        //employeeList.add(employeeObject2);
 	         
 	        //Write JSON file
-	        try (FileWriter file = new FileWriter(UserFilePath)) { //C:\\Test\\User.json
+	        try (FileWriter file = new FileWriter(UserFilePath)) {
 	 
 	            file.write(userList.toJSONString());
 	            file.flush();
@@ -142,8 +129,8 @@ public class RWJsonUser {
 	        
 	    }
 		
-		//getOS, getCom, 
-		public static void getComputerName(Boolean test) //-------------------------------------------------------
+		
+		public static void getComputerName(Boolean test) //-----------------------------GET COMPUTER NAME--------------------------
 		{
 			String PCnameStr;
 			
@@ -163,7 +150,7 @@ public class RWJsonUser {
 			}
 		}
 		
-		public static String getOSVersion() {
+		public static String getOSVersion() { //----------------------------------GET OS VERSION--------------------------------
 			String os_name = null;
 	        os_name = System.getProperty("os.name");
 	        System.out.println("OS name is: " + os_name);
@@ -173,38 +160,28 @@ public class RWJsonUser {
 		
 		
 		
-		public static void pathMaker(String os) {
-			//LATER Make it work for any file
-			String full;
-			//String finalPath;
+		public static void pathMaker(String os) {//-------------------------------------PATH MAKER-------------------------------------
+			String homePath;
+			if (os.equals("Windows 10") || os.equals("Windows 8") || os.equals("Windows 7")) {
+				homePath = "C:\\Test\\TA\\Data";
+			} else {
+				homePath = System.getProperty("user.home");
+				homePath = homePath + "/TA/Data/";
+			}
 			
+			System.out.println("Home dir path: " + homePath); //PRINT Home dir
+			File fileDir = new File(homePath);
+			if (!fileDir.exists()) fileDir.mkdirs(); //Might be an issue
+			
+			finalPath = homePath;
 			
 			if (os.equals("Windows 10") || os.equals("Windows 8") || os.equals("Windows 7")) {
-				String path = "C:\\Test\\TA\\Data";
-				File file = new File(path);
-				if (!file.exists()) file.mkdirs(); //Might be an issue
-				finalPath = path;
 				UserFilePath = finalPath + "\\User.json";
 			} else {
-				//Path path = new Paths.get("test.txt");
-				String paths = System.getProperty("user.home");
-				System.out.println(paths);
-				//System.getenv(paths);
-				//System.out.println(paths);
-				
-				full = paths + "/TA/Data/";
-				System.out.println(full);
-				
-				File file = new File(full);
-				if (!file.exists()) file.mkdirs(); //Might be an issue
-				finalPath = full;
 				UserFilePath = finalPath + "/User.json";
 			}
-			System.out.println(finalPath); //PRINT finalPath
-			
-			//Check if file exists
-			boolean temp = new File("C:\\Test\\TA\\Data\\junk.txt").isFile();
-			System.out.println(temp);
+		
+			System.out.println("User JSON file path is: " +UserFilePath); //PRINT finalPath
 			
 			
 			
@@ -238,17 +215,3 @@ public class RWJsonUser {
 		}
 		
 }
-
-/*
- *What to have here:
- * Have global variables be listed
- * 
- * Write Function
- *  Names be based on variables
- *  LATER Universal saving function
- *  
- * Read Function
- * 	Assign variables after load
- * 
- * PC Name finder
- */
