@@ -182,7 +182,7 @@ public class PanelSetup extends JPanel {
 		try {
 			source = Paths.get(PanelSetup.class.getResource("/mainFolder/resources/" + fileName).toURI());
 		} catch (URISyntaxException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 	    
@@ -209,7 +209,7 @@ public class PanelSetup extends JPanel {
 	    try {
 			Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

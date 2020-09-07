@@ -1,6 +1,5 @@
 package testing.sqlite;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,15 +9,15 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JSlider;
 import java.awt.event.ActionListener;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.awt.event.ActionEvent;
-import javax.swing.JProgressBar;
 
 public class HelloWorldClass extends JFrame {
 
+	/*
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel lblClock;
 
@@ -60,7 +59,7 @@ public class HelloWorldClass extends JFrame {
 						
 						sleep(1000);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
 						}
 					}
@@ -90,14 +89,14 @@ public class HelloWorldClass extends JFrame {
 		lblNewLabel.setBounds(46, 42, 46, 14);
 		contentPane.add(lblNewLabel);
 		
-		JList list = new JList();
+		JList<String> list = new JList<String>();
 		list.setBounds(493, 41, 138, 210);
 		contentPane.add(list);
 		
 		JButton btnLoadValue = new JButton("Load Value");
 		btnLoadValue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DefaultListModel DLM = new DefaultListModel();
+				DefaultListModel<String> DLM = new DefaultListModel<String>();
 				DLM.addElement("Mark");
 				DLM.addElement("July");
 				DLM.addElement("John");

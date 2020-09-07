@@ -135,6 +135,8 @@ public class Tigris_Auxilium {
 	 */
 	private void initialize() {
 		frmTigrisAuxilium = new JFrame();
+		BorderLayout borderLayout = (BorderLayout) frmTigrisAuxilium.getContentPane().getLayout();
+		borderLayout.setVgap(2);
 		frmTigrisAuxilium.setIconImage(Toolkit.getDefaultToolkit().getImage(Tigris_Auxilium.class.getResource("/mainFolder/resources/NPN Logo.png")));
 		frmTigrisAuxilium.setTitle("Tigris Auxilium");
 		frmTigrisAuxilium.setBounds(100, 100, 875, 500);

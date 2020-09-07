@@ -11,7 +11,7 @@ public class SerialTestp2 {
 	public static String names;
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		deser();
 		
 		//SerialTest r = new SerialTest();

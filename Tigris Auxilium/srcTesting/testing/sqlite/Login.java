@@ -1,9 +1,7 @@
 package testing.sqlite;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -20,6 +18,10 @@ import java.awt.event.ActionEvent;
 
 public class Login extends JFrame {
 
+	/*
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/*
@@ -70,6 +72,7 @@ public class Login extends JFrame {
 		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				
 				try {

@@ -42,8 +42,7 @@ public class PanelCalculator extends JPanel {
 	private String currentNum = "";
 	
 	//Signals
-	@SuppressWarnings("unused")
-	private boolean hasopted = false; //TODO Look into this waste
+	
 	
 	
 	public PanelCalculator() {

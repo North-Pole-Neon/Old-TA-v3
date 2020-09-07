@@ -406,7 +406,7 @@ public class EmployeeInfo extends JFrame {
 				
 				try {
 					String selection = (String)comboBoxSelect.getSelectedItem();
-					String query = "select EID,Name,Surname,Age from EmployeeInfo where "+ selection+" = ? "; //TODO Make search even without whole name
+					String query = "select EID,Name,Surname,Age from EmployeeInfo where "+ selection+" = ? "; //
 					//System.out.println(query);
 					PreparedStatement pst =  connection.prepareStatement(query);
 					

@@ -1,11 +1,13 @@
 package testing;
 
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
-public class SerialTest implements java.io.Serializable{ //TODO Make basic script than just change path name
+public class SerialTest implements java.io.Serializable{ 
 
+	/*
+	 * 
+	 */
+	private static final long serialVersionUID = -9020848592215378492L;
 	public String name;
 	   public String address;
 	   public transient int SSN;

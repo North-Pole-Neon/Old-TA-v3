@@ -1,6 +1,5 @@
 package testing.tables;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.util.ArrayList;
 
@@ -20,15 +19,20 @@ import java.awt.event.ActionEvent;
 
 public class Tables extends JFrame {
 
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7891889588895821546L;
 	private JPanel contentPane;
 	private JTextField textFieldName;
 	private JTextField textFieldPrice;
 	
-	ArrayList<Food> foodlist; //XXX New Stuff
+	ArrayList<Food> foodlist; 
 	String header[] = new String[] {"Food Name", "Food Price", "Food Location"};
 	DefaultTableModel dtm;
 	int row,col;
-	private JComboBox comboBoxLocation;
+	private JComboBox<?> comboBoxLocation;
 	private JTable table;
 
 	/**
@@ -52,7 +56,7 @@ public class Tables extends JFrame {
 	 */
 	public Tables() {
 		initComponents();
-		foodlist = new ArrayList<>(); //XXX New Stuff
+		foodlist = new ArrayList<>(); 
 		dtm = new DefaultTableModel(header, 0);
 		table.setModel(dtm);
 		this.setLocationRelativeTo(null);
@@ -82,7 +86,7 @@ public class Tables extends JFrame {
 		panel1Text.add(textFieldPrice);
 		textFieldPrice.setColumns(10);
 		
-		comboBoxLocation = new JComboBox();
+		comboBoxLocation = new JComboBox<Object>();
 		comboBoxLocation.setBounds(184, 131, 258, 22);
 		panel1Text.add(comboBoxLocation);
 		

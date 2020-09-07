@@ -3,44 +3,22 @@ package mainFolder.views;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import java.awt.Dimension;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
-import javax.swing.JScrollBar;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
-
-import mainFolder.common.SerializeHWT;
 import mainFolder.common.SqliteConnection;
 import net.proteanit.sql.DbUtils;
-import testing.SerialTest;
-import testing.sqlite.sqliteConnection;
-
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 
 import java.awt.event.ActionListener;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
-import javax.swing.JPasswordField;
-import javax.swing.DefaultCellEditor;
-import javax.swing.ImageIcon;
-import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
-import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
 import java.awt.GridLayout;
 import javax.swing.DefaultComboBoxModel;
@@ -84,7 +62,7 @@ public class PanelHomework extends JPanel {
 	}
 	
 	public PanelHomework() {
-		connection = SqliteConnection.dbConnector();
+		connection = SqliteConnection.dbConnectorPP();
 		
 		setBounds(100, 100, 859, 438);
 		setLayout(null);
@@ -104,7 +82,7 @@ public class PanelHomework extends JPanel {
 		
 		JPanel panelCB_Search = new JPanel();
 		panelCB_Search.setBorder(new TitledBorder(null, "Search", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panelCB_Search.setBounds(628, 11, 192, 42);
+		panelCB_Search.setBounds(639, 11, 181, 42);
 		pProject.add(panelCB_Search);
 		panelCB_Search.setLayout(new BoxLayout(panelCB_Search, BoxLayout.X_AXIS));
 		
@@ -122,22 +100,42 @@ public class PanelHomework extends JPanel {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				
+				String ser = "'%"+ textFieldSearch.getText() +"%'";
 				try {
 					String selection = (String)comboBoxSearchPP.getSelectedItem();
-					String query = "select * from ProjectInfo where "+ selection+" = ? "; //TODO Make search even without whole name
-					//System.out.println(query);
+					String query = "select * from ProjectInfo where "+selection+" LIKE "+ser; // "select * from ProjectInfo where "+ selection+" = ? "
+					System.out.println(query);
+					//"select * from ProjectInfo where column LIKE"+"`%" +selection+"%`"+" = ? "
+					//"select * from ProjectInfo where "+selection+" LIKE ?"
 					PreparedStatement pst =  connection.prepareStatement(query);
 					
 					//pst.setString(1, selection);
-					pst.setString(1, textFieldSearch.getText());
+					//pst.setString(1, textFieldSearch.getText());
+					//pst.setString(1, "'%"+ textFieldSearch.getText() +"%'");
+					
+					
+					
+					/*
+					 * String selection = (String)comboBoxSearchPP.getSelectedItem();
+					String query = "select * from ProjectInfo where ? LIKE" + "'%"+ "?" +"%'"; // "select * from ProjectInfo where "+ selection+" = ? "
+					System.out.println(query);
+					//"select * from ProjectInfo where column LIKE"+"`%" +selection+"%`"+" = ? "
+					PreparedStatement pst =  connection.prepareStatement(query);
+					
+					pst.setString(1, selection);
+					pst.setString(2, textFieldSearch.getText());
+					 */
+					
 					
 					ResultSet rs = pst.executeQuery();
 					
+					System.out.println(rs);
+					
 					tablePP.setModel(DbUtils.resultSetToTableModel(rs));
 					
-					//while(rs.next()) {
-						
-					//}
+					while(rs.next()) {
+						ser = "'%"+ textFieldSearch.getText() +"%'";
+					}
 					
 					pst.close();
 					rs.close();
@@ -153,7 +151,7 @@ public class PanelHomework extends JPanel {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(null, "Task Editor", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBounds(10, 11, 480, 53);
+		panel.setBounds(6, 11, 480, 62);
 		pProject.add(panel);
 		panel.setLayout(new GridLayout(2, 6, 0, 0));
 		
@@ -227,7 +225,7 @@ public class PanelHomework extends JPanel {
 				
 			}
 		});
-		btnAdd.setBounds(10, 75, 74, 23);
+		btnAdd.setBounds(488, 16, 74, 23);
 		pProject.add(btnAdd);
 		
 		JButton btnDelete = new JButton("Delete");
@@ -258,7 +256,7 @@ public class PanelHomework extends JPanel {
 				
 			}
 		});
-		btnDelete.setBounds(94, 75, 74, 23);
+		btnDelete.setBounds(488, 50, 74, 23);
 		pProject.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update"); //Make load in menu bar
@@ -297,7 +295,7 @@ public class PanelHomework extends JPanel {
 				
 			}
 		});
-		btnUpdate.setBounds(178, 75, 74, 23);
+		btnUpdate.setBounds(563, 16, 74, 23);
 		pProject.add(btnUpdate);
 		
 		JButton btnLoad = new JButton("Load");
@@ -321,11 +319,11 @@ public class PanelHomework extends JPanel {
 				
 			}
 		});
-		btnLoad.setBounds(262, 75, 74, 23);
+		btnLoad.setBounds(563, 50, 74, 23);
 		pProject.add(btnLoad);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(32, 125, 752, 211);
+		scrollPane.setBounds(16, 84, 804, 268);
 		pProject.add(scrollPane);
 		
 		tablePP = new JTable();

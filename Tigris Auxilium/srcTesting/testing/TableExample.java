@@ -10,7 +10,7 @@ import javax.swing.event.ListSelectionListener;
 public class TableExample {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 
 		JFrame f = new JFrame("Table Example");  
         String data[][]={ {"101","Amit","670000"},    

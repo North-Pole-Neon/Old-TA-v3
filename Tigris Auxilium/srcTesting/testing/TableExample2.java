@@ -28,6 +28,10 @@ import java.awt.event.ActionEvent;
 
 public class TableExample2 extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private static JTable table;
 
@@ -98,7 +102,7 @@ public class TableExample2 extends JFrame {
 				/*try {
 					exportTable(table, new File("C:\\Test\\TA\\Data\\tables.xls"));
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
+					// 
 					e1.printStackTrace();
 				}*/
 			}
@@ -238,6 +242,7 @@ public class TableExample2 extends JFrame {
     System.out.println("write out to: " + file);
 	}
 	
+	@SuppressWarnings("unused")
 	private void arrayTesting() {
 		int[] intArr = new int[5];
 		System.out.println(intArr.length);
