@@ -119,7 +119,7 @@ public class TableExample2 extends JFrame {
 				
 				//arrayTesting();
 				
-				TableColumn testColumn = table.getColumnModel().getColumn(2); //TODO MAKE load table properties script
+				TableColumn testColumn = table.getColumnModel().getColumn(2);
 			      JComboBox<String> comboBox = new JComboBox<>();
 			      comboBox.addItem("Asia");
 			      comboBox.addItem("Europe");

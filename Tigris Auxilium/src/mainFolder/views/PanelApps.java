@@ -38,6 +38,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class PanelApps extends JPanel { //NOTES: Make query to create table for list and entry for paths
 
@@ -61,8 +63,9 @@ public class PanelApps extends JPanel { //NOTES: Make query to create table for 
 	/*
 	 * Create the panel.
 	 */
-	public PanelApps() { //FIXME /////////////////////  Add JfileChooser to button
-		connection = SqliteConnection.dbConnectorCol();
+	public PanelApps() {
+		SqliteConnection sqlConn = new SqliteConnection();
+		connection = sqlConn.dbConnector("Collections");
 		
 		setBounds(100, 100, 859, 438);
 		setLayout(new BorderLayout(0, 0));
@@ -90,7 +93,7 @@ public class PanelApps extends JPanel { //NOTES: Make query to create table for 
 		listC = new JList<String>();
 		listC.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) { //XXX Needs to load table and enter text
+			public void mouseClicked(MouseEvent e) {
 				
 				textFieldC_ListEdit.setText(listC.getSelectedValue().toString());
 				refreshTable();
@@ -112,34 +115,17 @@ public class PanelApps extends JPanel { //NOTES: Make query to create table for 
 		panelTColl.add(scrollPane_1);
 		
 		tableC = new JTable();
+		tableC.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				getSelectedCell();
+			}
+		});
 		tableC.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) { //TODO Make into currently selected cell instead of click
+			public void mouseClicked(MouseEvent e) {
 				
-				try {
-					int row = tableC.getSelectedRow();
-					String name= (tableC.getModel().getValueAt(row, 0)).toString();
-					//System.out.println(name);
-					
-					String query = "select * from "+listC.getSelectedValue().toString()+" where name = \""+name+"\"";
-					//System.out.println(query);
-					PreparedStatement pst =  connection.prepareStatement(query);
-					
-					//pst.setString(1, (String)comboBoxName.getSelectedItem());
-					
-					ResultSet rs = pst.executeQuery();
-					
-					while(rs.next()) {
-						textFieldCName.setText(rs.getString("Name"));
-						textFieldCPath.setText(rs.getString("Path"));
-					}
-					
-					pst.close();
-					rs.close();
-					
-				}catch (Exception e1) {
-					e1.printStackTrace();
-				}
+				getSelectedCell();
 				
 			}
 		});
@@ -246,7 +232,7 @@ public class PanelApps extends JPanel { //NOTES: Make query to create table for 
 				
 				switch (comboBoxCList.getSelectedItem().toString()) {
 				// ----------------------------------------------------------------------------
-				case "Open": //TODO Make able to open on click
+				case "Open":
 					
 					try {
 						String query = "select Path from "+listC.getSelectedValue().toString();
@@ -524,7 +510,7 @@ public class PanelApps extends JPanel { //NOTES: Make query to create table for 
 		panelInstal.setLayout(gl_panelInstal);
 		
 		
-		
+		refreshCList();
 		
 	}
 	
@@ -606,6 +592,33 @@ public class PanelApps extends JPanel { //NOTES: Make query to create table for 
 	        e.printStackTrace(System.err);
 	        return false;
 	    }
+	}
+	
+	void getSelectedCell() {
+		try {
+			int row = tableC.getSelectedRow();
+			String name= (tableC.getModel().getValueAt(row, 0)).toString();
+			//System.out.println(name);
+			
+			String query = "select * from "+listC.getSelectedValue().toString()+" where name = \""+name+"\"";
+			//System.out.println(query);
+			PreparedStatement pst =  connection.prepareStatement(query);
+			
+			//pst.setString(1, (String)comboBoxName.getSelectedItem());
+			
+			ResultSet rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				textFieldCName.setText(rs.getString("Name"));
+				textFieldCPath.setText(rs.getString("Path"));
+			}
+			
+			pst.close();
+			rs.close();
+			
+		}catch (Exception e1) {
+			e1.printStackTrace();
+		}
 	}
 	
 }

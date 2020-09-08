@@ -35,7 +35,7 @@ public class PanelCalculator extends JPanel {
 	private String secondNumStr = "";
 	private int secondNum;
 	@SuppressWarnings("unused")
-	private boolean hasFirstNum = false; //TODO Look into this waste
+	private boolean hasFirstNum = false;
 	private String currentOp = "Blank";
 	private int finalAns;
 	private String finalAnsStr = "";

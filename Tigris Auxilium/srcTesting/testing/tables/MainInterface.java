@@ -211,7 +211,7 @@ public class MainInterface extends javax.swing.JFrame {
 	    }//GEN-LAST:event_jCBFoodLocationActionPerformed
 
 	    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-	        // TODO add your handling code here:
+	        
 	        
 	        int dialogButton = JOptionPane.YES_NO_OPTION;
 	        int dialogResult = JOptionPane.showConfirmDialog(this, "Delete this data", "Delete", dialogButton);
@@ -247,7 +247,7 @@ public class MainInterface extends javax.swing.JFrame {
 	    }//GEN-LAST:event_jButton3ActionPerformed
 
 	    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-	        // TODO add your handling code here:
+	        
 	        String input = JOptionPane.showInputDialog(this,"Search Food Name:");
 	        for (int i = 0; i < foodlist.size(); i++) {
 	            if (foodlist.get(i).foodname.equalsIgnoreCase(input)){

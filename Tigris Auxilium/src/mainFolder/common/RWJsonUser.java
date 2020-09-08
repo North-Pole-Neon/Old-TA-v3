@@ -101,31 +101,33 @@ public class RWJsonUser {
 	        
 	        //Get user first name
 	        firstName = (String) userObject.get("firstName");    
-	        System.out.println(firstName);
+	        //System.out.println(firstName);
 	        
 	        
 	        //Get user last name
 	        lastName = (String) userObject.get("lastName");  
-	        System.out.println(lastName);
+	        //System.out.println(lastName);
 	        
 	        
 	        //Get user grade name
 	        sGrade = (String) userObject.get("grade");    
-	        System.out.println(sGrade);
+	        //System.out.println(sGrade);
 	        
 	        
 	      //Get user isd name
 	        sIsd = (String) userObject.get("isd");    
-	        System.out.println(sIsd);
+	        //System.out.println(sIsd);
 	        
 	        
 	      //Get user PcName name
 	        PCName = (String) userObject.get("PCName");
-	        System.out.println(PCName);
+	        //System.out.println(PCName);
 	        
 	        //Get user setup status
 	        setupCom = (String) userObject.get("setupCom");
-	        System.out.println(setupCom);
+	        //System.out.println(setupCom);
+	        
+	        System.out.println("FN: "+ firstName + " LN: "+lastName + " Grade:  "+sGrade + " ISD: "+sIsd + " PC: "+PCName + " SU?: "+setupCom);
 	        
 	    }
 		
@@ -153,16 +155,16 @@ public class RWJsonUser {
 		public static String getOSVersion() { //----------------------------------GET OS VERSION--------------------------------
 			String os_name = null;
 	        os_name = System.getProperty("os.name");
-	        System.out.println("OS name is: " + os_name);
+	        System.out.println("OS name is: " + os_name); //PRINT OS name is
 	        osName = os_name;
 	        return os_name;
 		}
 		
 		
 		
-		public static void pathMaker(String os) {//-------------------------------------PATH MAKER-------------------------------------
-			String homePath;
-			if (os.equals("Windows 10") || os.equals("Windows 8") || os.equals("Windows 7")) {
+		public static void pathMaker() {//-------------------------------------PATH MAKER-------------------------------------
+			String homePath; //LATER Make pathMaker Universal
+			if (osName.equals("Windows 10") || osName.equals("Windows 8") || osName.equals("Windows 7")) {
 				homePath = "C:\\Test\\TA\\Data";
 			} else {
 				homePath = System.getProperty("user.home");
@@ -175,7 +177,7 @@ public class RWJsonUser {
 			
 			finalPath = homePath;
 			
-			if (os.equals("Windows 10") || os.equals("Windows 8") || os.equals("Windows 7")) {
+			if (osName.equals("Windows 10") || osName.equals("Windows 8") || osName.equals("Windows 7")) {
 				UserFilePath = finalPath + "\\User.json";
 			} else {
 				UserFilePath = finalPath + "/User.json";
@@ -186,20 +188,11 @@ public class RWJsonUser {
 			
 			
 		}
-		public static void userFileExists(String os) { //LATER Make universal for any file check
-			if (os.equals("Windows 10") || os.equals("Windows 8") || os.equals("Windows 7")) {
+		public static void userFileExists() { //LATER Make universal for any file check
+			
 				boolean temp = new File(UserFilePath).isFile();
 				System.out.println("User file exists: " + temp); //PRINT User file exists
 				fileUserExists = temp;
-			} else {
-				boolean temp = new File(UserFilePath).isFile();
-				System.out.println("User file exists: " + temp);
-				fileUserExists = temp;
-			}
-			
-			
-			
-			
 		}
 		
 		

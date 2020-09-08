@@ -11,12 +11,11 @@ import java.io.IOException;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.LayoutStyle.ComponentPlacement;
-
 import mainFolder.common.*;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import java.awt.Font;
+import javax.swing.JLabel;
 
 
 public class panelBrowser extends JPanel {
@@ -41,20 +40,9 @@ public class panelBrowser extends JPanel {
 	private JButton btnDefault;
 	
 	
-	String boxlinkstring1; 
-	String boxlinkstring2; 
-	String boxlinkstring3; 
-	String boxlinkstring4; 
-	String boxlinkstring5;
-	String boxlinkstring6;
-	String urlcheck1;
-	String urlcheck2;
-	String urlcheck3;
-	String urlcheck4;
-	String urlcheck5;
-	String urlcheck6;
 	private JTextPane txtpnHiWePlan;
 	private JTextPane txtpnHiWePlan_1;
+	private JLabel lblNewLabel;
 
 	/*
 	 * Create the panel.
@@ -126,7 +114,7 @@ public class panelBrowser extends JPanel {
 		
 		JButton btnRunTabs = new JButton("Open tabs now");
 		btnRunTabs.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {//LATER Find way to prompt message to user for name
+			public void actionPerformed(ActionEvent e) {
 				goToLinks();
 				System.out.println("Opening Web pages"); //PRINT "Opening Web pages"
 			}
@@ -152,114 +140,122 @@ public class panelBrowser extends JPanel {
 				RWJsonBTabs.pathMaker(RWJsonUser.getOSVersion());
 				RWJsonBTabs.LinksFileExists(RWJsonUser.getOSVersion());
 				RWJsonBTabs.WriteToJson();
-			System.out.println(RWJsonBTabs.link1);
-			System.out.println(RWJsonBTabs.link1Cb);
+			System.out.println("Browser Tabs Saved");
 			}
 		});
 		
 		btnLoad = new JButton("Load");
-		btnLoad.setVisible(true); //Work with it later
+		btnLoad.setVisible(true);
 		btnLoad.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) { // Look here --------------------------------------------------------------------
+			public void actionPerformed(ActionEvent e) {
 				
-				RWJsonBTabs.pathMaker(RWJsonUser.getOSVersion());
-				RWJsonBTabs.LinksFileExists(RWJsonUser.getOSVersion());
-				RWJsonBTabs.ReadToJson();
-				
-				comboBoxTab1.setText(RWJsonBTabs.link1);
-				chckbx1.setSelected(Boolean.parseBoolean(RWJsonBTabs.link1Cb));
-				comboBoxTab2.setText(RWJsonBTabs.link2);
-				chckbx2.setSelected(Boolean.parseBoolean(RWJsonBTabs.link2Cb));
-				comboBoxTab3.setText(RWJsonBTabs.link3);
-				chckbx3.setSelected(Boolean.parseBoolean(RWJsonBTabs.link3Cb));
-				comboBoxTab4.setText(RWJsonBTabs.link4);
-				chckbx4.setSelected(Boolean.parseBoolean(RWJsonBTabs.link4Cb));
-				comboBoxTab5.setText(RWJsonBTabs.link5);
-				chckbx5.setSelected(Boolean.parseBoolean(RWJsonBTabs.link5Cb));
-				comboBoxTab6.setText(RWJsonBTabs.link6);
-				chckbx6.setSelected(Boolean.parseBoolean(RWJsonBTabs.link6Cb));
-				
+				loadTabs();
 			}
 		});
 		
-		btnDefault = new JButton("Default"); // LATER Add default text possible
-		btnDefault.setVisible(false); //Work with it later
+		btnDefault = new JButton("Default");
+		btnDefault.setVisible(false);
+		
+		lblNewLabel = new JLabel("Make sure to use full url address");
 		GroupLayout gl_panelTTab = new GroupLayout(panelTTab);
 		gl_panelTTab.setHorizontalGroup(
-			gl_panelTTab.createParallelGroup(Alignment.TRAILING)
+			gl_panelTTab.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelTTab.createSequentialGroup()
 					.addGap(38)
-					.addGroup(gl_panelTTab.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnRunTabs)
-						.addGroup(gl_panelTTab.createSequentialGroup()
-							.addGroup(gl_panelTTab.createParallelGroup(Alignment.LEADING)
-								.addComponent(chckbx1)
-								.addComponent(chckbx2)
-								.addComponent(chckbx3)
-								.addComponent(chckbx4)
-								.addComponent(chckbx5)
-								.addComponent(chckbx6))
-							.addGap(93)
-							.addGroup(gl_panelTTab.createParallelGroup(Alignment.LEADING)
-								.addComponent(comboBoxTab6, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
-								.addComponent(comboBoxTab4, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
-								.addComponent(comboBoxTab2, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
-								.addComponent(comboBoxTab1, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
-								.addGroup(Alignment.TRAILING, gl_panelTTab.createSequentialGroup()
-									.addGroup(gl_panelTTab.createParallelGroup(Alignment.LEADING)
-										.addComponent(comboBoxTab3, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
-										.addComponent(comboBoxTab5, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE))
-									.addGap(59)
-									.addGroup(gl_panelTTab.createParallelGroup(Alignment.LEADING)
-										.addComponent(btnLoad)
-										.addComponent(btnDefault))
-									.addPreferredGap(ComponentPlacement.RELATED, 22, Short.MAX_VALUE)))))
-					.addContainerGap())
+					.addComponent(btnRunTabs)
+					.addGap(115)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 268, GroupLayout.PREFERRED_SIZE))
 				.addGroup(gl_panelTTab.createSequentialGroup()
-					.addContainerGap(745, Short.MAX_VALUE)
-					.addComponent(btnSave)
-					.addGap(18))
+					.addGap(38)
+					.addComponent(chckbx1)
+					.addGap(93)
+					.addComponent(comboBoxTab1, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_panelTTab.createSequentialGroup()
+					.addGap(38)
+					.addComponent(chckbx2)
+					.addGap(93)
+					.addComponent(comboBoxTab2, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_panelTTab.createSequentialGroup()
+					.addGap(38)
+					.addComponent(chckbx3)
+					.addGap(93)
+					.addComponent(comboBoxTab3, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
+					.addGap(59)
+					.addComponent(btnDefault))
+				.addGroup(gl_panelTTab.createSequentialGroup()
+					.addGap(38)
+					.addComponent(chckbx4)
+					.addGap(93)
+					.addComponent(comboBoxTab4, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_panelTTab.createSequentialGroup()
+					.addGap(38)
+					.addComponent(chckbx5)
+					.addGap(93)
+					.addComponent(comboBoxTab5, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
+					.addGap(59)
+					.addComponent(btnLoad))
+				.addGroup(gl_panelTTab.createSequentialGroup()
+					.addGap(38)
+					.addComponent(chckbx6)
+					.addGap(93)
+					.addComponent(comboBoxTab6, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_panelTTab.createSequentialGroup()
+					.addGap(779)
+					.addComponent(btnSave))
 		);
 		gl_panelTTab.setVerticalGroup(
 			gl_panelTTab.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelTTab.createSequentialGroup()
 					.addGap(26)
-					.addComponent(btnRunTabs)
+					.addGroup(gl_panelTTab.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnRunTabs)
+						.addGroup(gl_panelTTab.createSequentialGroup()
+							.addGap(4)
+							.addComponent(lblNewLabel)))
 					.addGap(18)
-					.addGroup(gl_panelTTab.createParallelGroup(Alignment.TRAILING)
-						.addComponent(comboBoxTab1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(chckbx1))
+					.addGroup(gl_panelTTab.createParallelGroup(Alignment.LEADING)
+						.addComponent(chckbx1)
+						.addGroup(gl_panelTTab.createSequentialGroup()
+							.addGap(3)
+							.addComponent(comboBoxTab1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addGap(18)
-					.addGroup(gl_panelTTab.createParallelGroup(Alignment.BASELINE)
-						.addComponent(chckbx2)
+					.addGroup(gl_panelTTab.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelTTab.createSequentialGroup()
+							.addGap(2)
+							.addComponent(chckbx2))
 						.addComponent(comboBoxTab2, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
-					.addGroup(gl_panelTTab.createParallelGroup(Alignment.BASELINE)
-						.addComponent(chckbx3)
-						.addComponent(comboBoxTab3, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnDefault))
-					.addGap(0, 0, Short.MAX_VALUE)
-					.addGroup(gl_panelTTab.createParallelGroup(Alignment.LEADING, false)
+					.addGroup(gl_panelTTab.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panelTTab.createSequentialGroup()
-							.addGap(18)
-							.addGroup(gl_panelTTab.createParallelGroup(Alignment.BASELINE)
-								.addComponent(chckbx4)
-								.addComponent(comboBoxTab4, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addGroup(gl_panelTTab.createParallelGroup(Alignment.BASELINE)
-								.addComponent(chckbx5)
-								.addComponent(comboBoxTab5, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addGroup(gl_panelTTab.createParallelGroup(Alignment.BASELINE)
-								.addComponent(chckbx6)
-								.addComponent(comboBoxTab6, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
-							.addGap(18))
-						.addGroup(Alignment.TRAILING, gl_panelTTab.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(btnLoad)
-							.addGap(49)))
-					.addComponent(btnSave)
-					.addGap(20))
+							.addGap(2)
+							.addComponent(chckbx3))
+						.addComponent(comboBoxTab3, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panelTTab.createSequentialGroup()
+							.addGap(2)
+							.addComponent(btnDefault)))
+					.addGap(57)
+					.addGroup(gl_panelTTab.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelTTab.createSequentialGroup()
+							.addGap(2)
+							.addComponent(chckbx4))
+						.addComponent(comboBoxTab4, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(gl_panelTTab.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelTTab.createSequentialGroup()
+							.addGap(2)
+							.addComponent(chckbx5))
+						.addComponent(comboBoxTab5, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panelTTab.createSequentialGroup()
+							.addGap(16)
+							.addComponent(btnLoad)))
+					.addGap(5)
+					.addGroup(gl_panelTTab.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelTTab.createSequentialGroup()
+							.addGap(2)
+							.addComponent(chckbx6))
+						.addComponent(comboBoxTab6, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(btnSave))
 		);
 		panelTTab.setLayout(gl_panelTTab);
 		
@@ -273,33 +269,18 @@ public class panelBrowser extends JPanel {
 		panelTSettings.add(txtpnHiWePlan_1);
 
 		
-		 boxlinkstring1= comboBoxTab1.getText();
-		 boxlinkstring2= comboBoxTab2.getText();
-		 boxlinkstring3= comboBoxTab3.getText();
-		 boxlinkstring4= comboBoxTab4.getText();
-		 boxlinkstring5= comboBoxTab5.getText();
-		 boxlinkstring6= comboBoxTab6.getText();
-		 urlcheck1 = String.valueOf(chckbx1.isSelected());
-		 urlcheck2 = String.valueOf(chckbx2.isSelected());
-		 urlcheck3 = String.valueOf(chckbx3.isSelected());
-		 urlcheck4 = String.valueOf(chckbx4.isSelected());
-		 urlcheck5 = String.valueOf(chckbx5.isSelected());
-		 urlcheck6 = String.valueOf(chckbx6.isSelected());
+		
+		 
+		 loadTabs();
 	}
 	
 	
 	
-	public void goToLinks() { //LATER Maybe change this around with new & org
-		// Want to load in background
-		/*
-		 * What needs to happen:
-		 * Checks status
-		 * Load
-		 */
+	public void goToLinks() {
 		
-		if (chckbx1.isSelected() == true) { //LATER make "urlcheck1.equals("true")" work
+		if (chckbx1.isSelected() == true) { 
 			try {
-				java.awt.Desktop.getDesktop().browse(java.net.URI.create(comboBoxTab1.getText())); //LATER Make "boxlinkstring1" Work
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(comboBoxTab1.getText()));
 			} catch (IOException e) {
 				
 				e.printStackTrace();
@@ -348,15 +329,27 @@ public class panelBrowser extends JPanel {
 				
 	}
 	
-	/*public void checkBoxLoad() { // Need to make opposite for save OLDCODE Test before close
-		if (chckbx1.isSelected() == true) {
-			urlcheck1 = "true";
-		} else {
-			urlcheck1 = "false";
-		}
+	
+	void loadTabs() {
 		
+		RWJsonBTabs.pathMaker(RWJsonUser.getOSVersion());
+		RWJsonBTabs.LinksFileExists(RWJsonUser.getOSVersion());
+		RWJsonBTabs.ReadToJson();
 		
-	}*/
+		comboBoxTab1.setText(RWJsonBTabs.link1);
+		chckbx1.setSelected(Boolean.parseBoolean(RWJsonBTabs.link1Cb));
+		comboBoxTab2.setText(RWJsonBTabs.link2);
+		chckbx2.setSelected(Boolean.parseBoolean(RWJsonBTabs.link2Cb));
+		comboBoxTab3.setText(RWJsonBTabs.link3);
+		chckbx3.setSelected(Boolean.parseBoolean(RWJsonBTabs.link3Cb));
+		comboBoxTab4.setText(RWJsonBTabs.link4);
+		chckbx4.setSelected(Boolean.parseBoolean(RWJsonBTabs.link4Cb));
+		comboBoxTab5.setText(RWJsonBTabs.link5);
+		chckbx5.setSelected(Boolean.parseBoolean(RWJsonBTabs.link5Cb));
+		comboBoxTab6.setText(RWJsonBTabs.link6);
+		chckbx6.setSelected(Boolean.parseBoolean(RWJsonBTabs.link6Cb));
+		
+	}
 	
 	
 }

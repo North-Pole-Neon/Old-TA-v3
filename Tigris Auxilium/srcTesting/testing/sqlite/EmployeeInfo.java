@@ -202,7 +202,7 @@ public class EmployeeInfo extends JFrame {
 					e1.printStackTrace();
 				}
 				
-				changeTable(table, 0); //XXX
+				changeTable(table, 0);
 				
 			}
 			
@@ -215,34 +215,20 @@ public class EmployeeInfo extends JFrame {
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
+		table.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				
+				getSelectedCell();
+				
+			}
+		});
 		table.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) { //TODO Make into currently selected cell instead of click
+			public void mouseClicked(MouseEvent e) { 
 				
-				try {
-					int row = table.getSelectedRow();
-					String EID_= (table.getModel().getValueAt(row, 0)).toString();
-					
-					String query = "select * from EmployeeInfo where EID = "+EID_+" ";
-					PreparedStatement pst =  connection.prepareStatement(query);
-					
-					//pst.setString(1, (String)comboBoxName.getSelectedItem());
-					
-					ResultSet rs = pst.executeQuery();
-					
-					while(rs.next()) {
-						textFieldEID.setText(rs.getString("EID"));
-						textFieldName.setText(rs.getString("Name"));
-						textFieldSurname.setText(rs.getString("Surname"));
-						textFieldAge.setText(rs.getString("Age"));
-					}
-					
-					pst.close();
-					rs.close();
-					
-				}catch (Exception e1) {
-					e1.printStackTrace();
-				}
+				getSelectedCell();
+				
 				
 			}
 		});
@@ -348,7 +334,7 @@ public class EmployeeInfo extends JFrame {
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int action = JOptionPane.showConfirmDialog(null, "Are you sure?","Delete", JOptionPane.YES_NO_OPTION);//LATER add show again question
+				int action = JOptionPane.showConfirmDialog(null, "Are you sure?","Delete", JOptionPane.YES_NO_OPTION);
 				
 				if(action == 0) {
 				try {
@@ -473,6 +459,33 @@ public class EmployeeInfo extends JFrame {
             }
         });
     }
+	
+	public void getSelectedCell() {
+		try {
+			int row = table.getSelectedRow();
+			String EID_= (table.getModel().getValueAt(row, 0)).toString();
+			
+			String query = "select * from EmployeeInfo where EID = "+EID_+" ";
+			PreparedStatement pst =  connection.prepareStatement(query);
+			
+			//pst.setString(1, (String)comboBoxName.getSelectedItem());
+			
+			ResultSet rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				textFieldEID.setText(rs.getString("EID"));
+				textFieldName.setText(rs.getString("Name"));
+				textFieldSurname.setText(rs.getString("Surname"));
+				textFieldAge.setText(rs.getString("Age"));
+			}
+			
+			pst.close();
+			rs.close();
+			
+		}catch (Exception e1) {
+			e1.printStackTrace();
+		}
+	}
 	
 }
 

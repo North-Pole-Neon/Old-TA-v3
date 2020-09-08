@@ -10,11 +10,10 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.net.URISyntaxException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
@@ -81,10 +80,12 @@ public class PanelSetup extends JPanel {
 				RWJsonUser.getComputerName(false);
 				RWJsonUser.setupCom = "true";
 				RWJsonUser.WriteToJson();
-				Tigris_Auxilium.panelMenu.setVisible(true);
+				
 				
 				RWJsonUser.ReadToJson();
 				
+				Tigris_Auxilium.panelMenu.setVisible(true);
+				Tigris_Auxilium.loadAfterSU();
 				
 				buildSaveSys();
 				
@@ -132,13 +133,7 @@ public class PanelSetup extends JPanel {
 	
 	public void copyFiles(String fileName) {
 		
-		Path source = null;
-		try {
-			source = Paths.get(PanelSetup.class.getResource("/mainFolder/resources/" + fileName).toURI());
-		} catch (URISyntaxException e1) {
-			
-			e1.printStackTrace();
-		}
+		//Path source = null;
 	    
 		
 		Object OS = RWJsonUser.osName;
@@ -158,10 +153,17 @@ public class PanelSetup extends JPanel {
 		
 		Path destination = Paths.get(fullPath); //"C:\\Test\\TA\\Data\\" + fileName
 		
-	    
-	    
-	    try {
-			Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+	    /*try {
+	    	source = Paths.get(PanelSetup.class.getResource("/mainFolder/resources/" + fileName).toURI());
+	    	Files.copy(source, destination); //Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}*/
+		
+		try (InputStream stream = getClass().getResourceAsStream("/mainFolder/resources/" + fileName)) {
+		    Files.copy(stream, destination);
 		} catch (IOException e) {
 			
 			e.printStackTrace();

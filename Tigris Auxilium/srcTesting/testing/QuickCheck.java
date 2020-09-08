@@ -6,13 +6,13 @@ public class QuickCheck {
 
 	public static void main(String[] args) {
 		//pathCheck();
-		stringTest();
+		//stringTest();
+		osName();
 	}
 
 	static void pathCheck() {
 		String full;
 		String path;
-		Boolean isWin = false;
 		String os = "Windows 10";
 		
 		
@@ -38,6 +38,11 @@ public class QuickCheck {
 		String path = "Hello";
 		path = path + " World";
 		System.out.println(path);
+	}
+	
+	static void osName() {
+		 String os = System.getProperty("os.name").toLowerCase();
+		 System.out.println(os);
 	}
 	
 }

@@ -36,7 +36,7 @@ import java.awt.Font;
 public class PanelHomework extends JPanel {
 
 	/*
-	 * TODO Make Nested tables with buttons for homework
+	 * LATER Make Nested tables with buttons for homework
 	 */
 	private static final long serialVersionUID = -4160000612194093406L;
 	
@@ -68,7 +68,8 @@ public class PanelHomework extends JPanel {
 	}
 	
 	public PanelHomework() {
-		connection = SqliteConnection.dbConnectorPP();
+		SqliteConnection sqlConn = new SqliteConnection();
+		connection = sqlConn.dbConnector("ProjectPlanner");
 		
 		setBounds(100, 100, 859, 438);
 		setLayout(null);
@@ -335,36 +336,17 @@ public class PanelHomework extends JPanel {
 		pProject.add(scrollPane);
 		
 		tablePP = new JTable();
+		tablePP.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				getSelectedCell();
+			}
+		});
 		tablePP.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				try {
-					int row = tablePP.getSelectedRow();
-					String ID_= (tablePP.getModel().getValueAt(row, 0)).toString();
-					
-					String query = "select * from ProjectInfo where ID = "+ID_+" ";
-					PreparedStatement pst =  connection.prepareStatement(query);
-					
-					//pst.setString(1, (String)comboBoxName.getSelectedItem());
-					
-					ResultSet rs = pst.executeQuery();
-					
-					while(rs.next()) {
-						textFieldName.setText(rs.getString("Name"));
-						textFieldDescription.setText(rs.getString("Description"));
-						textFieldStatus.setText(rs.getString("Status"));
-						textFieldPriority.setText(rs.getString("Priority"));
-						textFieldDueDate.setText(rs.getString("DueDate"));
-						textFieldCat.setText(rs.getString("Cat"));
-					}
-					
-					pst.close();
-					rs.close();
-					
-				}catch (Exception e1) {
-					e1.printStackTrace();
-				}
+				getSelectedCell();
 				
 			}
 		});
@@ -393,17 +375,59 @@ public class PanelHomework extends JPanel {
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 int st_val = Integer.parseInt(table.getValueAt(row, 3).toString());
-                //int req_val = 3;
-                if (st_val == 1) {
-                    c.setBackground(Color.MAGENTA);
-                } else {
-                    c.setBackground(Color.GREEN);
-                }
-                switch (st_val) { //TODO Switch to case switch
                 
+                switch (st_val) {
+                case 1:
+                	c.setBackground(Color.RED);
+                	break;
+                case 2:
+                	c.setBackground(Color.ORANGE);
+                	break;
+                case 3:
+                	c.setBackground(Color.YELLOW);
+                	break;
+                case 4:
+                	c.setBackground(Color.GREEN);
+                	break;
+                
+                default:
+                	System.out.println("Error: Can't recongize text for coloring");
+                	JOptionPane.showMessageDialog(null, "Please enter valid variables for spaces");
+                	
                 }
                 return c;
             }
         });
     }
+	
+	public void getSelectedCell() {
+		
+		try {
+			int row = tablePP.getSelectedRow();
+			String ID_= (tablePP.getModel().getValueAt(row, 0)).toString();
+			
+			String query = "select * from ProjectInfo where ID = "+ID_+" ";
+			PreparedStatement pst =  connection.prepareStatement(query);
+			
+			//pst.setString(1, (String)comboBoxName.getSelectedItem());
+			
+			ResultSet rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				textFieldName.setText(rs.getString("Name"));
+				textFieldDescription.setText(rs.getString("Description"));
+				textFieldStatus.setText(rs.getString("Status"));
+				textFieldPriority.setText(rs.getString("Priority"));
+				textFieldDueDate.setText(rs.getString("DueDate"));
+				textFieldCat.setText(rs.getString("Cat"));
+			}
+			
+			pst.close();
+			rs.close();
+			
+		}catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
+	}
 }

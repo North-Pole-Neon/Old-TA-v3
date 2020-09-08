@@ -1,6 +1,6 @@
 package mainFolder.common;
 
-public class OSDetector { //TODO Make solution fit regure
+public class OSDetector { //TODO DEPRECATE
 	 private static boolean isWindows = false;
 	    private static boolean isLinux = false;
 	    private static boolean isMac = false;

@@ -54,16 +54,7 @@ public class RWJsonBTabs {
 		        JSONObject userObject = new JSONObject(); 
 		        userObject.put("linkSet1", linkdata1);
 		         
-		        //Second Set?
-		        /*JSONObject employeeDetails2 = new JSONObject();
-		        employeeDetails2.put("firstName", "Tyler");
-		        employeeDetails2.put("lastName", "Johnson");
-		        employeeDetails2.put("grade", "11");
-		        employeeDetails2.put("isd", "420");
-		        employeeDetails2.put("PCName", "PhillDESK");
-		         
-		        JSONObject employeeObject2 = new JSONObject(); 
-		        employeeObject2.put("employee", employeeDetails2);*/
+		     
 		         
 		        //Add user to list
 		        JSONArray userList = new JSONArray();
@@ -72,7 +63,7 @@ public class RWJsonBTabs {
 		         
 		        //Write JSON file FileWriter file = new FileWriter("assets/JSON Files/Links.json")
 		        try (FileWriter file = new FileWriter(LinksFilePath)) {
-		        	//OutputStreamWriter output = new OutputStreamWriter(file);
+		        	
 		        	file.write(userList.toJSONString());
 		        	file.flush();
 		        	file.close(); //Might be problem
@@ -89,7 +80,7 @@ public class RWJsonBTabs {
 
 				//JSON parser object to parse read file
 		        JSONParser jsonParser = new JSONParser();
-		         // /assets/JSON Files/Links.json , StandardCharsets.UTF_8 /Tigris Auxilium/src/mainFolder/resources/Links.json
+		        
 		        try (FileReader reader = new FileReader(LinksFilePath))	
 		        {
 		            
@@ -120,95 +111,63 @@ public class RWJsonBTabs {
 		        //Get 1st link data
 		        link1 = (String) userObject.get("jlink1");
 		        link1Cb = (String) userObject.get("jlink1Cb");    
-		        System.out.println(link1);
-		        System.out.println(link1Cb);
 		        
 		      //Get 2nd link data
 		        link2 = (String) userObject.get("jlink2");
 		        link2Cb = (String) userObject.get("jlink2Cb");    
-		        System.out.println(link2);
-		        System.out.println(link2Cb);
-		        
+		       
 		      //Get 3rd link data
 		        link3 = (String) userObject.get("jlink3");
 		        link3Cb = (String) userObject.get("jlink3Cb");    
-		        System.out.println(link3);
-		        System.out.println(link3Cb);
 		        
 		      //Get 4th link data
 		        link4 = (String) userObject.get("jlink4");
 		        link4Cb = (String) userObject.get("jlink4Cb");    
-		        System.out.println(link4);
-		        System.out.println(link4Cb);
 		        
 		      //Get 5th link data
 		        link5 = (String) userObject.get("jlink5");
 		        link5Cb = (String) userObject.get("jlink5Cb");    
-		        System.out.println(link5);
-		        System.out.println(link5Cb);
 		        
 		      //Get first link data
 		        link6 = (String) userObject.get("jlink6");
-		        link6Cb = (String) userObject.get("jlink6Cb");    
-		        System.out.println(link6);
-		        System.out.println(link6Cb);
+		        link6Cb = (String) userObject.get("jlink6Cb");
 		        
-		        
-		      
+		        System.out.println(link1 +" "+ link1Cb +" | "+link2 +" "+ link2Cb);//PRINT Links and chbx
+		        System.out.println(link3 +" "+ link3Cb +" | "+link4 +" "+ link4Cb);
+		        System.out.println(link5 +" "+ link5Cb +" | "+link6 +" "+ link6Cb);
 		        
 		    }
 			
 			public static void pathMaker(String os) {
-				//LATER Make it work for any file
-				String full;
-				//String finalPath;
+				String homePath;
+				if (os.equals("Windows 10") || os.equals("Windows 8") || os.equals("Windows 7")) {
+					homePath = "C:\\Test\\TA\\Data";
+				} else {
+					homePath = System.getProperty("user.home");
+					homePath = homePath + "/TA/Data/";
+				}
 				
+				System.out.println("Home dir path: " + homePath); //PRINT Home dir
+				File fileDir = new File(homePath);
+				if (!fileDir.exists()) fileDir.mkdirs(); //Might be an issue
+				
+				finalPath = homePath;
 				
 				if (os.equals("Windows 10") || os.equals("Windows 8") || os.equals("Windows 7")) {
-					String path = "C:\\Test\\TA\\Data";
-					File file = new File(path);
-					if (!file.exists()) file.mkdirs(); //Might be an issue
-					finalPath = path;
 					LinksFilePath = finalPath + "\\Links.json";
 				} else {
-					//Path path = new Paths.get("test.txt");
-					String paths = System.getProperty("user.home");
-					System.out.println(paths);
-					//System.getenv(paths);
-					//System.out.println(paths);
-					
-					full = paths + "/TA/Data/";
-					System.out.println(full);
-					
-					File file = new File(full);
-					if (!file.exists()) file.mkdirs(); //Might be an issue
-					finalPath = full;
 					LinksFilePath = finalPath + "/Links.json";
 				}
-				System.out.println(finalPath); //PRINT finalPath
-				
-				//Check if file exists
-				boolean temp = new File("C:\\Test\\TA\\Data\\junk.txt").isFile();
-				System.out.println(temp);
+			
+				System.out.println("User JSON file path is: " +LinksFilePath); //PRINT finalPath
 				
 				
 				
 			}
 			public static void LinksFileExists(String os) { //LATER Follow Universal idea on RWJsonUser
-				if (os.equals("Windows 10") || os.equals("Windows 8") || os.equals("Windows 7")) {
 					boolean temp = new File(LinksFilePath).isFile();
 					System.out.println("User file exists: " + temp); //PRINT User file exists
 					fileLinksExists = temp;
-				} else {
-					boolean temp = new File(LinksFilePath).isFile();
-					System.out.println("User file exists: " + temp);
-					fileLinksExists = temp;
-				}
 				
-				
-				
-				
-			}
-			
-			
 	}
+}
