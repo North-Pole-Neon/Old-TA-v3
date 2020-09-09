@@ -62,16 +62,15 @@ public class Tigris_Auxilium {
 	public Tigris_Auxilium() {
 		RWJsonUser.getOSVersion();
 		initialize();
-		RWJsonUser.pathMaker();
+		RWJsonUser.rootPathMaker();
+		RWJsonUser.jsonPathMaker("User");
 		
 		userDataCheck();
-		
-		
 		
 	}
 
 	public void userDataCheck() {
-		RWJsonUser.userFileExists();
+		RWJsonUser.userFileExists(RWJsonUser.UserFilePath, RWJsonUser.fileUserExists);
 		if (RWJsonUser.fileUserExists == true) {
 			
 			RWJsonUser.ReadToJson();
@@ -82,10 +81,8 @@ public class Tigris_Auxilium {
 				
 				loadAfterSU();
 				
-				
 				frmTigrisAuxilium.setTitle("Tigris Auxilium - Hi, " + RWJsonUser.firstName);
 			} else {
-				//RWJsonUser.clearUserData();
 				
 				//Basic Logic for loading page
 				layeredPane.removeAll();
@@ -95,17 +92,9 @@ public class Tigris_Auxilium {
 				
 				panelMenu.setVisible(false);
 				
-				/*if(RWJsonUser.PCName.equals(RWJsonUser.PCNAME) && RWJsonUser.setupCom.equals("true")) {
-					layeredPane.removeAll();
-					layeredPane.add(panelPPAuxy); //Make this work on launch
-					layeredPane.repaint();
-					layeredPane.validate();
-				}*/
 		}
 		
-			
 		} else {
-			//RWJsonUser.clearUserData();
 			
 			//Basic Logic for loading page
 			layeredPane.removeAll();
@@ -115,9 +104,6 @@ public class Tigris_Auxilium {
 			
 			panelMenu.setVisible(false);
 		}
-		
-		
-		
 		
 	}
 	
@@ -132,7 +118,7 @@ public class Tigris_Auxilium {
 		frmTigrisAuxilium.setIconImage(Toolkit.getDefaultToolkit().getImage(Tigris_Auxilium.class.getResource("/mainFolder/resources/NPN Logo.png")));
 		frmTigrisAuxilium.setTitle("Tigris Auxilium");
 		frmTigrisAuxilium.setBounds(100, 100, 875, 500);
-		frmTigrisAuxilium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //LATER Look into close options
+		frmTigrisAuxilium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //LATER Look into close options shutdownHook
 		
 		
 		
@@ -307,6 +293,9 @@ public class Tigris_Auxilium {
 		layeredPane.repaint();
 		layeredPane.validate();
 	}
+	
+	
+
 	
 	
 }

@@ -162,35 +162,42 @@ public class RWJsonUser {
 		
 		
 		
-		public static void pathMaker() {//-------------------------------------PATH MAKER-------------------------------------
-			String homePath; //LATER Make pathMaker Universal
+		public static void rootPathMaker() {//-------------------------------------PATH MAKER-------------------------------------
+			String homePath;
 			if (osName.equals("Windows 10") || osName.equals("Windows 8") || osName.equals("Windows 7")) {
 				homePath = "C:\\Test\\TA\\Data";
 			} else {
-				homePath = System.getProperty("user.home");
-				homePath = homePath + "/TA/Data/";
+				
+				homePath = System.getProperty("user.home") + "/TA/Data/";
 			}
 			
 			System.out.println("Home dir path: " + homePath); //PRINT Home dir
 			File fileDir = new File(homePath);
 			if (!fileDir.exists()) fileDir.mkdirs(); //Might be an issue
-			
 			finalPath = homePath;
-			
-			if (osName.equals("Windows 10") || osName.equals("Windows 8") || osName.equals("Windows 7")) {
-				UserFilePath = finalPath + "\\User.json";
-			} else {
-				UserFilePath = finalPath + "/User.json";
-			}
-		
-			System.out.println("User JSON file path is: " +UserFilePath); //PRINT finalPath
-			
-			
-			
 		}
-		public static void userFileExists() { //LATER Make universal for any file check
+		
+		public static void jsonPathMaker(String name) { //----------------------------JSON PATH MAKER---------------------------------
+			String tempPath = null;
+			if (osName.equals("Windows 10") || osName.equals("Windows 8") || osName.equals("Windows 7")) {
+				tempPath = finalPath + "\\";
+			} else {
+				tempPath = finalPath + "/";
+			}
 			
-				boolean temp = new File(UserFilePath).isFile();
+			switch(name) {
+			case "User":
+				UserFilePath = tempPath + name+".json";
+				break;
+				default:
+					System.out.println("jsonPathMaker can't detect file name"); //PRINT JPM cant detect file name
+			}
+			System.out.println(name +" JSON file path is: " +UserFilePath); //PRINT finalPath
+		}
+		
+		public static void userFileExists(String path, Object fileExists) {// --------------------USER FILE EXISTS-------------------------
+			
+				boolean temp = new File(path).isFile();
 				System.out.println("User file exists: " + temp); //PRINT User file exists
 				fileUserExists = temp;
 		}

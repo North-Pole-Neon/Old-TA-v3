@@ -74,11 +74,6 @@ public class PanelHomework extends JPanel {
 		setBounds(100, 100, 859, 438);
 		setLayout(null);
 		
-		
-		JLabel lblNewLabel = new JLabel("Hi their, the Homework page is not ready yet. :(");
-		lblNewLabel.setBounds(203, 12, 428, 16);
-		add(lblNewLabel);
-		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(12, 35, 835, 391);
 		add(tabbedPane);
@@ -112,28 +107,8 @@ public class PanelHomework extends JPanel {
 					String selection = (String)comboBoxSearchPP.getSelectedItem();
 					String query = "select * from ProjectInfo where "+selection+" LIKE "+ser; // "select * from ProjectInfo where "+ selection+" = ? "
 					System.out.println(query);
-					//"select * from ProjectInfo where column LIKE"+"`%" +selection+"%`"+" = ? "
-					//"select * from ProjectInfo where "+selection+" LIKE ?"
+					
 					PreparedStatement pst =  connection.prepareStatement(query);
-					
-					//pst.setString(1, selection);
-					//pst.setString(1, textFieldSearch.getText());
-					//pst.setString(1, "'%"+ textFieldSearch.getText() +"%'");
-					
-					
-					
-					/*
-					 * String selection = (String)comboBoxSearchPP.getSelectedItem();
-					String query = "select * from ProjectInfo where ? LIKE" + "'%"+ "?" +"%'"; // "select * from ProjectInfo where "+ selection+" = ? "
-					System.out.println(query);
-					//"select * from ProjectInfo where column LIKE"+"`%" +selection+"%`"+" = ? "
-					PreparedStatement pst =  connection.prepareStatement(query);
-					
-					pst.setString(1, selection);
-					pst.setString(2, textFieldSearch.getText());
-					 */
-					
-					
 					ResultSet rs = pst.executeQuery();
 					
 					System.out.println(rs);
@@ -210,7 +185,7 @@ public class PanelHomework extends JPanel {
 				
 				try {
 					String query = "insert into ProjectInfo (Name,Description,Status,Priority,DueDate,Cat) values (?, ?, ?, ?, ?, ?)";
-					System.out.println("//////" + query);
+					System.out.println(query); //PRINT SQL Query
 					PreparedStatement pst =  connection.prepareStatement(query);
 					pst.setString(1, textFieldName.getText());
 					pst.setString(2, textFieldDescription.getText());
@@ -218,7 +193,7 @@ public class PanelHomework extends JPanel {
 					pst.setString(4, textFieldPriority.getText());
 					pst.setString(5, textFieldDueDate.getText());
 					pst.setString(6, textFieldCat.getText());
-					System.out.println("//////" + query);
+					
 					pst.execute();
 					
 					JOptionPane.showMessageDialog(null, "Data Saved");
@@ -239,9 +214,9 @@ public class PanelHomework extends JPanel {
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				int action = JOptionPane.showConfirmDialog(null, "Are you sure?","Delete", JOptionPane.YES_NO_OPTION);//LATER add show again question
+				//int action = JOptionPane.showConfirmDialog(null, "Are you sure?","Delete", JOptionPane.YES_NO_OPTION);
 				
-				if(action == 0) {
+				//if(action == 0) {
 				try {
 					String query = "delete from ProjectInfo where Name = ?";
 					System.out.println(query);
@@ -259,7 +234,7 @@ public class PanelHomework extends JPanel {
 					e1.printStackTrace();
 				}
 				refreshTable();
-			}
+			//}
 				
 			}
 		});

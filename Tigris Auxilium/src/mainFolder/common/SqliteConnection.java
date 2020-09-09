@@ -19,18 +19,14 @@ public Connection dbConnector(String fName) {
 			
 		} else {
 			
-			String paths = System.getProperty("user.home");
-			//System.out.println(paths);
-			
-			fullPath = paths + "/TA/Data/"+fName+".sqlite";
+			fullPath = System.getProperty("user.home") + "/TA/Data/"+fName+".sqlite";
 			//System.out.println(full);
 		} 
 		
 		try {
 			Class.forName("org.sqlite.JDBC");
 			
-			Connection conn = DriverManager.getConnection("jdbc:sqlite:"+fullPath);    
-			//JOptionPane.showMessageDialog(null, "Connection Successful");
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:"+fullPath);
 			System.out.println("Connection Successful with: " + fName);//PRINT Connection Successful
 			return conn;
 		}catch(Exception e) {
