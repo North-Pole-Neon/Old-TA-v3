@@ -14,6 +14,9 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import mainFolder.common.RWJsonUser;
+import mainFolder.views.*;
+
+
 
 public class Tigris_Auxilium {
 
