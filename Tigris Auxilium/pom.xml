@@ -48,5 +48,9 @@
     <artifactId>sqlite-jdbc</artifactId>
     <version>3.30.1</version>
 </dependency>
+  	<dependency>
+  		<groupId>net.proteanit.sql.DbUtils</groupId>
+  		<artifactId>rs2xml.jar</artifactId>
+  	</dependency>
   </dependencies>
 </project>
