@@ -1,7 +1,6 @@
 package testing2;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -53,7 +52,8 @@ public class Crypto {
 	public static void encrypt() throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException {
 		
 		//Creating a Signature object
-	      Signature sign = Signature.getInstance("SHA256withRSA");
+	      @SuppressWarnings("unused")
+		Signature sign = Signature.getInstance("SHA256withRSA");
 	      
 	      //Creating KeyPair generator object
 	      KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");

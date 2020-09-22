@@ -8,9 +8,6 @@ import javax.swing.JFileChooser;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextPane;
-import java.awt.Font;
-
 import org.j2mT.*;
 
 import mainFolder.common.CryptFile;
