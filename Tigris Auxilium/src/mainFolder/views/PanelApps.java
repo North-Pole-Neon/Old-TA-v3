@@ -158,13 +158,13 @@ public class PanelApps extends JPanel { //NOTES: Make query to create table for 
 				JButton open = new JButton();
 				JFileChooser fc = new JFileChooser();
 				fc.setCurrentDirectory(new java.io.File("C://Users/user/Desktop")); // . is current
-				fc.setDialogTitle("Hello World");
-				fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+				fc.setDialogTitle("Pick App Executable");
+				fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
 				if (fc.showOpenDialog(open) == JFileChooser.APPROVE_OPTION) {
-					
+					System.out.println(fc.getSelectedFile().getAbsolutePath());
+					textFieldCPath.setText(fc.getSelectedFile().getAbsolutePath());
 				}
-				System.out.println(fc.getSelectedFile().getAbsolutePath());
-				textFieldCPath.setText(fc.getSelectedFile().getAbsolutePath());
+				
 			}
 		});
 		btnCPath.setFont(new Font("Tahoma", Font.BOLD, 8));

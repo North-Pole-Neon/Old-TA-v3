@@ -29,10 +29,10 @@ public class MacAppInstaller {
 		File f;
 		String fileName;
 		
-		//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv--Makes Folder--vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv 1st LATER Make universal
+		//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv--Makes Folder--vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv 1st 
 		f = new File(ogPath);
 		fileName = f.getName(); // ---------------Gets file name---
-		// TODO Make applescripts use getPath
+		// 
 		
 		
 			String paths = System.getProperty("user.home"); //Get path
@@ -45,7 +45,7 @@ public class MacAppInstaller {
 			File file = new File(full); //Creates path
 			
 			finalPath = fullContent;
-			NewFilePath = finalPath; // CHXME file name
+			NewFilePath = finalPath; // 
 			if (!file.exists()) file.mkdirs();
 			
 		
@@ -60,7 +60,7 @@ public class MacAppInstaller {
 		
 		
 		String contentPath = ogPath + "/Contents/";//Copies file contents
-		Path source = Paths.get(contentPath); //TODO String to path
+		Path source = Paths.get(contentPath); //
 	    Path destination = Paths.get(NewFilePath);
 	 
 	    Files.copy(source, destination,  StandardCopyOption.COPY_ATTRIBUTES);
@@ -87,7 +87,7 @@ public class MacAppInstaller {
 	public static void dmgInstall(String dmgPath) throws InterruptedException, IOException {
 		ShellRunner sr = new ShellRunner();
 		sr.macShell("hdiutil attach" + dmgPath);
-		appInstall(dmgPath);//TODO Find new path
+		appInstall(dmgPath);//
 	}
 	
 	public static void pkgInstall(String pkgPath) throws InterruptedException {
@@ -100,7 +100,7 @@ public class MacAppInstaller {
 		
 		f = new File(pkgPath);
 		fileName = f.getName(); // ---------------Gets file name---
-		// TODO Make applescripts use getPath
+		// 
 		
 		
 			String paths = System.getProperty("user.home"); //Get path
@@ -122,7 +122,7 @@ public class MacAppInstaller {
 			
 			// Find pkg/payload--vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 			
-			//TODO search for file
+			//
 			String newFull = full + "/" +fileName + "/Payload"; //Complete guess
 			String extFull = paths + "/Desktop/FixedApps/" +  "New " + fileName;
 			//------------------------------------------------------
@@ -135,7 +135,7 @@ public class MacAppInstaller {
 			//Payload extract-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 			sr.macShell("Tar -xvf " + newFull + " -C " + extFull);
 			//-------------------------------------------------------
-			//TODO Maybe do an app install check
+			//
 	}
 }
 

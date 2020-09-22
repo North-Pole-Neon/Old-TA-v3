@@ -59,4 +59,65 @@ public class ShellRunner {
 			 e.printStackTrace();
 		 }
 	}
+	
+	
+	public void MultilineAppleScriptTest() //template
+	  {
+	    Runtime runtime = Runtime.getRuntime();
+	    
+	    // an applescript command that is multiple lines long.
+	    // just create a java string, and remember the newline characters.
+	    String applescriptCommand =  "";
+
+	    String[] args = { "osascript", "-e", applescriptCommand };
+
+	    try
+	    {
+	      @SuppressWarnings("unused")
+		Process process = runtime.exec(args);
+	    }
+	    catch (IOException e)
+	    {
+	      e.printStackTrace();
+	    }
+	  }
+	
+	
+	public void MacTerminalCommand() //template
+	  {
+	    Runtime runtime = Runtime.getRuntime();
+	    
+	    // an applescript command that is multiple lines long.
+	    // just create a java string, and remember the newline characters.
+	    String applescriptCommand =  "";
+
+	    String[] args = { "osascript", "-e", applescriptCommand };
+
+	    try
+	    {
+	      @SuppressWarnings("unused")
+		Process process = runtime.exec(args);
+	    }
+	    catch (IOException e)
+	    {
+	      e.printStackTrace();
+	    }
+	  }
+	
 }
+
+
+/*
+ * Mac sleep: Shell script "pmset sleepnow"
+ * 
+ * Shutdown via applescript: 
+ * 	tell application "finder"
+ * 	shutdown
+ * 	end tell
+ * 
+ * Hide apps:
+ * tell application "Finder"
+ * set visible of every process whose visible is true and name is not "Finder" to false
+ * set collapsed windows to true
+ * end tell
+ */
