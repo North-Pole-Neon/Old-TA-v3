@@ -2,6 +2,8 @@
 
 Tigris Auxilium is soon to be your go to app. ```Tigris Auxilium (TA)``` is a work in progress project built in Java with Swing, that is supposed to help students with daily tasks that might not have an easy alternative.
 
+TA is built with certain features in mind for Shakopee high school students (SHS). So some features may not apply or are helpful to you. Everyone is welcomed to test and contribute, but I target SHS students.
+
 You can get the latest version of TA [here](https://github.com/North-Pole-Neon/Tigris-Auxilium/releases/tag/v0.0.2.0). Also, you can find instalation instructions below for help.
 
 
