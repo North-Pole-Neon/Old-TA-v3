@@ -230,89 +230,7 @@ public class PanelApps extends JPanel { //NOTES: Make query to create table for 
 		btnCListDo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				switch (comboBoxCList.getSelectedItem().toString()) {
-				// ----------------------------------------------------------------------------
-				case "Open":
-					
-					try {
-						String query = "select Path from "+listC.getSelectedValue().toString();
-						System.out.println(query);
-						PreparedStatement pst =  connection.prepareStatement(query);
-						ResultSet rs = pst.executeQuery();
-						
-						//JOptionPane.showMessageDialog(null, "Data Deleted");
-						
-						while(rs.next()) {
-							File filename = new File(rs.getString("Path"));
-							open(filename);
-						}
-						
-						pst.close();
-						rs.close();
-						
-					}catch (Exception e1) {
-						e1.printStackTrace();
-					}
-					
-					
-					
-					//refreshTable();
-					System.out.println("Opened list");
-					break;
-					// ----------------------------------------------------------------------------
-				case "Update":
-					
-					
-					
-					refreshCList();
-					
-					
-					System.out.println("Updated list");
-					break;
-					// ----------------------------------------------------------------------------
-				case "Create":
-					
-					try {
-						String query = "CREATE TABLE "+textFieldC_ListEdit.getText()+" (Name TEXT PRIMARY KEY NOT NULL, Path TEXT NOT NULL) " ;
-						PreparedStatement pst =  connection.prepareStatement(query);
-						
-						//pst.setString(1, textFieldC_ListEdit.getText());
-						pst.execute();
-						
-						pst.close();
-						
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
-					
-					refreshCList();
-					
-					System.out.println("Created table: " +textFieldC_ListEdit.getText());
-					break;
-					// ----------------------------------------------------------------------------
-				case "Delete":
-					
-					try {
-						String query = "DROP TABLE "+listC.getSelectedValue().toString();
-						PreparedStatement pst =  connection.prepareStatement(query);
-						
-						//pst.setString(1, textFieldC_ListEdit.getText());
-						pst.execute();
-						
-						pst.close();
-						
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
-					
-					refreshCList();
-					
-					System.out.println("Deleted table: " + textFieldC_ListEdit.getText());
-					break;
-					// ----------------------------------------------------------------------------
-				default:
-					System.out.println("`Do` function can't recongize comboBox");
-				}
+				appcolDo();
 				
 			}
 		});
@@ -619,6 +537,94 @@ public class PanelApps extends JPanel { //NOTES: Make query to create table for 
 		}catch (Exception e1) {
 			e1.printStackTrace();
 		}
+	}
+	
+	public void appcolDo() {
+		
+		switch (comboBoxCList.getSelectedItem().toString()) {
+		// ----------------------------------------------------------------------------
+		case "Open":
+			
+			try {
+				String query = "select Path from "+listC.getSelectedValue().toString();
+				System.out.println(query);
+				PreparedStatement pst =  connection.prepareStatement(query);
+				ResultSet rs = pst.executeQuery();
+				
+				//JOptionPane.showMessageDialog(null, "Data Deleted");
+				
+				while(rs.next()) {
+					File filename = new File(rs.getString("Path"));
+					open(filename);
+				}
+				
+				pst.close();
+				rs.close();
+				
+			}catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			
+			
+			
+			//refreshTable();
+			System.out.println("Opened list");
+			break;
+			// ----------------------------------------------------------------------------
+		case "Update":
+			
+			
+			
+			refreshCList();
+			
+			
+			System.out.println("Updated list");
+			break;
+			// ----------------------------------------------------------------------------
+		case "Create":
+			
+			try {
+				String query = "CREATE TABLE "+textFieldC_ListEdit.getText()+" (Name TEXT PRIMARY KEY NOT NULL, Path TEXT NOT NULL) " ;
+				PreparedStatement pst =  connection.prepareStatement(query);
+				
+				//pst.setString(1, textFieldC_ListEdit.getText());
+				pst.execute();
+				
+				pst.close();
+				
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			
+			refreshCList();
+			
+			System.out.println("Created table: " +textFieldC_ListEdit.getText());
+			break;
+			// ----------------------------------------------------------------------------
+		case "Delete":
+			
+			try {
+				String query = "DROP TABLE "+listC.getSelectedValue().toString();
+				PreparedStatement pst =  connection.prepareStatement(query);
+				
+				//pst.setString(1, textFieldC_ListEdit.getText());
+				pst.execute();
+				
+				pst.close();
+				
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			
+			refreshCList();
+			
+			System.out.println("Deleted table: " + textFieldC_ListEdit.getText());
+			break;
+			// ----------------------------------------------------------------------------
+		default:
+			System.out.println("`Do` function can't recongize comboBox");
+		}
+		
 	}
 	
 }

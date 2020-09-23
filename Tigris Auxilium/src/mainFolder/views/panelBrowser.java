@@ -6,7 +6,6 @@ import javax.swing.JTabbedPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.BorderLayout;
-//import java.io.File;
 import java.io.IOException;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
@@ -330,7 +329,7 @@ public class panelBrowser extends JPanel {
 	}
 	
 	
-	void loadTabs() {
+	public void loadTabs() {
 		
 		RWJsonBTabs.pathMaker(RWJsonUser.getOSVersion());
 		RWJsonBTabs.LinksFileExists(RWJsonUser.getOSVersion());

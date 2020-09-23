@@ -24,12 +24,17 @@ import javax.swing.BoxLayout;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Desktop;
 import java.awt.GridLayout;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import javax.swing.JTextPane;
 import java.awt.Font;
 
@@ -335,6 +340,140 @@ public class PanelHomework extends JPanel {
 		txtpnHiWePlan_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		txtpnHiWePlan_1.setEditable(false);
 		pPlanner.add(txtpnHiWePlan_1);
+		
+		JPanel pWebsites = new JPanel();
+		tabbedPane.addTab("Websites", null, pWebsites, null);
+		pWebsites.setLayout(null);
+		
+		JPanel pcResearch = new JPanel();
+		pcResearch.setBorder(new TitledBorder(null, "Research", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pcResearch.setBounds(78, 104, 165, 159);
+		pWebsites.add(pcResearch);
+		pcResearch.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JLabel lblWBrit = new JLabel("Britannica");
+		lblWBrit.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+			         
+			        Desktop.getDesktop().browse(new URI("https://academic-eb-com.content.elibrarymn.org/levels/collegiate"));
+			         
+			    } catch (IOException | URISyntaxException e1) {
+			        e1.printStackTrace();
+			    }
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblWBrit.setText("<html><a href=''>Britannica</a></html>");
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblWBrit.setText("Britannica");
+			}
+		});
+		lblWBrit.setToolTipText("The Encyclopedia Britannica");
+		pcResearch.add(lblWBrit);
+		
+		JLabel lblWScholar = new JLabel("Scholar");
+		lblWScholar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+			         
+			        Desktop.getDesktop().browse(new URI("https://scholar.google.com/"));
+			         
+			    } catch (IOException | URISyntaxException e1) {
+			        e1.printStackTrace();
+			    }
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblWScholar.setText("<html><a href=''>Scholar</a></html>");
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblWScholar.setText("Scholar");
+			}
+		});
+		lblWScholar.setToolTipText("Google Scholar");
+		pcResearch.add(lblWScholar);
+		
+		JLabel lblWEBS = new JLabel("EBSCO");
+		lblWEBS.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+			         
+			        Desktop.getDesktop().browse(new URI("https://content.elibrarymn.org/login?qurl=https%3A%2F%2Fsearch.ebscohost.com%2Flogin.aspx%3Fauthtype%3Dip%2Cuid%26group%3Delm%26profile%3Dehost%26defaultdb%3Dkeh"));
+			         
+			    } catch (IOException | URISyntaxException e1) {
+			        e1.printStackTrace();
+			    }
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblWEBS.setText("<html><a href=''>EBSCO</a></html>");
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblWEBS.setText("EBSCO");
+			}
+		});
+		lblWEBS.setToolTipText("scholarly publications across all academic disciplines and subject areas");
+		pcResearch.add(lblWEBS);
+		
+		JPanel pcCreative = new JPanel();
+		pcCreative.setBorder(new TitledBorder(null, "Creative", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pcCreative.setBounds(266, 104, 165, 159);
+		pWebsites.add(pcCreative);
+		pcCreative.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JLabel lblWSpark = new JLabel("Spark");
+		lblWSpark.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+			         
+			        Desktop.getDesktop().browse(new URI("https://spark.adobe.com/"));
+			         
+			    } catch (IOException | URISyntaxException e1) {
+			        e1.printStackTrace();
+			    }
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblWSpark.setText("<html><a href=''>Spark</a></html>");
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblWSpark.setText("Spark");
+			}
+		});
+		pcCreative.add(lblWSpark);
+		
+		JLabel lblWCanva = new JLabel("Canva");
+		lblWCanva.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+			         
+			        Desktop.getDesktop().browse(new URI("https://www.canva.com/"));
+			         
+			    } catch (IOException | URISyntaxException e1) {
+			        e1.printStackTrace();
+			    }
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblWCanva.setText("<html><a href=''>Canva</a></html>");
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblWCanva.setText("Canva");
+			}
+		});
+		pcCreative.add(lblWCanva);
 		
 		
 	}

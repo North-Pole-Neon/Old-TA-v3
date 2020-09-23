@@ -18,6 +18,8 @@ import javax.swing.JRadioButton;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.border.TitledBorder;
+import javax.swing.JTextPane;
+import java.awt.Font;
 
 public class PanelTools extends JPanel {
 
@@ -163,6 +165,17 @@ public class PanelTools extends JPanel {
 			}
 		});
 		ccpanOuPath.add(btnOuP);
+		
+		JPanel pcSync = new JPanel();
+		tabbedPane.addTab("Sync", null, pcSync, null);
+		pcSync.setLayout(null);
+		
+		JTextPane txtpnHiWePlan_1 = new JTextPane();
+		txtpnHiWePlan_1.setText("Hi, we plan to working on this soon.\r\n\r\nFor now, enjoy our other features and we'll tell you when something new happens\r\n\r\nCheck out our github page at https://github.com/North-Pole-Neon/Tigris-Auxilium for new info and help");
+		txtpnHiWePlan_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		txtpnHiWePlan_1.setEditable(false);
+		txtpnHiWePlan_1.setBounds(180, 111, 402, 95);
+		pcSync.add(txtpnHiWePlan_1);
 		
 
 	}
