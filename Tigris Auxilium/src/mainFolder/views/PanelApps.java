@@ -159,7 +159,7 @@ public class PanelApps extends JPanel { //NOTES: Make query to create table for 
 				JFileChooser fc = new JFileChooser();
 				fc.setCurrentDirectory(new java.io.File("C://Users/user/Desktop")); // . is current
 				fc.setDialogTitle("Pick App Executable");
-				fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 				if (fc.showOpenDialog(open) == JFileChooser.APPROVE_OPTION) {
 					System.out.println(fc.getSelectedFile().getAbsolutePath());
 					textFieldCPath.setText(fc.getSelectedFile().getAbsolutePath());
