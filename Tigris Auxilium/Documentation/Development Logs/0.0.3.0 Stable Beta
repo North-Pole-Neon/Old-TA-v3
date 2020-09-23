@@ -35,7 +35,7 @@ New Features:
 * Project Planner is a new feature to help organize your school project tasks
 * Project Planner now has basic color coding
 * App Collections is a new feature to help you create groups of apps to launch at once to help start a work session
-* Tables will load data in fields if user clicks or selects it with keyboard
+* Tables will load data in fields if the user clicks or selects it with keyboard
 
 -----------
 Known Bugs:
@@ -54,11 +54,11 @@ Fixed Issues:
 * Classes are getting easy to read
 * Cleaned console logs a bit
 * Boots much faster
-* The setup page will bring user to front page after setup
+* The setup page will bring the user to the front page after setup
 * SQL tables are loaded ready for first boot 
 * Setup page will no longer crash if fields are left blank
-* Files will copy to local folder properly
-* Fixed fileChooser from filling fields
+* Files will copy to the local folder properly
+* Fixed file chooser from filling fields
 * Many mis. bugs and errors
 
 ------
