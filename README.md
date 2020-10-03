@@ -6,13 +6,16 @@ TA is built with certain features in mind for Shakopee high school students (SHS
 
 You can get the latest version of TA [here](https://github.com/North-Pole-Neon/Tigris-Auxilium/releases/tag/v0.0.2.0). Also, you can find instalation instructions below for help.
 
+# UPDATE:
+
+Due to recent changes, I decided to move from Java Swing to JavaFX. I will no longer be working or updating this project anymore. The new repo will be developed on my account rather than the organizations. The main reason why I made a new repo instead of creating a new branch was that I would've been way more work to rebuild, so it was easier to start from scratch. Once I port all the current features of TAv3 to TAv4 I will move it to the organization's page.
+
 
 
 # Instalation Instruction
 
 You will need either a JDK or JRE to run the application. TA is written in Java 11, so I recommend [```Amazon Corretto 11```](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html) which can be found online or depending on devices, ```Self Service``` should provide you with the download. If you're installing Corretto from the website, you can go to either the [Windows](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/windows-7-install.html) or [macOS](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/macos-install.html) guides to help you. Then you should be able to open it like any other application. If you wish to import it into an ```IDE``` like [```Eclipse```](https://www.eclipse.org/), you can follow a guide on importing like this [guide](http://people.cs.uchicago.edu/~kaharris/10200/tutorials/eclipse/import.html).
 
-For right now, until I get to a certain point of development where I see the TA as ready, I will keep releases in a jar file. I will start to add more formats to the releases once I've gotten to the point.
 
 ## Steps:
 
